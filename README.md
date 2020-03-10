@@ -3,14 +3,15 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
+|prefecture_id|references|null: false, foreign_key: true|
 |user_name|string|null: false, unique:true, index: true|
-|email|string||
-|password|varchar||
+|email|string|null: false, unique:true|
+|password|varchar|null: false, unique:true|
 |adress|text||
 |birthdate|date||
 |credit_card_bank|string||
-|credit_card_number|string||
-|telephone_number|string||
+|credit_card_number|string|null: false, unique:true|
+|telephone_number|string|null: false, unique:true|
 |sales|integer||
 |points|integer||
 
@@ -44,7 +45,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|lead_text|text||
+|news_lead|text||
 |news_content|text||
 
 
@@ -55,8 +56,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
 |prefecture_name|string||
 
 ### Association
@@ -81,7 +80,7 @@
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
-|evaluation|text||
+|evaluation|integer||
 
 ### Association
 - belongs_to :user
@@ -93,7 +92,7 @@
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
-|appropriation|text||
+|appropriation|boolean||
 
 ### Association
 - belongs_to :user
@@ -104,6 +103,9 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
+|brand_id|references|null: false, foreign_key: true|
+|prefecture_id|references|null: false, foreign_key: true|
+|bigcategory_id|references|null: false, foreign_key: true|
 |item_name|string||
 |item_price|integer||
 |item_condition|string||
@@ -111,6 +113,7 @@
 |item_size|string||
 |delivery_way|text||
 |delivery_cost|text||
+|delivery_time|text||
 |auction|boolean||
 |dealing|boolean||
 |sold|boolean||
@@ -150,7 +153,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
 |bigcategory_name|text||
 
 ### Association
