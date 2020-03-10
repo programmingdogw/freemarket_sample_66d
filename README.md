@@ -146,13 +146,63 @@
 ### Association
 - has_many :items
 
+## bigcategorysテーブル
 
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: true|
+|bigcategory_name|text||
 
-今途中
-参考用
 ### Association
-- has_many: messages
-- has_many: users_groups
-- has_many: users, through: :users_groups
+- has_many :items
+- has_many: bigcategory_middlecategorys
+- has_many: middlecategorys, through: :bigcategory_middlecategorys
 
-||||
+## bigcategory_middlecategorysテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|bigcategory_id|references|null: false, foreign_key: true|
+|middlecategory_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :bigcategory
+- belongs_to :middlecategory
+
+## middlecategorysテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|middlecategory_name|text||
+
+### Association
+- has_many: bigcategory_middlecategorys
+- has_many: bigcategorys, through: :bigcategory_middlecategorys
+- has_many: middlecategory_smallcategorys
+- has_many: smallcategorys, through: :middlecategory_smallcategorys
+
+## middlecategory_smallcategorysテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|middlecategory_id|references|null: false, foreign_key: true|
+|smallcategory_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :middlecategory
+- belongs_to :smallcategory
+
+## smallcategorysテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|smallcategory_name|text||
+
+### Association
+- has_many: middlecategory_smallcategorys
+- has_many: middlecategorys, through: :middlecategory_smallcategorys
+
+
+
+
+
