@@ -3,14 +3,11 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|prefecture_id|references|null: false, foreign_key: true|
-|user_name|string|null: false, unique:true, index: true|
+|address_id|references|null: false, foreign_key: true|
+|name|string|null: false, unique:true, index: true|
 |email|string|null: false, unique:true|
 |password|varchar|null: false, unique:true|
-|adress|text||
 |birthdate|date||
-|credit_card_bank|string||
-|credit_card_number|string|null: false, unique:true|
 |telephone_number|string|null: false, unique:true|
 |sales|integer||
 |points|integer||
@@ -23,17 +20,45 @@
 - has_many: news
 - has_many: evaluations
 - has_many: appropriations
-- belogns_to: prefectures
+- belogs_to : address
 
 
+## addressesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|null: false, foreign_key: true|
+|postal_code|text|null: false|
+|prefecture|text|null: false|
+|manicipality|text|null: false|
+|street|text|null: false|
+|building|text|null: false|
+
+
+
+### Association
+- has_many: users
+
+## credit_cardsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|null: false, foreign_key: true|
+|bank|text|null: false|
+|number|text|null: false|
+
+
+
+### Association
+- belongs_to: user
 
 ## todosテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|null: false, foreign_key: true|
-|todo_lead|text||
-|todo_content|text||
+|lead_text|text|null: false|
+|content_text|text|null: false|
 
 
 
@@ -45,22 +70,13 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|news_lead|text||
-|news_content|text||
+|lead_text|text|null: false|
+|content_text|text|null: false|
 
 
 ### Association
 - belongs_to :user
 
-## prefecturesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|prefecture_name|string||
-
-### Association
-- has_many :users
-- has_many :items
 
 ## commentsテーブル
 
@@ -104,13 +120,13 @@
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
-|prefecture_id|references|null: false, foreign_key: true|
-|bigcategory_id|references|null: false, foreign_key: true|
-|item_name|string||
-|item_price|integer||
-|item_condition|string||
-|item_description|text||
-|item_size|string||
+|category_id|references|null: false, foreign_key: true|
+|address_id|references|null: false, foreign_key: true|
+|name|string||
+|price|integer||
+|condition|string||
+|description|text||
+|size|string||
 |delivery_way|text||
 |delivery_cost|text||
 |delivery_time|text||
@@ -120,9 +136,9 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :prefectures
-- belongs_to :bigcategorys
-- belongs_to :brands
+- belongs_to :address
+- belongs_to :category
+- belongs_to :brand
 - has_many: comments
 - has_many: images
 - has_many: appropriations
@@ -134,7 +150,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|
-|image|text||
+|image|text|null: false|
 
 ### Association
 - belongs_to :item
@@ -143,68 +159,18 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
-|brand_name|text||
+|name|text|null: false|
 
 ### Association
 - has_many :items
 
-## bigcategorysテーブル
+## categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|bigcategory_name|text||
+|name|text||
 
 ### Association
 - has_many :items
-- has_many: bigcategory_middlecategorys
-- has_many: middlecategorys, through: :bigcategory_middlecategorys
-
-## bigcategory_middlecategorysテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|bigcategory_id|references|null: false, foreign_key: true|
-|middlecategory_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :bigcategory
-- belongs_to :middlecategory
-
-## middlecategorysテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|middlecategory_name|text||
-
-### Association
-- has_many: bigcategory_middlecategorys
-- has_many: bigcategorys, through: :bigcategory_middlecategorys
-- has_many: middlecategory_smallcategorys
-- has_many: smallcategorys, through: :middlecategory_smallcategorys
-
-## middlecategory_smallcategorysテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|middlecategory_id|references|null: false, foreign_key: true|
-|smallcategory_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :middlecategory
-- belongs_to :smallcategory
-
-## smallcategorysテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|smallcategory_name|text||
-
-### Association
-- has_many: middlecategory_smallcategorys
-- has_many: middlecategorys, through: :middlecategory_smallcategorys
-
-
-
-
+- has_ancestry
 
