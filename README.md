@@ -10,7 +10,7 @@
 |lastname_kana|string|null: false|
 |firstname-kana|string|null: false|
 |email|string|null: false, unique:true|
-|password|varchar|null: false, unique:true|
+|encrypted_password|string|null: false, unique:true|
 |birthdate|date|null: false|
 |telephone_number|string|null: false|
 |sales|integer||
