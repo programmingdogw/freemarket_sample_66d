@@ -31,7 +31,7 @@ class User < ApplicationRecord
 #  - [参考カリキュラム](https://master.tech-camp.in/curriculums/3994)
 
 
-  validates :password, presence: true, uniqueness: true, length: { minimum: 7 }
+  validates :password, presence: true, uniqueness: true, length: { minimum: 7 }, confirmation: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
