@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
 
 
-# - パスワードは確認用を含めて2回入力する
+
 
 
 # ## 主な使用技術
