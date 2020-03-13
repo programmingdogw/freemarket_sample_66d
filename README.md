@@ -4,6 +4,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |address_id|references|null: false, foreign_key: true|
+|nickname|string|null: false, unique:true, index: true|
 |lastname|string|null: false, unique:true, index: true|
 |firstname|string|null: false, unique:true, index: true|
 |lastname_kana|string|null: false, unique:true, index: true|
