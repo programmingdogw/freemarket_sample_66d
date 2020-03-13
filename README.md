@@ -4,15 +4,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |address_id|references|null: false, foreign_key: true|
-|nickname|string|null: false, unique:true, index: true|
-|lastname|string|null: false, unique:true, index: true|
-|firstname|string|null: false, unique:true, index: true|
-|lastname_kana|string|null: false, unique:true, index: true|
-|firstname-kana|string|null: false, unique:true, index: true|
+|nickname|string|null: false|
+|lastname|string|null: false|
+|firstname|string|null: false|
+|lastname_kana|string|null: false|
+|firstname-kana|string|null: false|
 |email|string|null: false, unique:true|
 |password|varchar|null: false, unique:true|
-|birthdate|date||
-|telephone_number|string|null: false, unique:true|
+|birthdate|date|null: false|
+|telephone_number|string|null: false|
 |sales|integer||
 |points|integer||
 
@@ -33,16 +33,16 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|lastname|string|null: false, unique:true, index: true|
-|firstname|string|null: false, unique:true, index: true|
-|lastname_kana|string|null: false, unique:true, index: true|
-|firstname-kana|string|null: false, unique:true, index: true|
+|lastname|string|null: false|
+|firstname|string|null: false|
+|lastname_kana|string|null: false|
+|firstname-kana|string|null: false|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
 |manicipality|text|null: false|
 |street|text|null: false|
-|building|text|null: false|
-|telephone_number|string|null: false, unique:true|
+|building|text||
+|telephone_number|string||
 
 
 ### Association
@@ -133,14 +133,14 @@
 |brand_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
 |address_id|references|null: false, foreign_key: true|
-|name|string||
-|price|integer||
-|condition|string||
-|description|text||
-|size|string||
-|delivery_way|text||
-|delivery_cost|text||
-|delivery_time|text||
+|name|string|null: false|
+|price|integer|null: false|
+|condition|string|null: false|
+|description|text|null: false|
+|size|string|null: false|
+|delivery_way|text|null: false|
+|delivery_cost|text|null: false|
+|delivery_time|text|null: false|
 |auction|boolean||
 |dealing|boolean||
 |sold|boolean||
@@ -179,7 +179,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|text||
+|name|text|null: false|
 
 ### Association
 - has_many :items
