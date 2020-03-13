@@ -1,0 +1,2 @@
+class Appropriation < ApplicationRecord
+end
