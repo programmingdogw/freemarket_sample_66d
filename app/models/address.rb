@@ -3,12 +3,16 @@ class Address < ApplicationRecord
   has_many :users
   has_many :items
   
+  VALID_ZENKAKU_REGEX = /\A[^ -~｡-ﾟ]+\z/
+  validates :lastname, presence: true, format: { with: VALID_ZENKAKU_REGEX }
+  validates :firstname, presence: true, format: { with: VALID_ZENKAKU_REGEX }
 
-  validates :lastname, presence: true
-  validates :firstname, presence: true
-  validates :lastname_kana, presence: true
-  validates :firstname_kana, presence: true
-  validates :postal_code, presence: true
+  VALID_FURIGANA_REGEX = /\A[ぁ-んァ-ヶー－]+\z/
+  validates :lastname_kana, presence: true, format: { with: VALID_FURIGANA_REGEX }
+  validates :firstname_kana, presence: true, format: { with: VALID_FURIGANA_REGEX }
+
+  VALID_POSTAL_REGEX = /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}\z/
+  validates :postal_code, presence: true, , format: { with: VALID_POSTAL_REGEX }
   validates :prefecture, presence: true
   validates :manicipality, presence: true
   validates :street, presence: true

@@ -14,14 +14,9 @@ class User < ApplicationRecord
   belongs_to :address
 
 
-#   ## ユーザー登録時のビジネスルール（求められる仕様）
-# - ユーザー情報
-# - メールアドレスは@とドメインを含む必要がある
-# - パスワードは7文字以上
-# - パスワードは確認用を含めて2回入力する
-# - 本人確認情報
-# - ユーザー本名は全角で入力させる
-# - ユーザー本名のふりがなは全角で入力させる
+
+
+
 
 # ## 主な使用技術
 # - devise
@@ -36,16 +31,25 @@ class User < ApplicationRecord
 #  - [参考カリキュラム](https://master.tech-camp.in/curriculums/3994)
 
 
+  validates :password, presence: true, uniqueness: true, length: { minimum: 7 }, confirmation: true
 
-  validates :password, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  
   validates :nickname, presence: true
-  validates :lastname, presence: true
-  validates :firstname, presence: true
-  validates :lastname_kana, presence: true
-  validates :firstname_kana, presence: true
+
+  VALID_ZENKAKU_REGEX = /\A[^ -~｡-ﾟ]+\z/
+  validates :lastname, presence: true, format: { with: VALID_ZENKAKU_REGEX }
+  validates :firstname, presence: true, format: { with: VALID_ZENKAKU_REGEX }
+
+  VALID_FURIGANA_REGEX = /\A[ぁ-んァ-ヶー－]+\z/
+  validates :lastname_kana, presence: true, format: { with: VALID_FURIGANA_REGEX }
+  validates :firstname_kana, presence: true, format: { with: VALID_FURIGANA_REGEX }
+
   validates :birthdate, presence: true
-  validates :telephone_number, presence: true
 
+  VALID_PHONE_REGEX = /\A\d{10,11}\z/
+  validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
 
+  
 end
