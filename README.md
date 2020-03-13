@@ -4,7 +4,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |address_id|references|null: false, foreign_key: true|
-|name|string|null: false, unique:true, index: true|
+|lastname|string|null: false, unique:true, index: true|
+|firstname|string|null: false, unique:true, index: true|
+|lastname_kana|string|null: false, unique:true, index: true|
+|firstname-kana|string|null: false, unique:true, index: true|
 |email|string|null: false, unique:true|
 |password|varchar|null: false, unique:true|
 |birthdate|date||
@@ -29,12 +32,16 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
+|lastname|string|null: false, unique:true, index: true|
+|firstname|string|null: false, unique:true, index: true|
+|lastname_kana|string|null: false, unique:true, index: true|
+|firstname-kana|string|null: false, unique:true, index: true|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
 |manicipality|text|null: false|
 |street|text|null: false|
 |building|text|null: false|
-
+|telephone_number|string|null: false, unique:true|
 
 
 ### Association
