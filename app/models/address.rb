@@ -11,8 +11,8 @@ class Address < ApplicationRecord
   validates :lastname_kana, presence: true, format: { with: VALID_FURIGANA_REGEX }
   validates :firstname_kana, presence: true, format: { with: VALID_FURIGANA_REGEX }
 
-
-  validates :postal_code, presence: true
+  VALID_POSTAL_REGEX = /\A\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}\z/
+  validates :postal_code, presence: true, , format: { with: VALID_POSTAL_REGEX }
   validates :prefecture, presence: true
   validates :manicipality, presence: true
   validates :street, presence: true
