@@ -16,27 +16,13 @@ class User < ApplicationRecord
 
 #   ## ユーザー登録時のビジネスルール（求められる仕様）
 # - ユーザー情報
-# - ニックネームが必須
-# - メールアドレスは一意である
 # - メールアドレスは@とドメインを含む必要がある
-# - パスワードが必須
 # - パスワードは7文字以上
 # - パスワードは確認用を含めて2回入力する
 # - 本人確認情報
-# - ユーザー本名が、名字と名前でそれぞれ必須
 # - ユーザー本名は全角で入力させる
-# - ユーザー本名のふりがなが、名字と名前でそれぞれ必須
 # - ユーザー本名のふりがなは全角で入力させる
-# - 生年月日が必須
-# - 商品送付先住所情報
-# - 送付先氏名が、名字と名前でそれぞれ必須
-# - 送付先氏名のふりがなが、名字と名前でそれぞれ必須
-# - 郵便番号が必須
-# - 都道府県が必須
-# - 市区町村が必須
-# - 番地が必須
-# - マンション名やビル名、そしてその部屋番号は任意
-# - お届け先の電話番号は任意
+
 # ## 主な使用技術
 # - devise
 
@@ -51,8 +37,15 @@ class User < ApplicationRecord
 
 
 
-
+  validates :password, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  validates :nickname, presence: true
+  validates :lastname, presence: true
+  validates :firstname, presence: true
+  validates :lastname_kana, presence: true
+  validates :firstname_kana, presence: true
+  validates :birthdate, presence: true
+  validates :telephone_number, presence: true
 
 
 end
