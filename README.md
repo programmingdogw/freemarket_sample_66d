@@ -20,6 +20,7 @@
 - has_many: news
 - has_many: evaluations
 - has_many: appropriations
+- has_many: credit_cards
 - belogs_to : address
 
 
@@ -27,7 +28,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
 |manicipality|text|null: false|
@@ -38,12 +39,13 @@
 
 ### Association
 - has_many: users
+- has_many: items
 
 ## credit_cardsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |bank|text|null: false|
 |number|text|null: false|
 
@@ -52,11 +54,12 @@
 ### Association
 - belongs_to: user
 
+
 ## todosテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |lead_text|text|null: false|
 |content_text|text|null: false|
 
