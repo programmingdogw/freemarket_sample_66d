@@ -95,7 +95,7 @@
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
-|comment_content|string||
+|comment_content|string|null: false|
 
 ### Association
 - belongs_to :user
