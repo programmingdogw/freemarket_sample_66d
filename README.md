@@ -3,7 +3,7 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|address_id|references|null: false, foreign_key: true|
+|address_id|bigint|null: false, foreign_key: true|
 |nickname|string|null: false|
 |lastname|string|null: false|
 |firstname|string|null: false|
@@ -32,7 +32,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
 |lastname|string|null: false|
 |firstname|string|null: false|
 |lastname_kana|string|null: false|
@@ -53,7 +52,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
 |bank|text|null: false|
 |number|text|null: false|
 
@@ -67,7 +66,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
 |lead_text|text|null: false|
 |content_text|text|null: false|
 
@@ -80,7 +79,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
 |lead_text|text|null: false|
 |content_text|text|null: false|
 
@@ -93,8 +92,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |comment_content|string|null: false|
 
 ### Association
@@ -105,8 +104,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |evaluation|integer||
 
 ### Association
@@ -117,8 +116,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |appropriation|boolean||
 
 ### Association
@@ -129,10 +128,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
-|address_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|brand_id|bigint|null: false, foreign_key: true|
+|category_id|bigint|null: false, foreign_key: true|
+|address_id|bigint|null: false, foreign_key: true|
 |name|string|null: false|
 |price|integer|null: false|
 |condition|string|null: false|
@@ -160,7 +159,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |image|text|null: false|
 
 ### Association
