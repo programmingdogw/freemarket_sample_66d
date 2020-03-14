@@ -48,8 +48,8 @@ class User < ApplicationRecord
 
   validates :birthdate, presence: true
 
-  VALID_PHONE_REGEX = /\A\d{10,11}\z/
-  validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
+  # VALID_PHONE_REGEX = /\A\d{10,11}\z/
+  # validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
 
   
 end
