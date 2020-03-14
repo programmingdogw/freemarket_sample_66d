@@ -34,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
-    @address = current_user.id
+    @address.user_id = @user.id
     unless @address.valid?
       flash.now[:alert] = @address.errors.full_messages
       render :new_address and return
@@ -100,7 +100,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def address_params
-    params.require(:address).permit(:lastname, :firstname)
+    params.require(:address).permit(:lastname, :firstname, :lastname_kana, :firstname_kana,:postal_code, :prefectyre, :municipality, :street, :building, :telephone_number )
   end
 
 
