@@ -39,7 +39,7 @@
 |firstname-kana|string|null: false|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
-|manicipality|text|null: false|
+|municipality|text|null: false|
 |street|text|null: false|
 |building|text||
 |telephone_number|string||

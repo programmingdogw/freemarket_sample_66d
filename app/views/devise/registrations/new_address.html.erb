@@ -13,6 +13,37 @@
     <%= f.text_field :firstname %>
   </div>
 
+  <div class="field">
+    <%= f.label :ふりがな（姓） %><br />
+    <%= f.text_field :lastname_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ふりがな（名） %><br />
+    <%= f.text_field :firstname_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :県 %><br />
+    <%= f.text_field :prefecture %>
+  </div>
+
+  <div class="field">
+    <%= f.label :市区町村 %><br />
+    <%= f.text_field :municipality %>
+  </div>
+
+  <div class="field">
+    <%= f.label :番地 %><br />
+    <%= f.text_field :street %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
