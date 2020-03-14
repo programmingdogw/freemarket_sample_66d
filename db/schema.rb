@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
     t.string "lastname_kana", null: false
     t.string "firstname_kana", null: false
     t.date "birthdate", null: false
-    t.string "telephone_number", null: false
+    t.string "telephone_number"
     t.integer "sales"
     t.integer "points"
     t.datetime "created_at", null: false
