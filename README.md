@@ -3,7 +3,6 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|address_id|references|null: false, foreign_key: true|
 |nickname|string|null: false|
 |lastname|string|null: false|
 |firstname|string|null: false|
@@ -25,21 +24,22 @@
 - has_many: evaluations
 - has_many: appropriations
 - has_many: credit_cards
-- belogs_to : address
+- has_one : address
 
 
 ## addressesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|optional: true, foreign_key: true|
+
 |lastname|string|null: false|
 |firstname|string|null: false|
 |lastname_kana|string|null: false|
 |firstname-kana|string|null: false|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
-|manicipality|text|null: false|
+|municipality|text|null: false|
 |street|text|null: false|
 |building|text||
 |telephone_number|string||
@@ -53,7 +53,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
 |bank|text|null: false|
 |number|text|null: false|
 
@@ -67,7 +67,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
 |lead_text|text|null: false|
 |content_text|text|null: false|
 
@@ -80,7 +80,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
 |lead_text|text|null: false|
 |content_text|text|null: false|
 
@@ -93,8 +93,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |comment_content|string|null: false|
 
 ### Association
@@ -105,8 +105,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |evaluation|integer||
 
 ### Association
@@ -117,8 +117,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |appropriation|boolean||
 
 ### Association
@@ -129,10 +129,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|brand_id|references|null: false, foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
-|address_id|references|null: false, foreign_key: true|
+|user_id|bigint|null: false, foreign_key: true|
+|brand_id|bigint|null: false, foreign_key: true|
+|category_id|bigint|null: false, foreign_key: true|
+|address_id|bigint|null: false, foreign_key: true|
 |name|string|null: false|
 |price|integer|null: false|
 |condition|string|null: false|
@@ -160,7 +160,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|item_id|references|null: false, foreign_key: true|
+|item_id|bigint|null: false, foreign_key: true|
 |image|text|null: false|
 
 ### Association

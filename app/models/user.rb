@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :evaluations
   has_many :appropriations
   has_many :credit_cards
-  belongs_to :address
+  has_one :address
 
 
 
@@ -48,8 +48,8 @@ class User < ApplicationRecord
 
   validates :birthdate, presence: true
 
-  VALID_PHONE_REGEX = /\A\d{10,11}\z/
-  validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
+  # VALID_PHONE_REGEX = /\A\d{10,11}\z/
+  # validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
 
   
 end

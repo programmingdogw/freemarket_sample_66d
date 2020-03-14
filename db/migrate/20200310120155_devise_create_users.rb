@@ -15,14 +15,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.datetime :remember_created_at
 
       # Add
-      t.references :address,         null: false, foreign_key: true
+      
       t.string :nickname,            null: false
       t.string :lastname,            null: false
       t.string :firstname,           null: false
       t.string :lastname_kana,       null: false
       t.string :firstname_kana,      null: false
       t.date :birthdate,             null: false
-      t.string :telephone_number,    null: false
+      t.string :telephone_number   # null: false
       t.integer :sales
       t.integer :points
 
