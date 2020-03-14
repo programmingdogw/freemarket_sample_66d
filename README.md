@@ -3,7 +3,6 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|address_id|bigint|null: false, foreign_key: true|
 |nickname|string|null: false|
 |lastname|string|null: false|
 |firstname|string|null: false|
@@ -25,23 +24,25 @@
 - has_many: evaluations
 - has_many: appropriations
 - has_many: credit_cards
-- belogs_to : address
+- has_one : address
 
 
 ## addressesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|destination_lastname|string|null: false|
-|destination_firstname|string|null: false|
-|destination_lastname_kana|string|null: false|
-|destination_firstname-kana|string|null: false|
+|user_id|bigint|optional: true, foreign_key: true|
+
+|lastname|string|null: false|
+|firstname|string|null: false|
+|lastname_kana|string|null: false|
+|firstname-kana|string|null: false|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
 |manicipality|text|null: false|
 |street|text|null: false|
 |building|text||
-|destination_telephone_number|string||
+|telephone_number|string||
 
 
 ### Association

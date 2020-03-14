@@ -1,6 +1,6 @@
 class Address < ApplicationRecord
 
-  has_many :users
+  belongs_to :user
   has_many :items
   
   VALID_ZENKAKU_REGEX = /\A[^ -~｡-ﾟ]+\z/

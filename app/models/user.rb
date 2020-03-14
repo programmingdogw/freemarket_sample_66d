@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :evaluations
   has_many :appropriations
   has_many :credit_cards
-  belongs_to :address
+  has_one :address
 
 
 
