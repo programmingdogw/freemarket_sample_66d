@@ -56,12 +56,11 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user", null: false
     t.text "bank", null: false
     t.text "number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
   create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -100,12 +99,11 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user", null: false
     t.text "lead_text", null: false
     t.text "content_text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_news_on_user_id"
   end
 
   create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -122,6 +120,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.bigint "address", null: false
     t.string "nickname", null: false
     t.string "lastname", null: false
     t.string "firstname", null: false
@@ -137,6 +136,4 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "credit_cards", "users"
-  add_foreign_key "news", "users"
 end
