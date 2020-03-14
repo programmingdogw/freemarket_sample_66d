@@ -32,16 +32,16 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|lastname|string|null: false|
-|firstname|string|null: false|
-|lastname_kana|string|null: false|
-|firstname-kana|string|null: false|
+|destination_lastname|string|null: false|
+|destination_firstname|string|null: false|
+|destination_lastname_kana|string|null: false|
+|destination_firstname-kana|string|null: false|
 |postal_code|text|null: false|
 |prefecture|text|null: false|
 |manicipality|text|null: false|
 |street|text|null: false|
 |building|text||
-|telephone_number|string||
+|destination_telephone_number|string||
 
 
 ### Association

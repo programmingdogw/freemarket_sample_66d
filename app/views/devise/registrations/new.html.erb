@@ -4,8 +4,33 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :ニックネーム %><br />
+    <%= f.text_field :nickname, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :姓 %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :名 %><br />
+    <%= f.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ふりがな（姓） %><br />
+    <%= f.text_field :lastname_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ふりがな（名） %><br />
+    <%= f.text_field :firstname_kana %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email,  autocomplete: "email" %>
   </div>
 
   <div class="field">
@@ -19,6 +44,26 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :生年月日 %><br />
+    <%= f.date_select :birthdate, use_month_numbers: true, start_year: 1940, end_year:2020, class: 'form_control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :送り先氏名（姓） %><br />
+    <%= f.text_field :destination_lastname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :送り先氏名（名） %><br />
+    <%= f.text_field :destination_firstname %>
   </div>
 
   <div class="actions">
