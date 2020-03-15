@@ -16,21 +16,6 @@ class User < ApplicationRecord
 
 
 
-
-
-# ## 主な使用技術
-# - devise
-
-# ## 注意点
-# - 必ずブランチを切って開発を進めること
-# - バリデーション及びテストコードを書くこと
-# - もし、ウィザード形式での新規登録を実装する場合でも、ウィザードを実装する前に、まずはdeviseのデフォルトでのログインができるかどうか試すと良い
-
-# ## 参考カリキュラム
-# - ウィザード形式の実装をする場合は、以下を参考にする
-#  - [参考カリキュラム](https://master.tech-camp.in/curriculums/3994)
-
-
   validates :encrypted_password, presence: true, uniqueness: true, length: { minimum: 7 }, confirmation: true
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -48,8 +33,8 @@ class User < ApplicationRecord
 
   validates :birthdate, presence: true
 
-  # VALID_PHONE_REGEX = /\A\d{10,11}\z/
-  # validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
+  VALID_PHONE_REGEX = /\A\d{10,11}\z/
+  validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
 
   
 end

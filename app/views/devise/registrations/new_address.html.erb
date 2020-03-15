@@ -3,6 +3,7 @@
 <%= form_for @address do |f| %>
   <%= render "devise/shared/error_messages", resource: @address %>
 
+  お届け先の情報を入力お願い致します。
   <div class="field">
     <%= f.label :姓 %><br />
     <%= f.text_field :lastname %>

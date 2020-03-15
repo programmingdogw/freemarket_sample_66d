@@ -1,8 +1,9 @@
-<h2>Sign up</h2>
+<h2>ユーザー情報登録</h2>
 
 <%= form_for(@user, url: user_registration_path) do |f| %>
   <%= render "devise/shared/error_messages", resource: @user %>
 
+  ご利用者様の情報をご登録お願い致します。（お届け先に関しての情報は次のページにて入力していただきます。）
   <div class="field">
     <%= f.label :ニックネーム %><br />
     <%= f.text_field :nickname, autofocus: true%>
