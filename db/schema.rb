@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "appropriations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
-    t.bigint "item", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.boolean "appropriation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,15 +49,15 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
-    t.bigint "item", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.string "comment_content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
+    t.bigint "user_id", null: false
     t.text "bank", null: false
     t.text "number", null: false
     t.datetime "created_at", null: false
@@ -65,25 +65,25 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
-    t.bigint "item", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
     t.integer "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "item", null: false
+    t.bigint "item_id", null: false
     t.text "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
-    t.bigint "brand", null: false
-    t.bigint "category", null: false
-    t.bigint "address", null: false
+    t.bigint "user_id", null: false
+    t.bigint "brand_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "address_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
     t.string "condition", null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
+    t.bigint "user_id", null: false
     t.text "lead_text", null: false
     t.text "content_text", null: false
     t.datetime "created_at", null: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "todos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user", null: false
+    t.bigint "user_id", null: false
     t.text "lead_text", null: false
     t.text "content_text", null: false
     t.datetime "created_at", null: false
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
     t.string "lastname_kana", null: false
     t.string "firstname_kana", null: false
     t.date "birthdate", null: false
-    t.string "telephone_number"
+    t.string "telephone_number", null: false
     t.integer "sales"
     t.integer "points"
     t.datetime "created_at", null: false
