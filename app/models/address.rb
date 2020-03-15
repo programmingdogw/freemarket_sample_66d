@@ -19,6 +19,6 @@ class Address < ApplicationRecord
   
   validates :prefecture, presence: true
   validates :municipality, presence: true
-  validates :street, presence: true, allow_blank: true
+  validates :street, presence: true
 
 end
