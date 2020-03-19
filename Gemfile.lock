@@ -300,9 +300,9 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   database_cleaner
   devise (= 4.7.1)
+  erb2haml
   factory_bot_rails
   faker
-  erb2haml
   font-awesome-sass
   haml-rails
   jbuilder (~> 2.5)
