@@ -65,6 +65,36 @@ describe "User" do
       expect(user.errors[:password]).to include("can't be blank")
     end
 
+    it "is invalid password_confirmation does not match" do
+      user = build(:user, password_confirmation: "")
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+    end
+
+    # 無効なユーザー 一意性系
+    it "is invalid email not unique" do
+      email = Faker::Internet.email
+      user = create(:user, email: email)
+      user2 = build(:user, email: email)
+      user2.valid?
+      expect(user2.errors[:email]).to include("has already been taken")
+    end
+
+    # 無効なユーザー 長さ系
+    it "is valid more than 7letters" do
+      password = Faker::Internet.password(min_length: 7, max_length: 7)
+      user = build(:user, password: password, password_confirmation: password)
+      expect(user).to be_valid
+    end
+
+    it "is invalid less than 6letters" do
+      password = Faker::Internet.password(min_length: 6, max_length: 6)
+      user = build(:user, password: password, password_confirmation: password)
+      user.valid?
+      expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
+    end
+
+    # 無効なユーザー 正規表現系 を以下に記述予定
 
   end
 end
