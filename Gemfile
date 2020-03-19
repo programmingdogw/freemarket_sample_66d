@@ -41,6 +41,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
@@ -58,7 +63,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper' webdriversに変更して
 end
 
 group :production do
@@ -72,3 +77,4 @@ gem 'devise', '4.7.1'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'ancestry'
+gem 'font-awesome-sass'
