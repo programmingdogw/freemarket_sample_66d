@@ -3,7 +3,7 @@ FactoryBot.define do
     nickname              {"たなやん"}
     lastname              {"田中"}
     firstname             {"次郎"}
-    lastname_kana         {"ヤマダ"}
+    lastname_kana         {"たなか"}
     firstname_kana        {"ジロウ"}
     birthdate             {"2008-03-19"}
     telephone_number      {"0923335555"}
