@@ -99,7 +99,7 @@ describe "User" do
     # 正規表現系 有効パターン 無効パターン
     it 'is valid email should be' do
       user = build(:user, email:"testmail@yahoo.co.jp")
-      expect(user[:email]).to match( /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+      expect(user[:email]).to match( /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i )
     end
 
     it 'is invalid email should not be' do
@@ -110,7 +110,7 @@ describe "User" do
 
     it 'is valid lastname should be zenkaku' do
       user = build(:user, lastname:"大山")
-      expect(user[:lastname]).to match( /\A[^ -~｡-ﾟ]+\z/)
+      expect(user[:lastname]).to match( /\A[^ -~｡-ﾟ]+\z/ )
     end
 
     it 'is invalid lastname should be zenkaku' do
@@ -119,6 +119,49 @@ describe "User" do
       expect(user.errors[:lastname]).to include("is invalid")
     end
     
+    it 'is valid lastname_kana should be zenkaku kana' do
+      user = build(:user, lastname_kana:"おおやま")
+      expect(user[:lastname_kana]).to match( /\A[ぁ-んァ-ヶー－]+\z/ )
+    end
+
+    it 'is valid lastname_kana should be zenkaku kana' do
+      user = build(:user, lastname_kana:"オオヤマ")
+      expect(user[:lastname_kana]).to match( /\A[ぁ-んァ-ヶー－]+\z/ )
+    end
+
+    it 'is invalid lastname_kana should be zenkaku kana' do
+      user = build(:user, lastname_kana:"大山")
+      user.valid?
+      expect(user.errors[:lastname_kana]).to include("is invalid")
+    end
+
+    it 'is valid firstname_kana should be zenkaku kana' do
+      user = build(:user, firstname_kana:"さぶろう")
+      expect(user[:firstname_kana]).to match( /\A[ぁ-んァ-ヶー－]+\z/ )
+    end
+
+    it 'is valid firstname_kana should be zenkaku kana' do
+      user = build(:user, firstname_kana:"サブロウ")
+      expect(user[:firstname_kana]).to match( /\A[ぁ-んァ-ヶー－]+\z/ )
+    end
+
+    it 'is invalid firstname_kana should be zenkaku kana' do
+      user = build(:user, firstname_kana:"三郎")
+      user.valid?
+      expect(user.errors[:firstname_kana]).to include("is invalid")
+    end
+
+    it 'is valid telephone_number should be numberonly' do
+      user = build(:user, telephone_number:"0903334444")
+      expect(user[:telephone_number]).to match( /\A[0-9]{10,11}\z/ )
+    end
+
+    it 'is invalid telephone_number should be numberonly' do
+      user = build(:user, telephone_number:"09e456b222")
+      user.valid?
+      expect(user.errors[:telephone_number]).to include("is invalid")
+    end
+
 
   end
 end
