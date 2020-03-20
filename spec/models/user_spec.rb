@@ -80,6 +80,8 @@ describe "User" do
       expect(user2.errors[:email]).to include("has already been taken")
     end
 
+    
+
     # 無効なユーザー 長さ系
     it "is valid more than 7letters" do
       password = Faker::Internet.password(min_length: 7, max_length: 7)
@@ -94,7 +96,29 @@ describe "User" do
       expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
     end
 
-    # 無効なユーザー 正規表現系 を以下に記述予定
+    # 正規表現系 有効パターン 無効パターン
+    it 'is valid email should be' do
+      user = build(:user, email:"testmail@yahoo.co.jp")
+      expect(user[:email]).to match( /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+    end
+
+    it 'is invalid email should not be' do
+      user = build(:user, email:"yhooogoole@@")
+      user.valid?
+      expect(user.errors[:email]).to include("is invalid")
+    end
+
+    it 'is valid lastname should be zenkaku' do
+      user = build(:user, lastname:"大山")
+      expect(user[:lastname]).to match( /\A[^ -~｡-ﾟ]+\z/)
+    end
+
+    it 'is invalid lastname should be zenkaku' do
+      user = build(:user, lastname:"aaa")
+      user.valid?
+      expect(user.errors[:lastname]).to include("is invalid")
+    end
+    
 
   end
 end
