@@ -162,6 +162,12 @@ describe "User" do
       expect(user.errors[:telephone_number]).to include("is invalid")
     end
 
+    it 'is invalid telephone_number should be numberonly' do
+      user = build(:user, telephone_number:"11111111111111111111111")
+      user.valid?
+      expect(user.errors[:telephone_number]).to include("is invalid")
+    end
+
 
   end
 end
