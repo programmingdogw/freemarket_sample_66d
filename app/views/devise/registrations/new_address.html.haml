@@ -6,7 +6,7 @@
 
 %main.main
   %h2 住所情報登録
-  = form_for @address, local: true do |f|
+  = form_with model:@address, local: true do |f|
     = render "devise/shared/error_messages", resource: @address
     お届け先の情報を入力お願い致します。
     .field
@@ -32,7 +32,7 @@
     .field
       = f.label :県
       %br/
-      = f.select :prefecture_d, [["--", 0],["北海道", 1],["青森県", 2],["秋田県",3],["岩手県",4]]
+      = f.select :prefecture_d, options_for_select(Address.prefecture_ds.keys)
     .field
       = f.label :市区町村
       %br/

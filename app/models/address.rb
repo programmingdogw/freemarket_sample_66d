@@ -21,4 +21,12 @@ class Address < ApplicationRecord
   validates :municipality, presence: true
   validates :street, presence: true
 
+  enum prefecture_d: {
+    default: 0,
+    hokkaido: 1,
+    iwate: 2,
+    akita: 3,
+    aomori: 4,
+  },  _prefix: true
+
 end
