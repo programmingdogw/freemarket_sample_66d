@@ -1,12 +1,18 @@
+.pagecontainer{
+  padding:0,0,250px; 
+  background-color:lightgray;
+    .header{
+      text-align: center;
+    }
 
- .header{
-   background-color: lightgray;
- }
+    .main{
+      background-color: white;
+      margin:auto;
+      text-align: center;
+      width: 80%;
+    }
 
- .main{
-   background-color: lightgreen;
- }
-
- .footer{
-   background-color: lightgray;
- }
+    .footer{
+      text-align: center;
+    }
+}
