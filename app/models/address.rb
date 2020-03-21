@@ -17,7 +17,7 @@ class Address < ApplicationRecord
   # VALID_PHONE_REGEX = /\A[0-9]{10,11}\z/
   # validates :telephone_number, allow_blank: true, format: { with: VALID_PHONE_REGEX }
   
-  validates :prefecture, presence: true
+  validates :prefecture_d, presence: true
   validates :municipality, presence: true
   validates :street, presence: true
 
