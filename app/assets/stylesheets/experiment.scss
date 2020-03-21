@@ -4,3 +4,15 @@
 p{
   color:blue;
 }
+
+.footer__card-list {
+  display: flex;
+}
+
+li {
+  text-decoration: none;
+}
+
+.footer__top,.footer__bottom {
+  text-align: center;
+}

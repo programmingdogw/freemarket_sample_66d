@@ -1,4 +1,8 @@
 = stylesheet_link_tag 'experiment'
+
+
+
+
 %p切り分けテスト
 テスト
 %br/
@@ -10,3 +14,11 @@
 %br/
 = link_to "ルーティング確認ログアウト", destroy_user_session_path, class: ""
 %br/
+
+
+
+.wrapper
+  = render "header"
+  = render "main-contents"
+  = render "footer"
+
