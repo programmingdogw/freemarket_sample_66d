@@ -1,12 +1,12 @@
 = stylesheet_link_tag 'new'
 
 
-%header 
+%header.header
   %p scssファイルの切り分けテスト
   %p ここまでがヘッダー
   %br
 
-%main  
+%main.main  
   %h2 ユーザー情報登録
   = form_for(@user, url: user_registration_path) do |f|
     = render "devise/shared/error_messages", resource: @user
@@ -60,7 +60,8 @@
   %p ここまでがメイン
   %br
 
-%footer
+%footer.footer
   %p ここからはフッター
+  = render "devise/shared/links"
 
-= render "devise/shared/links"
+-# = render "devise/shared/links" フッターに移動済み
