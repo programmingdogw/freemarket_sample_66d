@@ -32,7 +32,7 @@
     .field
       = f.label :県
       %br/
-      = f.select :prefecture, Address.prefectures.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info'
+      = f.select :prefecture, Address.prefectures.keys, prompt: '選択してください', class: 'form-control btn btn-info'
     .field
       = f.label :市区町村
       %br/
