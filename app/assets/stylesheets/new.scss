@@ -115,8 +115,29 @@
         width: 90%;
         border-bottom: gray solid 1px;
       }
-      .formlabel{
-        background-color: red;
+      .field{
+        width: 100%;
+        padding-top:30px ;
+        position: relative;
+        min-width: 768px;
+        .formlabel{
+          position: absolute;
+          left: 28%;
+        }
+        .formspan{
+          background-color:lightblue;
+          color: white;
+          position: absolute;
+          width: 40px;
+          right: 28%;
+          border-radius: 10%;
+        }
+        .forminput{
+          width: 46%;
+          height:43px;
+          border-radius: 4%;
+          margin-top:5px ;
+        }
       }
     }
 
