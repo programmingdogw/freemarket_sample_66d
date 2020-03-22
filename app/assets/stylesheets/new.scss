@@ -18,6 +18,19 @@
   z-index: 2;
 }
 
+@mixin bar($background){
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  right: 0%;
+  height: 2px;
+  background:$background;
+  z-index: 1;
+  top:23px;
+}
+
 
 // 大枠
 .pagecontainer{
@@ -64,16 +77,17 @@
               // z-index: 2;
             }
             &__bar{
-              position: absolute;
-              display: block;
-              padding: 0;
-              margin: 0;
-              width: 100%;
-              right: 0%;
-              height: 2px;
-              background:blue;
-              z-index: 1;
-              top:23px;
+              @include bar(blue);
+              // position: absolute;
+              // display: block;
+              // padding: 0;
+              // margin: 0;
+              // width: 100%;
+              // right: 0%;
+              // height: 2px;
+              // background:blue;
+              // z-index: 1;
+              // top:23px;
             }
           }
           .addressprogresslist{
@@ -93,16 +107,17 @@
               // z-index: 2;
             }
             &__bar{
-              position: absolute;
-              display: block;
-              padding: 0;
-              margin: 0;
-              width: 100%;
-              right: 0%;
-              height: 2px;
-              background:gray;
-              z-index: 1;
-              top:23px;
+              @include bar(gray);
+              // position: absolute;
+              // display: block;
+              // padding: 0;
+              // margin: 0;
+              // width: 100%;
+              // right: 0%;
+              // height: 2px;
+              // background:gray;
+              // z-index: 1;
+              // top:23px;
             }
           }
           .completeprogresslist{
