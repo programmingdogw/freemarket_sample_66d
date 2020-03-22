@@ -1,7 +1,28 @@
+
+// ミックスイン
+
+@mixin lists($width){
+  position:relative;
+  z-index: 3;
+  display:inline-block;
+  width:$width;
+  color: black;
+}
+
+@mixin status($background){
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background:$background;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+
 // 大枠
 .pagecontainer{
   padding:0,0,250px; 
-  background-color:lightgray;
+  background-color:rgb(243, 240, 240);
   
   // ヘッダー
     &__header{
@@ -27,18 +48,20 @@
           font-size: 12px;
           text-align: center;
           .userprogresslist{
-            position:relative;
-            z-index: 3;
-            display:inline-block;
-            width:140px;
-            color: black;
+            @include lists(140px);
+            // position:relative;
+            // z-index: 3;
+            // display:inline-block;
+            // width:140px;
+            // color: black;
             &__status{
-              position: absolute;
-              width: 12px;
-              height: 12px;
-              background:blue;
-              border-radius: 50%;
-              z-index: 2;
+              @include status(blue);
+              // position: absolute;
+              // width: 12px;
+              // height: 12px;
+              // background:blue;
+              // border-radius: 50%;
+              // z-index: 2;
             }
             &__bar{
               position: absolute;
@@ -54,18 +77,20 @@
             }
           }
           .addressprogresslist{
-            position:relative;
-            z-index: 3;
-            display:inline-block;
-            width:140px;
-            color: black;
+            @include lists(140px);
+            // position:relative;
+            // z-index: 3;
+            // display:inline-block;
+            // width:140px;
+            // color: black;
             &__status{
-              position: absolute;
-              width: 12px;
-              height: 12px;
-              background: gray;
-              border-radius: 50%;
-              z-index: 2;
+              @include status(gray);
+              // position: absolute;
+              // width: 12px;
+              // height: 12px;
+              // background: gray;
+              // border-radius: 50%;
+              // z-index: 2;
             }
             &__bar{
               position: absolute;
@@ -81,18 +106,20 @@
             }
           }
           .completeprogresslist{
-            position:relative;
-            z-index: 3;
-            display:inline-block;
-            width:50px;
-            color: black;
+            @include lists(50px);
+            // position:relative;
+            // z-index: 3;
+            // display:inline-block;
+            // width:50px;
+            // color: black;
             &__status{
-              position: absolute;
-              width: 12px;
-              height: 12px;
-              background: gray;
-              border-radius: 50%;
-              z-index: 2;
+              @include status(gray);
+              // position: absolute;
+              // width: 12px;
+              // height: 12px;
+              // background: gray;
+              // border-radius: 50%;
+              // z-index: 2;
             }
             
           }
@@ -170,5 +197,3 @@
 }
 
 
-
-// ミックスイン
