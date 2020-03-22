@@ -1,22 +1,5 @@
 = stylesheet_link_tag 'experiment'
 
-
-
-
-%p切り分けテスト
-テスト
-%br/
-= link_to "ルーティング確認ログイン画面へ", new_user_session_path, class: ""
-%br/
-= link_to "ルーティング確認登録画面へ", new_user_registration_path, class: ""
-%br/
-５行目６行目はマージまでに消して綺麗に４行目までにする。コンフリクト回避のため
-%br/
-= link_to "ルーティング確認ログアウト", destroy_user_session_path, class: ""
-%br/
-
-
-
 .wrapper
   = render "header"
   = render "main-contents"

@@ -1,15 +1,23 @@
 .header
 
-  .upper-contents
-    .furima-logo
-    .search
+  .header-contents
+    .upper-contents
+      = image_tag "logo/logo.png", alt: "FURIMA の ロゴ", class: "furima-logo"
       .search-form
-      .search-icon
+        %input.text-form{:type => "text", :placeholder => "キーワードから探す"}
+        %button{type: "submit", class: "search-btn"}
+          = image_tag "icon/icon-search 1.png", class: "search-icon__image"
 
-  .bottom-contents
-    .bottom-contents__left
-      .category-tag
-      .bland-tag
-    .bottom-contents__right
-      .log-in
-      .register
+    .bottom-contents
+      .bottom-contents__left
+        .category-tag
+          カテゴリー
+        .bland-tag
+          ブランド
+      .bottom-contents__right
+        = link_to new_user_session_path, class: "header__list" do
+          ログイン
+        = link_to destroy_user_session_path, class: "header__list" do
+          ログアウト
+        = link_to new_user_registration_path, class: "header__list" do
+          新規会員登録
