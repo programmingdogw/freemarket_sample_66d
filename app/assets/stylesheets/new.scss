@@ -120,11 +120,11 @@
         padding-top:30px ;
         position: relative;
         min-width: 768px;
-        .formlabel{
+        &__formlabel{
           position: absolute;
           left: 28%;
         }
-        .formspan{
+        &__formspan{
           background-color:lightblue;
           color: white;
           position: absolute;
@@ -132,7 +132,7 @@
           right: 28%;
           border-radius: 10%;
         }
-        .forminput{
+        &__forminput{
           width: 46%;
           height:43px;
           border-radius: 4%;
