@@ -84,10 +84,13 @@
     %br
 
   %footer.pagecontainer__footer
-    =link_to "プライバシーポリシー", root_path, class: "abouts"
-    =link_to "利用規約", root_path, class: "abouts"
-    =link_to "特定商取引に関する表記", root_path, class: "abouts"
-    %p アカウントをお持ちの方はこちらからログイン↓
-    = render "devise/shared/links"
+    .footerbox
+      =link_to "プライバシーポリシー", root_path, class: "footerbox__abouts"
+      =link_to "利用規約", root_path, class: "footerbox__abouts"
+      =link_to "特定商取引に関する表記", root_path, class: "footerbox__abouts"
+    =link_to image_tag('logo/logo-white.png', alt: "ロゴ画像", class:"footerlogo"), root_path
 
--# = render "devise/shared/links" フッターに移動済み
+    -# %p アカウントをお持ちの方はこちらからログイン↓
+    -# = render "devise/shared/links"
+
+
