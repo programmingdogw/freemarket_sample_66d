@@ -5,49 +5,49 @@
   = render 'header'
 
   -# メイン
-  %main.main
-    %h2 住所情報登録
+  %main.pagecontainer__main
+    %h1.mainh1 住所登録
     = form_with model:@address, local: true do |f|
       = render "devise/shared/error_messages", resource: @address
-      お届け先の情報を入力お願い致します。
+
       .field
-        = f.label :姓（全角）
+        = f.label :姓（全角）, class:"field__formlabel"
         %br/
         = f.text_field :lastname
       .field
-        = f.label :名（全角）
+        = f.label :名（全角）, class:"field__formlabel"
         %br/
         = f.text_field :firstname
       .field
-        = f.label :ふりがな（姓）（全角）（平仮名かカタカナ）
+        = f.label :ふりがな（姓、全角、平仮名か片仮名）, class:"field__formlabel"
         %br/
         = f.text_field :lastname_kana
       .field
-        = f.label :ふりがな（名）（全角）（平仮名かカタカナ）
+        = f.label :ふりがな（姓、全角、平仮名か片仮名）, class:"field__formlabel"
         %br/
         = f.text_field :firstname_kana
       .field
-        = f.label :郵便番号（ハイフンもご記入願います）
+        = f.label :郵便番号（ハイフンもご記入願います）, class:"field__formlabel"
         %br/
         = f.text_field :postal_code
       .field
-        = f.label :県
+        = f.label :県, class:"field__formlabel"
         %br/
         = f.select :prefecture, Address.prefectures.keys, prompt: '選択してください', class: 'form-control btn btn-info'
       .field
-        = f.label :市区町村
+        = f.label :市区町村, class:"field__formlabel"
         %br/
         = f.text_field :municipality
       .field
-        = f.label :番地
+        = f.label :番地, class:"field__formlabel"
         %br/
         = f.text_field :street
       .field
-        = f.label :建物（任意）
+        = f.label :建物（任意）, class:"field__formlabel"
         %br/
         = f.text_field :building
       .field
-        = f.label :電話番号（任意）
+        = f.label :電話番号（任意）, class:"field__formlabel"
         %br/
         = f.text_field :telephone_number
       .actions
