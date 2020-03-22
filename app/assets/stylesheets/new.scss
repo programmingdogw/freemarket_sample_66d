@@ -1,7 +1,9 @@
+// 大枠
 .pagecontainer{
   padding:0,0,250px; 
   background-color:lightgray;
   
+  // ヘッダー
     &__header{
       text-align: center;
       display:flex;
@@ -24,14 +26,13 @@
         &__ul{
           display:flex;          
           font-size: 12px;
-          justify-content: space-around;
+          text-align: center;
           .userprogresslist{
             position:relative;
             z-index: 3;
             display:inline-block;
-            min-width: 60px;
+            width:140px;
             color: black;
-            margin-left: 40px;
             &__status{
               position: absolute;
               width: 12px;
@@ -39,24 +40,25 @@
               background: gray;
               border-radius: 50%;
               z-index: 2;
-              left: 40%;
             }
             &__bar{
               position: absolute;
               display: block;
-              width: 130px;
+              padding: 0;
+              margin: 0;
+              width: 100%;
+              right: 0%;
               height: 2px;
               background:blue;
               z-index: 1;
-              left: 50%;
-              top:25px;
+              top:23px;
             }
           }
           .addressprogresslist{
             position:relative;
             z-index: 3;
             display:inline-block;
-            min-width: 60px;
+            width:140px;
             color: black;
             &__status{
               position: absolute;
@@ -65,24 +67,25 @@
               background: gray;
               border-radius: 50%;
               z-index: 2;
-              left: 40%;
             }
             &__bar{
               position: absolute;
               display: block;
-              width: 130px;
+              padding: 0;
+              margin: 0;
+              width: 100%;
+              right: 0%;
               height: 2px;
               background:blue;
               z-index: 1;
-              left: 50%;
-              top:25px;
+              top:23px;
             }
           }
           .completeprogresslist{
             position:relative;
             z-index: 3;
             display:inline-block;
-            min-width: 60px;
+            width:50px;
             color: black;
             &__status{
               position: absolute;
@@ -91,7 +94,6 @@
               background: gray;
               border-radius: 50%;
               z-index: 2;
-              left: 40%;
             }
             
           }
@@ -99,13 +101,25 @@
       }
     }
 
+
+    // メインコンテンツ
+
     &__main{
       background-color: white;
       margin:auto;
       text-align: center;
       width: 80%;
+      .mainh1{
+        font-size: 30px;
+        padding: 30px;
+        margin: auto;
+        width: 90%;
+        border-bottom: gray solid 1px;
+      }
     }
 
+
+    // フッター
     &__footer{
       text-align: center;
     }
