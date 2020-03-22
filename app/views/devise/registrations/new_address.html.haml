@@ -39,7 +39,8 @@
         = f.label :県, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.select :prefecture, Address.prefectures.keys, prompt: '選択してください', class:"field__forminput"
+        .field__formprefecture
+          = f.select :prefecture, Address.prefectures.keys, prompt: '選択してください'
       .field
         = f.label :市区町村, class:"field__formlabel"
         %span.field__formspan 必須
