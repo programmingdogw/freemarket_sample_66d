@@ -5,18 +5,18 @@
     =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logoimage"), root_path, class: "logolink"
     %nav.progressbar
       %ul.progressbar__ul
-        %li.userpart
+        %li.userprogresslist
           ユーザー登録
-          .userpart__status
-          .userpart_bar
-        %li.addresspart
+          .userprogresslist__status
+          .userprogresslist__bar
+        %li.addressprogresslist
           お届け先住所入力
-          .addresspart__status
-          .addresspart__bar
-        %li.completepart
+          .addressprogresslist__status
+          .addressprogresslist__bar
+        %li.completeprogresslist
           完了
-          .completepart__status
-          .completepart__bar
+          .completeprogresslist__status
+          .completeprogresslist__bar
 
   %main.pagecontainer__main  
     %h2 ユーザー情報登録
