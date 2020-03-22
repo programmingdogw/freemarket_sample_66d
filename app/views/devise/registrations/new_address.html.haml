@@ -14,54 +14,54 @@
         = f.label :姓（全角）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :lastname
+        = f.text_field :lastname, class:"field__forminput"
       .field
         = f.label :名（全角）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :firstname
+        = f.text_field :firstname, class:"field__forminput"
       .field
         = f.label :ふりがな（姓、全角、平仮名か片仮名）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :lastname_kana
+        = f.text_field :lastname_kana, class:"field__forminput"
       .field
         = f.label :ふりがな（姓、全角、平仮名か片仮名）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :firstname_kana
+        = f.text_field :firstname_kana, class:"field__forminput"
       .field
         = f.label :郵便番号（ハイフンもご記入願います）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :postal_code
+        = f.text_field :postal_code, class:"field__forminput"
       .field
         = f.label :県, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.select :prefecture, Address.prefectures.keys, prompt: '選択してください', class: 'form-control btn btn-info'
+        = f.select :prefecture, Address.prefectures.keys, prompt: '選択してください', class:"field__forminput"
       .field
         = f.label :市区町村, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :municipality
+        = f.text_field :municipality, class:"field__forminput"
       .field
         = f.label :番地, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :street
+        = f.text_field :street, class:"field__forminput"
       .field
         = f.label :建物（任意）, class:"field__formlabel"
         %span.field__formspan 任意
         %br/
-        = f.text_field :building
+        = f.text_field :building, class:"field__forminput"
       .field
         = f.label :電話番号（任意）, class:"field__formlabel"
         %span.field__formspan 任意
         %br/
-        = f.text_field :telephone_number
+        = f.text_field :telephone_number, class:"field__forminput"
       .actions
-        = f.submit "Sign up"
+        = f.submit "Sign up", class:"nextbtn"
 
     %br
 
