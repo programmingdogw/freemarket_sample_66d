@@ -32,7 +32,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|bigint|optional: true, foreign_key: true|
-
 |lastname|string|null: false|
 |firstname|string|null: false|
 |lastname_kana|string|null: false|

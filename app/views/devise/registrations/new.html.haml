@@ -1,68 +1,96 @@
 = stylesheet_link_tag 'new'
 
 .pagecontainer
-  %header.header
-    %h1.header__logo
-    %p scssファイルの切り分けテスト
-    %p ここまでがヘッダー
-    %br
+  %header.pagecontainer__header
+    =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logolink__image"), root_path, class: "logolink"
+    %nav.progressbar
+      %ul.progressbar__ul
+        %li.userprogresslist
+          ユーザー登録
+          .userprogresslist__status
+          .userprogresslist__bar
+        %li.addressprogresslist
+          お届け先住所入力
+          .addressprogresslist__status
+          .addressprogresslist__bar
+        %li.completeprogresslist
+          完了
+          .completeprogresslist__status
+          .completeprogresslist__bar
 
-  %main.main  
-    %h2 ユーザー情報登録
+  %main.pagecontainer__main  
+    %h1.mainh1 ユーザー情報登録
     = form_for(@user, url: user_registration_path) do |f|
       = render "devise/shared/error_messages", resource: @user
-      ご利用者様の情報をご登録お願い致します。（お届け先に関しての情報は次のページにて入力していただきます。）
+      
       .field
-        = f.label :ニックネーム
+        = f.label :ニックネーム, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :nickname, autofocus: true
+        = f.text_field :nickname, autofocus: true, class:"field__forminput"
       .field
-        = f.label :姓（全角）
+        = f.label :姓（全角）, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :lastname
+        = f.text_field :lastname, class:"field__forminput"
       .field
-        = f.label :名（全角）
+        = f.label :名（全角）, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :firstname
+        = f.text_field :firstname, class:"field__forminput"
       .field
-        = f.label :ふりがな（姓）（全角）（平仮名かカタカナ）
+        = f.label :ふりがな（姓、全角、平仮名か片仮名）, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :lastname_kana
+        = f.text_field :lastname_kana, class:"field__forminput"
       .field
-        = f.label :ふりがな（名）（全角）（平仮名かカタカナ）
+        = f.label :ふりがな（名、全角、平仮名か片仮名）, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :firstname_kana
+        = f.text_field :firstname_kana, class:"field__forminput"
       .field
-        = f.label :email
+        = f.label :email, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.email_field :email,  autocomplete: "email"
+        = f.email_field :email,  autocomplete: "email", class:"field__forminput"
       .field
-        = f.label :password
+        = f.label :password, class:"field__formlabel"
         - if @minimum_password_length
           %em
             (#{@minimum_password_length} characters minimum)
+        %span.field__formspan 必須
         %br/
-        = f.password_field :password, autocomplete: "new-password"
+        = f.password_field :password, autocomplete: "new-password", class:"field__forminput"
       .field
-        = f.label :password_confirmation
+        = f.label :password_confirmation, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.password_field :password_confirmation, autocomplete: "new-password"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class:"field__forminput"
       .field
-        = f.label :生年月日
+        = f.label :生年月日, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.date_select :birthdate, use_month_numbers: true, start_year: 1940, end_year:2020, class: 'form_control', prompt:"--"
+        = f.date_select :birthdate, use_month_numbers: true, start_year: 1940, end_year:2020,  prompt:"--", class:"field__forminput"
       .field
-        = f.label :電話番号（半角で数字のみご記入願います）
+        = f.label :電話番号（半角数字のみ）, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :telephone_number
+        = f.text_field :telephone_number, class:"field__forminput"
+        %br/
       .actions
-        = f.submit "Next"
+        = f.submit "Next", class:"nextbtn"
     
-    %p ここまでがメイン
+
     %br
 
-  %footer.footer
-    %p ここからはフッター
-    = render "devise/shared/links"
+  %footer.pagecontainer__footer
+    .footerbox
+      =link_to "プライバシーポリシー", root_path, class: "footerbox__abouts"
+      =link_to "利用規約", root_path, class: "footerbox__abouts"
+      =link_to "特定商取引に関する表記", root_path, class: "footerbox__abouts"
+    =link_to image_tag('logo/logo-white.png', alt: "ロゴ画像", class:"footerlogo"), root_path
 
--# = render "devise/shared/links" フッターに移動済み
+    -# %p アカウントをお持ちの方はこちらからログイン↓
+    -# = render "devise/shared/links"
+
+
