@@ -1,13 +1,24 @@
 = stylesheet_link_tag 'new'
 
 .pagecontainer
-  %header.header
-    %h1.header__logo
-    %p scssファイルの切り分けテスト
-    %p ここまでがヘッダー
-    %br
+  %header.pagecontainer__header
+    =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logoimage"), root_path, class: "logolink"
+    %nav.progressbar
+      %ul.progressbar__ul
+        %li.userpart
+          ユーザー登録
+          .userpart__status
+          .userpart_bar
+        %li.addresspart
+          お届け先住所入力
+          .addresspart__status
+          .addresspart__bar
+        %li.completepart
+          完了
+          .completepart__status
+          .completepart__bar
 
-  %main.main  
+  %main.pagecontainer__main  
     %h2 ユーザー情報登録
     = form_for(@user, url: user_registration_path) do |f|
       = render "devise/shared/error_messages", resource: @user
@@ -61,7 +72,7 @@
     %p ここまでがメイン
     %br
 
-  %footer.footer
+  %footer.pagecontainer__footer
     %p ここからはフッター
     = render "devise/shared/links"
 

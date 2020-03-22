@@ -2,18 +2,45 @@
   padding:0,0,250px; 
   background-color:lightgray;
   
-    .header{
+    &__header{
       text-align: center;
+      display:flex;
+      justify-content: space-around;
+      .logolink{
+        width:40%;
+        margin-left: 10%;
+        background-color: lightgreen;
+        .logoimage{
+          width: 90%;
+          margin: auto;
+        }
+      }
+      .progressbar{
+        width:40%;
+        margin: auto;
+        margin-right: 10%;
+
+        text-align: center;
+        &__ul{
+          display:flex;          
+          font-size: 12px;
+          justify-content: space-around;
+          background-color: red;
+        }
+      }
     }
 
-    .main{
+    &__main{
       background-color: white;
       margin:auto;
       text-align: center;
       width: 80%;
     }
 
-    .footer{
+    &__footer{
       text-align: center;
     }
 }
+
+
+
