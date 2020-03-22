@@ -25,7 +25,76 @@
           display:flex;          
           font-size: 12px;
           justify-content: space-around;
-          background-color: red;
+          .userprogresslist{
+            position:relative;
+            z-index: 3;
+            display:inline-block;
+            min-width: 60px;
+            color: black;
+            margin-left: 40px;
+            &__status{
+              position: absolute;
+              width: 12px;
+              height: 12px;
+              background: gray;
+              border-radius: 50%;
+              z-index: 2;
+              left: 40%;
+            }
+            &__bar{
+              position: absolute;
+              display: block;
+              width: 130px;
+              height: 2px;
+              background:blue;
+              z-index: 1;
+              left: 50%;
+              top:25px;
+            }
+          }
+          .addressprogresslist{
+            position:relative;
+            z-index: 3;
+            display:inline-block;
+            min-width: 60px;
+            color: black;
+            &__status{
+              position: absolute;
+              width: 12px;
+              height: 12px;
+              background: gray;
+              border-radius: 50%;
+              z-index: 2;
+              left: 40%;
+            }
+            &__bar{
+              position: absolute;
+              display: block;
+              width: 130px;
+              height: 2px;
+              background:blue;
+              z-index: 1;
+              left: 50%;
+              top:25px;
+            }
+          }
+          .completeprogresslist{
+            position:relative;
+            z-index: 3;
+            display:inline-block;
+            min-width: 60px;
+            color: black;
+            &__status{
+              position: absolute;
+              width: 12px;
+              height: 12px;
+              background: gray;
+              border-radius: 50%;
+              z-index: 2;
+              left: 40%;
+            }
+            
+          }
         }
       }
     }
