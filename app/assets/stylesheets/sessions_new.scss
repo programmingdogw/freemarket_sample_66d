@@ -1,3 +1,94 @@
-h2{
-  color:blue;
+
+
+
+
+// 大枠
+.pagecontainer{
+  padding:0,0,250px; 
+  background-color:rgb(243, 240, 240);
+  
+  // ヘッダー
+    &__header{
+      text-align: center;
+      display:flex;
+      justify-content: space-around;
+      .logolink{
+        width:30%;
+        margin-left: 20%;
+        &__image{
+          width: 90%;
+          margin: auto;
+        }
+      }
+    }
+
+
+    // メインコンテンツ
+
+    &__main{
+      background-color: white;
+      margin:auto;
+      text-align: center;
+      width: 80%;
+      .mainh1{
+        font-size: 30px;
+        padding: 30px;
+        margin: auto;
+        width: 90%;
+        border-bottom: gray solid 1px;
+      }
+      .field{
+        width: 100%;
+        padding-top:30px ;
+        position: relative;
+        min-width: 768px;
+        &__formlabel{
+          position: absolute;
+          left: 28%;
+        }
+        &__formspan{
+          background-color:lightblue;
+          color: white;
+          position: absolute;
+          width: 40px;
+          right: 28%;
+          border-radius: 10%;
+        }
+        &__forminput{
+          width: 46%;
+          height:43px;
+          border-radius: 4%;
+          margin-top:5px ;
+        }
+      }
+      .nextbtn{
+        margin-top: 30px;
+        background-color: skyblue;
+        color: white;
+        width:150px;
+        height: 50px;
+        border-radius: 10px;
+      }
+    }
+
+
+
+    // フッター
+    &__footer{
+      text-align: center;
+      .footerbox{
+        padding-top: 20px;
+        margin:20px;
+        &__abouts{
+          margin-left: 10px;
+          font-size: 12px;
+        }
+      }
+      .footerlogo{
+        width:250px;
+        height: 100px;
+      }
+    }
 }
+
+
