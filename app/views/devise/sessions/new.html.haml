@@ -3,11 +3,14 @@
 .pagecontainer
   -# ヘッダー
   %header.pagecontainer__header
-  =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logolink__image"), root_path, class: "logolink"
+    =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logolink__image"), root_path, class: "logolink"
 
   -# メイン
   %main.pagecontainer__main
-    %h2 Log in
+    %h1.tosignup アカウントをお持ちでない方はこちら
+    =link_to "こちら", root_path, class: "singuplink"
+
+
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         = f.label :email, class:"field__formlabel"
@@ -22,8 +25,9 @@
           = f.check_box :remember_me
           = f.label :remember_me
       .actions
-        = f.submit "Log in"
-    = render "devise/shared/links"
+        = f.submit "Log in", class:'loginbtn'
+
+    -# = render "devise/shared/links" 今後使う可能性もあるのでコメントアウトして残している
 
     
 
