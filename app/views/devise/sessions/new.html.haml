@@ -7,8 +7,9 @@
 
   -# メイン
   %main.pagecontainer__main
-    %h1.tosignup アカウントをお持ちでない方はこちら
-    =link_to "こちら", root_path, class: "singuplink"
+    %h1.signupnav アカウントをお持ちでない方はこちら
+    .signuplink
+      =link_to "新規登録へ", root_path, class:'signuplink__btn'
 
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -27,7 +28,7 @@
       .actions
         = f.submit "Log in", class:'loginbtn'
 
-    -# = render "devise/shared/links" 今後使う可能性もあるのでコメントアウトして残している
+    -# = render "devise/shared/links" 今後使う可能性もあるのでコメントアウトして残している メール送付する機能
 
     
 
