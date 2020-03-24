@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   
   root 'experiment#index' 
+  get 'sample', to: 'experiment#sample'
+  
   
 end
