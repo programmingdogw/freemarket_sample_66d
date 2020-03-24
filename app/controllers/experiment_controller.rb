@@ -5,5 +5,6 @@ class ExperimentController < ApplicationController
 
   def sample
     @user = current_user
+    @item = Item.new
   end
 end
