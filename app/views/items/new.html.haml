@@ -1,3 +1,13 @@
 = stylesheet_link_tag 'items_new'
 
 %p 商品登録ページ
+
+%main.pagecontainer__main  
+  %h1.mainh1 ユーザー情報登録
+  = form_for(@item, url: new_user_item_path) do |f|
+    
+    .field
+      = f.label :名前, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :name, autofocus: true, class:"field__forminput"
