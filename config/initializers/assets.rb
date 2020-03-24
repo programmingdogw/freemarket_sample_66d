@@ -21,3 +21,5 @@ Rails.application.config.assets.precompile += %w( sessions_new.scss )
 Rails.application.config.assets.precompile += %w( experiment.scss )
 
 Rails.application.config.assets.precompile += %w( users.scss )
+
+Rails.application.config.assets.precompile += %w( items_new.scss )
