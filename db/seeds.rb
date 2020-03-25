@@ -18,3 +18,12 @@ Brand.create(
 Brand.create(
   name: 'シャネル'
 )
+
+Category.create(
+  name: 'レディース'
+)
+
+
+Category.create(
+  name: 'メンズ'
+)
