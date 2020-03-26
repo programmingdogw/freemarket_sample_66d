@@ -11,13 +11,14 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
 
-  resources :users, except: [:index, :new] do
-    resources :items
-  end
+  resources :users, except: [:index, :new] 
+  resources :items
+  
 
   
   root 'experiment#index' 
   get 'sample', to: 'experiment#sample'
+  get 'sample2', to: 'experiment#sample2'
   
   
 end

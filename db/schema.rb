@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_041045) do
+ActiveRecord::Schema.define(version: 2020_03_26_091148) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
     t.text "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,24 +76,24 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.text "image", null: false
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "brand_id", null: false
-    t.bigint "category_id", null: false
-    t.bigint "address_id", null: false
-    t.string "name", null: false
-    t.integer "price", null: false
-    t.string "condition", null: false
-    t.text "description", null: false
-    t.string "size", null: false
-    t.text "delivery_way", null: false
-    t.text "delivery_cost", null: false
-    t.text "delivery_time", null: false
+    t.bigint "user_id"
+    t.bigint "brand_id"
+    t.bigint "category_id"
+    t.bigint "address_id"
+    t.string "name"
+    t.integer "price"
+    t.string "condition"
+    t.text "description"
+    t.string "size"
+    t.text "delivery_cost"
+    t.text "delivery_from"
+    t.text "delivery_time"
     t.boolean "auction"
     t.boolean "dealing"
     t.boolean "sold"

@@ -1,16 +1,13 @@
 = stylesheet_link_tag 'experiment'
 %p切り分けテスト
-テスト
 %br/
-= link_to "ルーティング確認ログイン画面へ", new_user_session_path, class: ""
+= link_to "ログイン画面へ", new_user_session_path, class: ""
 %br/
-= link_to "ルーティング確認登録画面へ", new_user_registration_path, class: ""
+= link_to "ユーザー登録画面へ", new_user_registration_path, class: ""
 %br/
-５行目６行目はマージまでに消して綺麗に４行目までにする。コンフリクト回避のため
-%br/
-= link_to "ルーティング確認ログアウト", destroy_user_session_path, class: ""
-%br/
-= link_to "ルーティング確認出品する", "#", class: ""
+= link_to "ログアウトする", destroy_user_session_path, class: ""
 %br/
 = link_to "サンプルページへ", sample_path, class: ""
+%br/
+= link_to "サンプルページその２へ", sample2_path, class: ""
 %br/

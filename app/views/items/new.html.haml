@@ -1,23 +1,100 @@
 = stylesheet_link_tag 'items_new'
 
-%p 商品登録ページ
+.pagecontainer
+  -# ヘッダー
+  %header.pagecontainer__header
+    =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logolink__image"), root_path, class: "logolink"
 
-%main.pagecontainer__main  
-  %h1.mainh1 ユーザー情報登録
-  = form_for(@item, url: new_user_item_path) do |f|
-    
-    .field
-      = f.label :商品名, class:""
-      %span.field__formspan 必須
+
+
+  %main.pagecontainer__main  
+    %h1.mainh1 商品登録ページ
+    = form_for(@item, url: items_path) do |f|
+
+      .field
+        = f.label :出品画像（１０枚まで）, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.fields_for :images do |i|
+          = i.file_field :image, class:"field__forminput"
+        
+      .field
+        = f.label :商品名, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :name, class:"field__forminput"
+      
+      .field
+        = f.label :商品説明, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_area :description, class:"field__textarea", size:'20x10'
+
+      .field
+        = f.label :カテゴリー, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :category_id, class:"field__forminput"
+
+      .field
+        = f.label :ブランド, class:"field__formlabel"
+        %span.field__formspan 任意
+        %br/
+        = f.text_field :brand_id, class:"field__forminput"
+      
+      -# 作成中一旦sassあてた方が良さげだから取り敢えずコメントアウト中
+      -# .field
+      -#     = f.label :ブランド, class:"field__formlabel"
+      -#     %span.field__formspan 任意
+      -#     %br/
+      -#     .field__formbrand
+      -#       = f.select :name, Brand.names.keys, prompt: '選択してください'
+
+
+      .field
+        = f.label :商品の状態, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :condition, class:"field__forminput"
+
+      .field
+        = f.label :商品のサイズ, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :size, class:"field__forminput"
+
+      .field
+        = f.label :配送料の負担, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :delivery_cost, class:"field__forminput"
+      
+      .field
+        = f.label :発送元の地域, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :delivery_from, class:"field__forminput"
+      
+      .field
+        = f.label :発送までの日数, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :delivery_time, class:"field__forminput"
+      
+      .field
+        = f.label :販売価格, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :price, class:"field__forminput"
+      
+      .field
+        = f.hidden_field :user_id, :value => current_user.id 
+          
+  
+  
+      
       %br/
-      = f.text_field :name, autofocus: true, class:"field__forminput"
-    .field
-      = f.label :価格, class:""
-      %span.field__formspan 必須
-      %br/
-      = f.text_field :price, autofocus: true, class:"field__forminput"
-    .field
-      = f.label :商品の状態, class:""
-      %span.field__formspan 必須
-      %br/
-      = f.text_field :condition, autofocus: true, class:"field__forminput"
+      .actions
+        = f.submit "出品する", class:"nextbtn"
+  -# フッター
+  = render partial:'devise/registrations/footer'
