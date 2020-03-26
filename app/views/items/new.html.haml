@@ -10,16 +10,60 @@
       = f.label :出品画像, class:""
       %span.field__formspan 必須
       %br/
-      = f.text_field :image, autofocus: true, class:"field__forminput"
+      %p 最大１０枚までアップロード出来ます。
+      = f.text_field :images, autofocus: true, class:"field__forminput"
     
     .field
       = f.label :商品名, class:""
       %span.field__formspan 必須
       %br/
-      = f.text_field :name, autofocus: true, class:"field__forminput"
+      = f.text_field :name, class:"field__forminput"
     
     .field
       = f.label :商品説明, class:""
       %span.field__formspan 必須
       %br/
-      = f.text_field :name, autofocus: true, class:"field__forminput"
+      = f.text_field :description, class:"field__forminput"
+
+    .field
+      = f.label :カテゴリー, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :category, class:"field__forminput"
+
+    .field
+      = f.label :ブランド, class:""
+      %span.field__formspan 任意
+      %br/
+      = f.text_field :brand, class:"field__forminput"
+    
+    .field
+      = f.label :商品の状態, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :condition, class:"field__forminput"
+
+    .field
+      = f.label :配送料の負担, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :delivery_cost, class:"field__forminput"
+    
+    .field
+      = f.label :発送元の地域, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :delivery_from, class:"field__forminput"
+    
+    .field
+      = f.label :発送までの日数, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :delivery_time, class:"field__forminput"
+    
+    .field
+      = f.label :販売価格, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :price, class:"field__forminput"
+    
