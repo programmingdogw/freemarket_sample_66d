@@ -8,11 +8,9 @@
 
 
   %main.pagecontainer__main  
-    %h1.mainh1 ユーザー情報登録
+    %h1.mainh1 商品登録ページ
     = form_for(@item, url: items_path) do |f|
 
-
-      %p 商品登録ページ
       -# .field
       -#   = f.label :出品画像, class:""
       -#   %span.field__formspan 必須
@@ -21,33 +19,33 @@
       -#   = f.file_field :images, autofocus: true, class:"field__forminput"
 
       .field
-        =f.label :出品画像, class:""
+        =f.label :出品画像（１０枚まで） , class:"field__formlabel"
         %span.field_formspan 必須
         %br/
-        %p 最大１０枚までアップロード出来ます。
-        = f.fields_for :images do |i|
-          = i.file_field :image
+        .field__formselect
+          = f.fields_for :images do |i|
+            = i.file_field :image
         
       .field
-        = f.label :商品名, class:""
+        = f.label :商品名, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :name, class:"field__forminput"
       
       .field
-        = f.label :商品説明, class:""
+        = f.label :商品説明, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :description, class:"field__forminput"
 
       .field
-        = f.label :カテゴリー, class:""
+        = f.label :カテゴリー, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :category_id, class:"field__forminput"
 
       .field
-        = f.label :ブランド, class:""
+        = f.label :ブランド, class:"field__formlabel"
         %span.field__formspan 任意
         %br/
         = f.text_field :brand_id, class:"field__forminput"
@@ -62,37 +60,37 @@
 
 
       .field
-        = f.label :商品の状態, class:""
+        = f.label :商品の状態, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :condition, class:"field__forminput"
 
       .field
-        = f.label :商品のサイズ, class:""
+        = f.label :商品のサイズ, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :size, class:"field__forminput"
 
       .field
-        = f.label :配送料の負担, class:""
+        = f.label :配送料の負担, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :delivery_cost, class:"field__forminput"
       
       .field
-        = f.label :発送元の地域, class:""
+        = f.label :発送元の地域, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :delivery_from, class:"field__forminput"
       
       .field
-        = f.label :発送までの日数, class:""
+        = f.label :発送までの日数, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :delivery_time, class:"field__forminput"
       
       .field
-        = f.label :販売価格, class:""
+        = f.label :販売価格, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.text_field :price, class:"field__forminput"
