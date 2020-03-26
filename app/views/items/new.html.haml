@@ -12,21 +12,11 @@
     = form_for(@item, url: items_path) do |f|
 
       .field
-        = f.label :出品画像, class:"field__formlabel"
+        = f.label :出品画像（１０枚まで）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        %p 最大１０枚までアップロード出来ます。
-      = f.fields_for :images do |i|
-        = i.file_field :image, class:"field__formselect"
-    
-
-      -# .selectfield
-      -#   =f.label :出品画像（１０枚まで） , class:"selectfield__label"
-      -#   .selectfield_span 必須
-      -#   %br/
-      -#   .selectfield__formselect
-      -#     = f.fields_for :images do |i|
-      -#       = i.file_field :image
+        = f.fields_for :images do |i|
+          = i.file_field :image, class:"field__forminput"
         
       .field
         = f.label :商品名, class:"field__formlabel"
