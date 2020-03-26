@@ -11,7 +11,7 @@
       %span.field__formspan 必須
       %br/
       %p 最大１０枚までアップロード出来ます。
-      = f.text_field :images, autofocus: true, class:"field__forminput"
+      = f.file_field :images, autofocus: true, class:"field__forminput"
     
     .field
       = f.label :商品名, class:""

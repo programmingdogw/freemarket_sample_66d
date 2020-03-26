@@ -15,8 +15,9 @@ class Item < ApplicationRecord
   validates :condition, presence: true
   validates :description, presence: true
   validates :size, presence: true
-  validates :delivery_way, presence: true
+  #validates :delivery_way, presence: true
   validates :delivary_cost, presence: true
+  validates :delivary_from, presence: true
   validates :delivary_time, presence: true
 
 end

@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
     t.string "condition", null: false
     t.text "description", null: false
     t.string "size", null: false
-    t.text "delivery_way", null: false
     t.text "delivery_cost", null: false
+    t.text "delivery_from", null: false
     t.text "delivery_time", null: false
     t.boolean "auction"
     t.boolean "dealing"
