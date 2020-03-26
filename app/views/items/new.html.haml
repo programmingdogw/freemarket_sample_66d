@@ -2,7 +2,8 @@
 
 .pagecontainer
   -# ヘッダー
-  = render partial:'devise/registrations/header'
+  %header.pagecontainer__header
+    =link_to image_tag('logo/logo.png', alt: "ロゴ画像", class:"logolink__image"), root_path, class: "logolink"
 
 
 
