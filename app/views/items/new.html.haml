@@ -4,14 +4,14 @@
 
 %main.pagecontainer__main  
   %h1.mainh1 ユーザー情報登録
-  = form_for(@item, url: new_item_path) do |f|
+  = form_for(@item, url: items_path) do |f|
 
-    .field
-      = f.label :出品画像, class:""
-      %span.field__formspan 必須
-      %br/
-      %p 最大１０枚までアップロード出来ます。
-      = f.file_field :images, autofocus: true, class:"field__forminput"
+    -# .field
+    -#   = f.label :出品画像, class:""
+    -#   %span.field__formspan 必須
+    -#   %br/
+    -#   %p 最大１０枚までアップロード出来ます。
+    -#   = f.file_field :images, autofocus: true, class:"field__forminput"
     
     .field
       = f.label :商品名, class:""
@@ -29,19 +29,25 @@
       = f.label :カテゴリー, class:""
       %span.field__formspan 必須
       %br/
-      = f.text_field :category, class:"field__forminput"
+      = f.text_field :category_id, class:"field__forminput"
 
     .field
       = f.label :ブランド, class:""
       %span.field__formspan 任意
       %br/
-      = f.text_field :brand, class:"field__forminput"
+      = f.text_field :brand_id, class:"field__forminput"
     
     .field
       = f.label :商品の状態, class:""
       %span.field__formspan 必須
       %br/
       = f.text_field :condition, class:"field__forminput"
+
+    .field
+      = f.label :商品のサイズ, class:""
+      %span.field__formspan 必須
+      %br/
+      = f.text_field :size, class:"field__forminput"
 
     .field
       = f.label :配送料の負担, class:""
@@ -66,4 +72,14 @@
       %span.field__formspan 必須
       %br/
       = f.text_field :price, class:"field__forminput"
+    
+    .field
+      = f.hidden_field :user_id, :value => current_user.id 
+        
+ 
+ 
+    
+    %br/
+    .actions
+      = f.submit "出品する", class:"nextbtn"
     

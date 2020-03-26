@@ -80,18 +80,18 @@ ActiveRecord::Schema.define(version: 2020_03_13_041045) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "brand_id", null: false
-    t.bigint "category_id", null: false
-    t.bigint "address_id", null: false
-    t.string "name", null: false
-    t.integer "price", null: false
-    t.string "condition", null: false
-    t.text "description", null: false
-    t.string "size", null: false
-    t.text "delivery_cost", null: false
-    t.text "delivery_from", null: false
-    t.text "delivery_time", null: false
+    t.bigint "user_id"
+    t.bigint "brand_id"
+    t.bigint "category_id"
+    t.bigint "address_id"
+    t.string "name"
+    t.integer "price"
+    t.string "condition"
+    t.text "description"
+    t.string "size"
+    t.text "delivery_cost"
+    t.text "delivery_from"
+    t.text "delivery_time"
     t.boolean "auction"
     t.boolean "dealing"
     t.boolean "sold"
