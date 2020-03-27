@@ -3,6 +3,8 @@ class Item < ApplicationRecord
   belongs_to :user, optional:true
   belongs_to :address, optional:true
   belongs_to :category, optional:true
+  has_one :deal_condition
+  accepts_nested_attributes_for :deal_conditions, allow_destroy: false
   has_many :comments
   has_many :images
   accepts_nested_attributes_for :images, allow_destroy: true

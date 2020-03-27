@@ -15,9 +15,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :delivery_from   #null:false
       t.text :delivery_time   #null: false
       t.text :brand
-      t.boolean :auction
-      t.boolean :dealing
-      t.boolean :sold
+      
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_091148) do
+ActiveRecord::Schema.define(version: 2020_03_27_030238) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deal_conditions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.boolean "auction"
+    t.boolean "dealing"
+    t.boolean "sold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -89,9 +98,6 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.text "delivery_from"
     t.text "delivery_time"
     t.text "brand"
-    t.boolean "auction"
-    t.boolean "dealing"
-    t.boolean "sold"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
