@@ -86,9 +86,6 @@
       
       .field
         = f.hidden_field :user_id, :value => current_user.id 
-        = f.fields_for :deal_conditions do |d|
-          = d.hidden_field :auction, :value => true
-          
           
   
   
@@ -96,6 +93,5 @@
       %br/
       .actions
         = f.submit "出品する", class:"nextbtn"
-        
   -# フッター
   = render partial:'devise/registrations/footer'

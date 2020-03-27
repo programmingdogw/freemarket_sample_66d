@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @image = @item.images.new
-    @deal_condition = @item.deal_conditions.new
   end
 
   def create
@@ -33,7 +32,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:user_id, :address_id, :brand_id, :category_id, :name, :price, :condition, :description, :size, :delivery_cost, :delivery_from, :delivery_time, :brand, images_attributes: [:image], deal_conditions_attributes: [:auction])
+    params.require(:item).permit(:user_id, :address_id, :brand_id, :category_id, :name, :price, :condition, :description, :size, :delivery_cost, :delivery_from, :delivery_time, :brand, images_attributes: [:image])
   end
 
 end
