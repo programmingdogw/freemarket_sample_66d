@@ -66,12 +66,6 @@
         %br/
         = f.select :delivery_way, ['未定', 'ラクラクFURIMA便', 'ゆうメール', 'レターパック', '普通郵便（定形、定形外）', 'クロネコヤマト', 'ゆうパック', 'クリックポスト', 'ゆうパケット'], {include_blank: '選択してください'}
 
-      -# .field
-      -#   = f.label :発送元の地域, class:"field__formlabel"
-      -#   %span.field__formspan 必須
-      -#   %br/
-      -#   = f.text_field :delivery_from, class:"field__forminput"
-        -# ここはenum使う予定
       .field
         = f.label :発送元の地域, class:"field__formlabel"
         %span.field__formspan 必須
