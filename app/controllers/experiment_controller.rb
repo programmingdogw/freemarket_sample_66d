@@ -10,5 +10,6 @@ class ExperimentController < ApplicationController
 
   def sample2
     @images = Image.all
+    @parents = Category.all.where(ancestry: nil)
   end
 end
