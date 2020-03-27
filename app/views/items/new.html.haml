@@ -52,21 +52,18 @@
         = f.label :商品のサイズ, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        -# = f.text_field :size, class:"field__forminput"
         = f.select :size, ['100cm', '110cm', '120cm', '130cm', '140cm', '150cm', '160cm'], {include_blank: '選択してください'}
 
       .field
         = f.label :配送料の負担, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        -# = f.text_field :delivery_cost, class:"field__forminput"
         = f.select :delivery_cost, ['送料込み（出品者負担）', '着払い（購入者負担）'], {include_blank: '選択してください'}
 
       .field
         = f.label :配送の方法, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        -# = f.text_field :delivery_way, class:"field__forminput"
         = f.select :delivery_way, ['未定', 'ラクラクFURIMA便', 'ゆうメール', 'レターパック', '普通郵便（定形、定形外）', 'クロネコヤマト', 'ゆうパック', 'クリックポスト', 'ゆうパケット'], {include_blank: '選択してください'}
 
       .field
@@ -80,7 +77,6 @@
         = f.label :発送までの日数, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        -# = f.text_field :delivery_time, class:"field__forminput"
         = f.select :delivery_time, ['1~2日で発送', '2~3日で発送', '4~7日で発送'], {include_blank: '選択してください'}
       
       .field
