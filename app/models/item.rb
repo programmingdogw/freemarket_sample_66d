@@ -10,10 +10,10 @@ class Item < ApplicationRecord
   has_many :evaluations
 
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 40 }
   validates :price, presence: true
   validates :condition, presence: true
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 1000 }
   validates :size, presence: true
   validates :delivery_way, presence: true
   validates :delivery_cost, presence: true

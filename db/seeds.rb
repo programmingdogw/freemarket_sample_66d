@@ -7,17 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Brand.create(
-  name: 'ルイヴィトン'
-)
-
-Brand.create(
-  name: 'グッチ'
-)
-
-Brand.create(
-  name: 'シャネル'
-)
 
 
 lady = Category.create(:name=>"レディース")
