@@ -40,7 +40,8 @@
         = f.label :ブランド, class:"field__formlabel"
         %span.field__formspan 任意
         %br/
-        = f.text_field :brand_id, class:"field__forminput", :placeholder => "例)シャネル"
+        = f.fields_for :brands do |i|
+          = f.text_field :name, class:"field__forminput", :placeholder => "例)シャネル"
       
       -# 作成中一旦sassあてた方が良さげだから取り敢えずコメントアウト中
       -# .field
