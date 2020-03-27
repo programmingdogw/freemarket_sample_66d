@@ -27,4 +27,6 @@
 /config/master.key
 
 # Ignore uploaded files in development
- /public/uploads/*
+public/uploads/*
+
+app/views/experiment/sample2.html.erb
