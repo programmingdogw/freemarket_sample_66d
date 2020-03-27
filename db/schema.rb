@@ -36,12 +36,6 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "name", null: false
     t.datetime "created_at", null: false
@@ -94,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.text "delivery_cost"
     t.text "delivery_from"
     t.text "delivery_time"
+    t.text "brand"
     t.boolean "auction"
     t.boolean "dealing"
     t.boolean "sold"
