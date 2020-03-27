@@ -41,15 +41,6 @@
         %span.field__formspan 任意
         %br/
         = f.text_field :brand, class:"field__forminput", :placeholder => "例)シャネル"
-      
-      -# 作成中一旦sassあてた方が良さげだから取り敢えずコメントアウト中
-      -# .field
-      -#     = f.label :ブランド, class:"field__formlabel"
-      -#     %span.field__formspan 任意
-      -#     %br/
-      -#     .field__formbrand
-      -#       = f.select :name, Brand.names.keys, prompt: '選択してください'
-
 
       .field
         = f.label :商品の状態, class:"field__formlabel"
