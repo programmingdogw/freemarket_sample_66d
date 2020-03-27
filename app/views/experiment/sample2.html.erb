@@ -4,3 +4,35 @@
         <td><%= image_tag image.image.to_s %></td>
       </tr>
  <% end %>
+
+
+
+<% @parents.each do |parent| %> 
+ <%= parent.name %>
+<% end %>
+<br>
+<br>
+
+
+<!--
+
+<% @parents.each do |parent| %>
+<%= parent.name %>
+  <% parent.children.each do |child| %> 
+    <%= child.name %>
+  <% end %>
+  <br>
+<% end %>
+
+<% @parents.each do |parent| %>
+<%= parent.name %>
+  <% parent.children.each do |child| %> 
+    <%= child.name %>
+    <% child.children.each do |grandchild|%>
+      <%= grandchild.name %>
+    <% end %>  
+  <% end %>
+  <br>
+<% end %>
+
+-->
