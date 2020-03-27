@@ -22,13 +22,13 @@
         = f.label :商品名, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_field :name, class:"field__forminput"
+        = f.text_field :name, class:"field__forminput", :placeholder => "40文字まで"
       
       .field
         = f.label :商品説明, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.text_area :description, class:"field__textarea", size:'20x10'
+        = f.text_area :description, class:"field__textarea", size:'20x10', :placeholder => "1000文字まで"
 
       .field
         = f.label :カテゴリー, class:"field__formlabel"
@@ -40,7 +40,7 @@
         = f.label :ブランド, class:"field__formlabel"
         %span.field__formspan 任意
         %br/
-        = f.text_field :brand_id, class:"field__forminput"
+        = f.text_field :brand_id, class:"field__forminput", :placeholder => "例)シャネル"
       
       -# 作成中一旦sassあてた方が良さげだから取り敢えずコメントアウト中
       -# .field
@@ -68,6 +68,12 @@
         %span.field__formspan 必須
         %br/
         = f.text_field :delivery_cost, class:"field__forminput"
+      
+      .field
+        = f.label :配送の方法, class:"field__formlabel"
+        %span.field__formspan 必須
+        %br/
+        = f.text_field :delivery_way, class:"field__forminput"
       
       .field
         = f.label :発送元の地域, class:"field__formlabel"
