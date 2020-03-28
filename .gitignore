@@ -29,4 +29,3 @@
 # Ignore uploaded files in development
 public/uploads/*
 
-app/views/experiment/sample2.html.erb
