@@ -5,3 +5,5 @@
     円
   - item.images.each do |images|
     = image_tag images.image.url
+  %br
+= link_to '編集', edit_item_path(item)
