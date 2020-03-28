@@ -8,7 +8,12 @@ $(document).on('turbolinks:load', ()=> {
                     <div class="js-remove">削除</div>
                   </div>`;
     return html;
-  }
+  };
+
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    return html;
+  };
 
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
@@ -21,6 +26,7 @@ $(document).on('turbolinks:load', ()=> {
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     //pushは配列に要素を付け足す。今回は末尾に１足した数字。
   });
+  
 
   $('#image-box').on('click', '.js-remove', function() {
     $(this).parent().remove();
