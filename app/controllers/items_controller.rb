@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-
-before_action :set_item, except: [:index, :new, :create]
+  
+before_action :set_product, except: [:index, :new, :create]
 
 
   def index
@@ -29,11 +29,6 @@ before_action :set_item, except: [:index, :new, :create]
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
   end
 
   def destroy
@@ -44,7 +39,7 @@ before_action :set_item, except: [:index, :new, :create]
     params.require(:item).permit(:user_id, :address_id, :brand_id, :category_id, :name, :price, :condition, :description, :size, :delivery_cost, :delivery_way, :delivery_from, :delivery_time, :brand, :auction, :dealing, :sold, images_attributes: [:image])
   end
 
-  def set_item
+  def set_Item
     @item = Item.find(params[:id])
   end
   
