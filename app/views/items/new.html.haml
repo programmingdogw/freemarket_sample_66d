@@ -15,8 +15,12 @@
         = f.label :出品画像（１０枚まで）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.fields_for :images do |i|
-          = i.file_field :image, class:"field__forminput"
+        #image-box
+          = f.fields_for :images do |i|
+            .js-file_group{"data-index" => "#{i.index}"}
+              = i.file_field :image, class:"js-file"
+              %br
+              %span.js-remove 削除
         
       .field
         = f.label :商品名, class:"field__formlabel"
