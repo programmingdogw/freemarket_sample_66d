@@ -15,8 +15,17 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   };
 
+
+
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  // 既に使われているindexを除外
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
+
+  // 削除ボックス隠しとく
+  $('.hidden-destroy').hide();
+
 
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る
@@ -33,4 +42,6 @@ $(document).on('turbolinks:load', ()=> {
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
+
+  
 });
