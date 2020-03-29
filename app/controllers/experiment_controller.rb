@@ -8,8 +8,4 @@ class ExperimentController < ApplicationController
     @item = Item.new
   end
 
-  def sample2
-    @images = Image.all
-    @parents = Category.all.where(ancestry: nil)
-  end
 end
