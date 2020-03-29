@@ -45,6 +45,7 @@
         %br/
         = f.text_area :description, class:"field__textarea", size:'20x10', placeholder: "1000文字まで"
 
+      -# 作成中
       .field
         = f.label :カテゴリー, class:"field__formlabel"
         %span.field__formspan 必須
@@ -52,6 +53,8 @@
         = f.text_field :category_id, class:"field__forminput"
         %i.fas.fa-chevron-down
         %i.fas.fa-truck
+
+
       .field
         = f.label :ブランド, class:"field__formlabel"
         %span.field__formspan 任意
