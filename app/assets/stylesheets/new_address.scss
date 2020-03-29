@@ -63,19 +63,19 @@
           .userprogresslist{
             @include lists(140px);
             &__status{
-              @include status(blue);
+              @include status(gray);
             }
             &__bar{
-              @include bar(blue);
+              @include bar(gray);
             }
           }
           .addressprogresslist{
             @include lists(140px);
             &__status{
-              @include status(gray);
+              @include status(blue);
             }
             &__bar{
-              @include bar(gray);
+              @include bar(blue);
             }
           }
           .completeprogresslist{
@@ -126,6 +126,10 @@
           height:43px;
           border-radius: 4%;
           margin-top:5px ;
+        }
+        // 県名選択部分
+        &__formprefecture{
+          width: 70%;
         }
       }
       .nextbtn{

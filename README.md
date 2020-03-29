@@ -1,4 +1,4 @@
-
+都度修正するとめんどいから実際とは結構違うけど落ち着いたら書き直す
 
 ## usersテーブル
 |Column|Type|Options|
@@ -32,7 +32,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|bigint|optional: true, foreign_key: true|
-
 |lastname|string|null: false|
 |firstname|string|null: false|
 |lastname_kana|string|null: false|
