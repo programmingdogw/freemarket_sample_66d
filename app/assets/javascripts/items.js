@@ -10,11 +10,11 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   };
 
-  // 一旦画像のビルドコメントアウト
-  // const buildImg = (index, url)=> {
-  //   const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-  //   return html;
-  // };
+  // プレビュー用の画像をビルド
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    return html;
+  };
 
 
 
@@ -30,31 +30,43 @@ $(document).on('turbolinks:load', ()=> {
 
   // フォームに変更があると次のフォームを作成
   $('#image-box').on('change', '.js-file', function(e) {
-  
-    $('#image-box').append(buildFileField(fileIndex[0]));
-    fileIndex.shift();
+    const targetIndex = $(this).parent().data('index');
+    // ファイルのブラウザ上でのURLを取得する
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
 
-    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+    // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute('src', blobUrl);
+    } else {  // 新規画像追加の処理
+      $('#previews').append(buildImg(targetIndex, blobUrl));
+
+      // fileIndexの先頭の数字を使ってinputを作る
+      $('#image-box').append(buildFileField(fileIndex[0]));
+      fileIndex.shift();
+
+      // 末尾の数に1足した数を追加する
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+    }
     
   });
   
-  // 削除を押すとjs-file_groupを削除
-  $('#image-box').on('click', '.js-remove', function() {
-    $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-  });
-
-
-  // 削除を押すと:_destroyを送るためのチェックボックスにこっそりチェックが入る
+  
   $('#image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // もしチェックボックスが存在すればチェックを入れる
+    // 削除を押した時、もしチェックボックスが存在すればチェックを入れる。:_destroyを送るため
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-    (省略)
+    // 削除を押すとjs-file_groupを削除
+    $(this).parent().remove();
+    // imgも削除
+    $(`img[data-index="${targetIndex}"]`).remove();
+    
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
+
 
   
 });
