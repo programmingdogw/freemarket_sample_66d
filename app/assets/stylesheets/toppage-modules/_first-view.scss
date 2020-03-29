@@ -1,0 +1,34 @@
+
+.first-view {
+  height: 560px;
+  background-image: url(pict/bg-mainVisual-pict_pc.jpg);
+  background-size: cover;
+  padding: 0px 60px;
+  @include center;
+
+  &__contents {
+
+    &__upper {
+      font-size: 60px;
+      color: $white;
+
+      &--shadow {
+        text-shadow: 0 0 5px $black;
+      }
+    }
+
+    &__middle {
+      margin: 16px 0px 0px 0px;
+      font-size: 18px;
+      color: $white;
+
+      &--shadow {
+        @include text-shadow;
+      }
+    }
+
+    &__lower {
+      margin: 16px 0px 0px 0px;
+    }
+  }
+}

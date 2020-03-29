@@ -1,7 +1,15 @@
-= stylesheet_link_tag 'experiment'
 
-.wrapper
-  = render "header"
-  = render "main-contents"
-  = render "footer"
+= render "header"
 
+.main-contents
+  = render "first-view"
+  = render "publicity"
+  = render "second-view"
+  = render "characteristic"
+  .pickup
+    = render "pickup-category"
+    = render "pickup-bland"
+  = render "last-view"
+
+= render "footer"
+= render "exhibitionIcon"

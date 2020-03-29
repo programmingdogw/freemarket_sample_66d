@@ -1,0 +1,43 @@
+
+.characteristic__contents {
+  padding: 60px 100px;
+  background-color: $white;
+
+  &__message {
+    @include message-style;
+  }
+  &__message:after {
+    @include message-style-after;
+  }
+
+  &__lists {
+    @include lists-style;
+
+    .characteristic__contents__list {
+      @include list-style;
+
+      &__image {
+        text-align: center;
+        margin-bottom: 20px;
+
+        .characteristic-icon {
+          width: 50%;
+          vertical-align: bottom;
+        }
+      }
+
+      &__text {
+        @include message-font;
+        font-size: 19px;
+        margin: 38px 0px 10px;
+      }
+
+      &__description {
+        font-size: 17px;
+        font-weight: 200px;
+        margin: 0px 0px 40px;
+        text-align: left;
+      }
+    }
+  }
+}

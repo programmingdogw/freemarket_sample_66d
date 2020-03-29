@@ -1,0 +1,40 @@
+
+.footer {
+  color: $white;
+  background-color: $black;
+  height: 300px;
+  width: 100%;
+  padding: 60px 0px;
+
+  &__top {
+    text-align: center;
+
+    &-lists {
+      @include space-between;
+
+      .large__list {
+        width: calc( 100% / 3 );
+      }
+    }
+  }
+
+  &__bottom {
+    text-align: center;
+  }
+}
+
+h3 {
+  @include message-font;
+  font-size: 16px;
+  margin: 0px 0px 20px;
+}
+
+li {
+  margin: 0px 0px 10px;
+
+  .small__list {
+    color: $white;
+    font-size: 12px;
+    text-decoration: none;
+  }
+}
