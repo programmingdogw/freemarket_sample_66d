@@ -1,11 +1,17 @@
-= stylesheet_link_tag 'experiment'
-%p切り分けテスト
-%br/
-= link_to "ログイン画面へ", new_user_session_path, class: ""
-%br/
-= link_to "ユーザー登録画面へ", new_user_registration_path, class: ""
-%br/
-= link_to "ログアウトする", destroy_user_session_path, class: ""
-%br/
-= link_to "サンプルページへ", sample_path, class: ""
-%br/
+
+
+= render "header"
+
+.main-contents
+  = render "first-view"
+  = render "publicity"
+  = render "second-view"
+  = render "characteristic"
+  .pickup
+    = render "pickup-category"
+    = render "pickup-bland"
+  = render "last-view"
+
+= render "footer"
+= render "exhibitionIcon"
+
