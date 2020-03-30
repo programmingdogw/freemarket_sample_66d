@@ -1,0 +1,47 @@
+.pickup__contents
+  .pickup__contents__message
+    ピックアップブランド
+  = link_to "#", class: "pickup__contents__link" do
+    アーカイバ
+  .pickup__contents__list
+    = link_to "#", class: "pickup__contents__list__product" do
+      .pickup__contents__list__product__image
+        = image_tag 'pict/パソコン.jpeg', class: 'product-image'
+      .pickup__contents__list__product__details
+        %h3.pickup__contents__list__product__details-name
+          Mac Book Air 13インチ 最新
+        .pickup__contents__list__product__details-contents
+          .price
+            185,000円
+          .evaluation
+            ★1250
+        .pickup__contents__list__product__details-tax
+          （税込）
+
+    = link_to "#", class: "pickup__contents__list__product" do
+      .pickup__contents__list__product__image
+        = image_tag 'pict/キーボード.jpeg', class: 'product-image'
+      .pickup__contents__list__product__details
+        %h3.pickup__contents__list__product__details-name
+          Apple 純正品 KeyBoard
+        .pickup__contents__list__product__details-contents
+          .price
+            10,820円
+          .evaluation
+            ★650
+        .pickup__contents__list__product__details-tax
+          （税込）
+
+    = link_to "#", class: "pickup__contents__list__product" do
+      .pickup__contents__list__product__image
+        = image_tag 'pict/iPad.jpeg', class: 'product-image'
+      .pickup__contents__list__product__details
+        %h3.pickup__contents__list__product__details-name
+          iPad 2017年発売 Wi-Fiモデル
+        .pickup__contents__list__product__details-contents
+          .price
+            66,000円
+          .evaluation
+            ★1000
+        .pickup__contents__list__product__details-tax
+          （税込）

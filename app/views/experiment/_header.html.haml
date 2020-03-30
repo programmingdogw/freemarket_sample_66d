@@ -1,0 +1,28 @@
+.header
+
+  .header__contents
+    .header__contents__top
+      .header__contents__top__logo
+        = image_tag "logo/logo.png", alt: "FURIMA の ロゴ", class: "furima-logo"
+      .header__contents__top__search-form
+        %input{type: "text", placeholder: "キーワードから探す", class: "text-form"}
+        %button{type: "submit", class: "search-btn"}
+          = image_tag "icon/icon-search 1.png", class: "search-icon__image"
+
+    .header__contents__bottom
+      .header__contents__bottom__left
+        .header__contents__bottom__left--tag
+          カテゴリー
+        -# まずは、見本の見た目と同様に実装。後ほど非同期にてリストを追加する。
+        .header__contents__bottom__left--tag
+          ブランド
+      .header__contents__bottom__right
+        = link_to new_user_session_path, class: "header__contents__bottom__right--tag" do
+          ログイン
+        -# = link_to destroy_user_session_path, class: "header__list" do
+        -#   ログアウト
+        -# まずは、見本の見た目と同様に実装。後ほど条件分岐でログアウトもできるようにする。
+        -# = link_to "サンプルページへ", sample_path, class: ""
+        -# ↑作業用のリンク。
+        = link_to new_user_registration_path, class: "header__contents__bottom__right--tag" do
+          新規会員登録
