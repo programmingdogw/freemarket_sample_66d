@@ -53,14 +53,15 @@
       -#   = f.text_field :category_id, class:"field__forminput"
       -#   %i.fas.fa-chevron-down
       -#   %i.fas.fa-truck
-      .listing-form-box
-        .listing-product-detail__category
-          = f.label 'カテゴリー', class: 'listing-default__label'
-          %span.listing-default--require 必須
-          .listing-select-wrapper
-            .listing-select-wrapper__box
-              = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-              %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+      .field
+        .listing-form-box
+          .listing-product-detail__category
+            = f.label 'カテゴリー', class: 'listing-default__label'
+            %span.listing-default--require 必須
+            .listing-select-wrapper
+              .listing-select-wrapper__box
+                = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
 
 
       .field
@@ -116,7 +117,9 @@
         = f.hidden_field :user_id, :value => current_user.id
         = f.hidden_field :auction, :value => true
         = f.hidden_field :dealing, :value => false
-        = f.hidden_field :sold, :value => false 
+        = f.hidden_field :sold, :value => false
+      
+        
           
   
   
