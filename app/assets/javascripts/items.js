@@ -67,6 +67,16 @@ $(document).on('turbolinks:load', ()=> {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 
+  //ボタン関連作成中 画像がない時はボタンが無効に。画像がある時は有効にしようかなあ。
+  // 多分有効にする際のメソッドはファイルが変更された時に発火させないと駄目そう
+  $('#itembtn').on('mouseenter', function() {
+    if ($('.js-file').length == 1) {
+      $("#itembtn").attr("disabled", true);
+    }else{
+      $("#itembtn").attr('disabled', false);
+    }
+  });
+
 
   // こっから先はカテゴリーのフォームに関する記述
 
@@ -160,5 +170,5 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
-  
+
 });
