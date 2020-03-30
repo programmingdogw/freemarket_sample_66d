@@ -29,6 +29,4 @@
 # Ignore uploaded files in development
 public/uploads/*
 
-*.DS_Store
-*.jpeg
 
