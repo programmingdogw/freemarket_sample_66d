@@ -45,11 +45,23 @@
         %br/
         = f.text_area :description, class:"field__textarea", size:'20x10', placeholder: "1000文字まで"
 
-      .field
-        = f.label :カテゴリー, class:"field__formlabel"
-        %span.field__formspan 必須
-        %br/
-        = f.text_field :category_id, class:"field__forminput"
+      -# 作成中
+      -# .field
+      -#   = f.label :カテゴリー, class:"field__formlabel"
+      -#   %span.field__formspan 必須
+      -#   %br/
+      -#   = f.text_field :category_id, class:"field__forminput"
+      -#   %i.fas.fa-chevron-down
+      -#   %i.fas.fa-truck
+      .listing-form-box
+        .listing-product-detail__category
+          = f.label 'カテゴリー', class: 'listing-default__label'
+          %span.listing-default--require 必須
+          .listing-select-wrapper
+            .listing-select-wrapper__box
+              = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+              %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+
 
       .field
         = f.label :ブランド, class:"field__formlabel"
@@ -104,7 +116,9 @@
         = f.hidden_field :user_id, :value => current_user.id
         = f.hidden_field :auction, :value => true
         = f.hidden_field :dealing, :value => false
-        = f.hidden_field :sold, :value => false 
+        = f.hidden_field :sold, :value => false
+      
+        
           
   
   
