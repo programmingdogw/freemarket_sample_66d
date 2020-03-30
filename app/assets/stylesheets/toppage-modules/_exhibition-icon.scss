@@ -1,0 +1,24 @@
+
+.exhibition-icon {
+  text-decoration: none;
+
+  &__btn {
+    background-color: $skyblue;
+    width: 120px;
+    padding: 15px;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    border-radius: 4%;
+    text-align: center;
+
+    &-text {
+      color: $white;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+    .camera-icon {
+      width: 60%;
+    }
+  }
+}
