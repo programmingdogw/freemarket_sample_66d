@@ -19,10 +19,10 @@
       .header__contents__bottom__right
         = link_to new_user_session_path, class: "header__contents__bottom__right--tag" do
           ログイン
-        -# = link_to destroy_user_session_path, class: "header__list" do
-        -#   ログアウト
-        -# まずは、見本の見た目と同様に実装。後ほど条件分岐でログアウトもできるようにする。
-        -# = link_to "サンプルページへ", sample_path, class: ""
-        -# ↑作業用のリンク。
+        = link_to destroy_user_session_path, class: "header__list" do
+          ログアウト
+        まずは、見本の見た目と同様に実装。後ほど条件分岐でログアウトもできるようにする。
+        = link_to "サンプルページへ", sample_path, class: ""
+        ↑作業用のリンク。
         = link_to new_user_registration_path, class: "header__contents__bottom__right--tag" do
           新規会員登録
