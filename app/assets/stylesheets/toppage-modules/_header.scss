@@ -50,7 +50,7 @@
         @include space-between;
 
         &--tag {
-          margin: 0px 30px 0px 0px;
+          margin-right: 30px;
           cursor: pointer;
         }
         &--tag:hover {
@@ -62,7 +62,7 @@
         @include space-between;
 
         &--tag {
-          margin: 0px 0px 0px 16px;
+          margin-left: 16px;
           text-decoration: none;
           color: $black;
         }
