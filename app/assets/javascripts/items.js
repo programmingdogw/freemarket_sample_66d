@@ -67,14 +67,18 @@ $(document).on('turbolinks:load', ()=> {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 
-  //ボタン関連作成中 画像がない時はボタンが無効に。画像がある時は有効にしようかなあ。
-  // 多分有効にする際のメソッドはファイルが変更された時に発火させないと駄目そう
+  //画像がない時はボタンが無効に。画像がある時は有効に.
   $('#itembtn').on('mouseenter', function() {
     if ($('.js-file').length == 1) {
       $("#itembtn").attr("disabled", true);
     }else{
       $("#itembtn").attr('disabled', false);
     }
+  });
+  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、画像ファイルに変化があれば発火してボタン有効化してる
+  // 上の記述も一応残しておくが、基本的に有効化はこっちが発火してる
+  $('#image-box').on('change', '.js-file', function(e) {
+    $("#itembtn").attr('disabled', false);
   });
 
 
