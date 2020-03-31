@@ -75,7 +75,7 @@
         = f.label :商品の状態, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.collection_select :condition_id, Condition.all, :id, :name
+        = f.collection_select :condition_id, Condition.all, :id, :name, {:include_blank => true}
 
       .field
         = f.label :商品のサイズ, class:"field__formlabel"
