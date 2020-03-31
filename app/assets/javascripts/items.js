@@ -67,6 +67,20 @@ $(document).on('turbolinks:load', ()=> {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 
+  //画像がない時はボタンが無効に。画像がある時は有効に.
+  $('#itembtn').on('mouseenter', function() {
+    if ($('.js-file').length == 1) {
+      $("#itembtn").attr("disabled", true);
+    }else{
+      $("#itembtn").attr('disabled', false);
+    }
+  });
+  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、画像ファイルに変化があれば発火してボタン有効化してる
+  // 上の記述も一応残しておくが、基本的に有効化はこっちが発火してる
+  $('#image-box').on('change', '.js-file', function(e) {
+    $("#itembtn").attr('disabled', false);
+  });
+
 
   // こっから先はカテゴリーのフォームに関する記述
 
@@ -116,8 +130,6 @@ $(document).on('turbolinks:load', ()=> {
       .done(function(children){
         $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
         $('#grandchildren_wrapper').remove();
-        $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -130,8 +142,6 @@ $(document).on('turbolinks:load', ()=> {
     }else{
       $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
   // 子カテゴリー選択後のイベント
@@ -147,8 +157,6 @@ $(document).on('turbolinks:load', ()=> {
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -166,5 +174,5 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
-  
+
 });

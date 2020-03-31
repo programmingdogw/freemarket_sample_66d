@@ -30,9 +30,14 @@
       text-align: center;
       width: 80%;
       padding-bottom:50px ;
+
+      // フラッシュメッセージ部分
+      .flashbox{
+        font-size: large;
+        color: red;
+      }
       
-
-
+      // フォーム部分
       .field{
         width: 100%;
         padding-top:30px ;
@@ -69,6 +74,14 @@
 
       }
       .nextbtn{
+        margin-top: 30px;
+        background-color: skyblue;
+        color: white;
+        width:130px;
+        height: 50px;
+        border-radius: 10px;
+      }
+      #itembtn{
         margin-top: 30px;
         background-color: skyblue;
         color: white;
