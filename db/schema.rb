@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.bigint "category_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
-    t.string "condition", null: false
+    t.integer "condition_id", null: false
     t.text "description", null: false
     t.string "size", null: false
     t.text "delivery_way", null: false
