@@ -34,7 +34,6 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def create
     @item = Item.new(item_params)
-    binding.pry
     if @item.save
       redirect_to root_path
     else
@@ -63,7 +62,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   private
   def item_params
-    params.require(:item).permit(:user_id, :address_id, :category_id, :parentcategory, :childcategory, :name, :price, :condition_id, :description, :size, :delivery_cost, :delivery_way, :delivery_from, :delivery_time, :brand, :auction, :dealing, :sold, images_attributes: [:image])
+    params.require(:item).permit(:user_id, :address_id, :brand_id, :category_id, :parentcategory, :childcategory, :name, :price, :condition, :description, :size, :delivery_cost, :delivery_way, :delivery_from, :delivery_time, :brand, :auction, :dealing, :sold, images_attributes: [:image])
   end
 
   def set_item
