@@ -34,7 +34,6 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def create
     @item = Item.new(item_params)
-    binding.pry
     if @item.save
       redirect_to root_path
     else
