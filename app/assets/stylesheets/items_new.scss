@@ -30,9 +30,14 @@
       text-align: center;
       width: 80%;
       padding-bottom:50px ;
+
+      // フラッシュメッセージ部分
+      .flashbox{
+        font-size: large;
+        color: red;
+      }
       
-
-
+      // フォーム部分
       .field{
         width: 100%;
         padding-top:30px ;
