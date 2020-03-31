@@ -14,11 +14,11 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :condition_id, presence: true
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :size, presence: true
-  validates :delivery_way, presence: true
-  validates :delivery_cost, presence: true
+  validates :size_id, presence: true
+  validates :deliveryway_id, presence: true
+  validates :deliverycost_id, presence: true
   validates :delivery_from, presence: true
-  validates :delivery_time, presence: true
+  validates :deliverytime_id, presence: true
 
 
 
@@ -36,6 +36,10 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :condition
+  belongs_to_active_hash :size
+  belongs_to_active_hash :deliveryway
+  belongs_to_active_hash :deliverycost
+  belongs_to_active_hash :deliverytime
 
 
 
