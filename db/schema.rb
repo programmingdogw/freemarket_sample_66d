@@ -80,13 +80,13 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.bigint "category_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
-    t.string "condition", null: false
+    t.integer "condition_id", null: false
     t.text "description", null: false
-    t.string "size", null: false
-    t.text "delivery_way", null: false
-    t.text "delivery_cost", null: false
+    t.integer "size_id", null: false
+    t.integer "deliveryway_id", null: false
+    t.integer "deliverycost_id", null: false
     t.integer "delivery_from", null: false
-    t.text "delivery_time", null: false
+    t.integer "deliverytime_id", null: false
     t.text "brand"
     t.boolean "auction"
     t.boolean "dealing"

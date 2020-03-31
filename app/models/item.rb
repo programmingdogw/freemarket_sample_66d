@@ -11,15 +11,14 @@ class Item < ApplicationRecord
 
 
   validates :name, presence: true, length: { maximum: 40 }
-  VALID_PRICE_REGEX = /\A[0-9０-９]{300, 9999999}+\z/
-  validates :price, presence: true, format: { with: VALID_PRICE_REGEX }
-  validates :condition, presence: true
+  validates :price, presence: true
+  validates :condition_id, presence: true
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :size, presence: true
-  validates :delivery_way, presence: true
-  validates :delivery_cost, presence: true
+  validates :size_id, presence: true
+  validates :deliveryway_id, presence: true
+  validates :deliverycost_id, presence: true
   validates :delivery_from, presence: true
-  validates :delivery_time, presence: true
+  validates :deliverytime_id, presence: true
 
 
 
@@ -33,5 +32,15 @@ class Item < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
+
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :size
+  belongs_to_active_hash :deliveryway
+  belongs_to_active_hash :deliverycost
+  belongs_to_active_hash :deliverytime
+
+
 
 end
