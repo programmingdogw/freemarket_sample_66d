@@ -100,7 +100,7 @@
         = f.select :delivery_time, ['1~2日で発送', '2~3日で発送', '4~7日で発送'], {include_blank: '選択してください'}
       
       .field
-        = f.label :販売価格, class:"field__formlabel"
+        = f.label :販売価格（￥３００〜９９９万９９９９）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         = f.number_field :price, class:"field__forminput"

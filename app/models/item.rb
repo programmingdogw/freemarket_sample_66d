@@ -11,7 +11,8 @@ class Item < ApplicationRecord
 
 
   validates :name, presence: true, length: { maximum: 40 }
-  validates :price, presence: true
+  VALID_PRICE_REGEX = /\A[0-9０-９]{300, 9999999}+\z/
+  validates :price, presence: true, format: { with: VALID_PRICE_REGEX }
   validates :condition, presence: true
   validates :description, presence: true, length: { maximum: 1000 }
   validates :size, presence: true
