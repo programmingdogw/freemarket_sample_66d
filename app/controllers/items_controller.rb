@@ -37,7 +37,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     if @item.save
       redirect_to root_path
     else
-      render :new
+      redirect_to new_item_path
     end
   end
 
