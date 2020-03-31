@@ -37,7 +37,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     if @item.save
       redirect_to root_path
     else
-      redirect_to new_item_path
+      redirect_to new_item_path, flash: {itemnotice:'入力されていない項目があります'}
     end
   end
 
