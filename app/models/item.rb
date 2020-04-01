@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_many :appropriations
   has_many :evaluations
 
-
+  validates :category_id, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :condition_id, presence: true
