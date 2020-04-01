@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.boolean "auction"
     t.boolean "dealing"
     t.boolean "sold"
-    t.text "parentcategory"
-    t.integer "childcategory"
+    t.text "parentcategory", null: false
+    t.integer "childcategory", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
