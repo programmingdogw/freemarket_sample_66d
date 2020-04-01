@@ -4,7 +4,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       #Add
       t.bigint :user_id,      null: false, foreign_key: true
       t.bigint :category_id,  null: false, foreign_key: true
-      # t.bigint :address_id,   null: false, foreign_key: true 必要か微妙。とりあえずコメントアウトしてる。多分削除する予定。
       t.string :name,          null: false
       t.integer :price,        null: false
       t.integer :condition_id,      null: false
