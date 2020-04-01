@@ -20,6 +20,9 @@ class Item < ApplicationRecord
   validates :delivery_from, presence: true
   validates :deliverytime_id, presence: true
 
+  validates :parentcategory, presence: true
+  validates :childcategory, presence: true
+
 
 
   enum delivery_from: {

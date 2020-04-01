@@ -18,8 +18,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.boolean :dealing
       t.boolean :sold
 
-      t.text :parentcategory   
-      t.integer :childcategory 
+      t.text :parentcategory,   null: false
+      t.integer :childcategory,   null: false
 
 
       t.timestamps
