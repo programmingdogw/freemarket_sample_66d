@@ -5,11 +5,19 @@
     %meta{:charset => "utf-8"}
     %title マイページ - フリマアプリ
   %body
-    %nav.bread-crumbs
-  %ul
-    %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
-      %a{:href => "https://www.mercari.com/jp/", :itemprop => "url"}
-        %span{:itemprop => "title"} メルカリ
-      %i.icon-arrow-right
-    %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
-      %span{:itemprop => "title"} マイページ
+    .content
+      %header.head
+
+      %main.container 
+        = render "mypage_side"
+        = render "mypage_main"
+        
+      %ul
+        %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+          %a{:href => "https://www.mercari.com/jp/", :itemprop => "url"}
+            %span{:itemprop => "title"} メルカリ
+          %i.icon-arrow-right
+        %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
+          %span{:itemprop => "title"} マイページ
+    
+  -# = render 'devise/registraions/footer'
