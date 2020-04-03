@@ -59,6 +59,7 @@
           width: 46%;
           height:43px;
           border-radius: 4%;
+          border: solid 2px lightgray;
           margin-top:5px ;
         }
         &__textarea{
@@ -66,11 +67,28 @@
           height:143px;
           margin-top:5px ;
         }
-        // オプションセレクト部分
-        &__formselect{
-          position: absolute;
-          left: 40%;
+
+        // セレクトフォーム部分
+        .decoratedselect{          
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          width: 46%;
+          height:43px;
+          margin-top: 5px;
+          border-radius: 4%;
+          background-color: white;
+          border: solid 2px lightgray;
+          background-image: url(./images/icon_arrow.svg);
+          background-repeat: no-repeat;
+          background-size: 12px 10px;
+          background-position: right 10px center;
         }
+        .decoratedchevron{
+          margin-left: -30px;
+        }
+        
+        
 
       }
       .nextbtn{

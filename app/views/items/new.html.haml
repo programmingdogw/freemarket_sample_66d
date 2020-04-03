@@ -47,7 +47,13 @@
         %br/
         = f.text_area :description, class:"field__textarea", size:'20x10', placeholder: "1000文字まで"
 
-      
+      .field
+        = f.label :ブランド, class:"field__formlabel"
+        %span.field__formspan 任意
+        %br/
+        = f.text_field :brand, class:"field__forminput", :placeholder => "例)シャネル"
+
+
       .listing-form-box
         .listing-product-detail__category
           = f.label 'カテゴリー', class: 'listing-default__label'
@@ -59,51 +65,45 @@
 
 
       .field
-        = f.label :ブランド, class:"field__formlabel"
-        %span.field__formspan 任意
+        = f.label :発送元の地域, class:"field__formlabel"
+        %span.field__formspan 必須
         %br/
-        = f.text_field :brand, class:"field__forminput", :placeholder => "例)シャネル"
+        = f.select :delivery_from, Item.delivery_froms.keys, prompt: '選択してください', class:"decoratedselect"
 
       .field
         = f.label :商品の状態, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.collection_select :condition_id, Condition.all, :id, :name, {:include_blank => true}
+        = f.collection_select :condition_id, Condition.all, :id, :name, {:include_blank => true}, class:"decoratedselect"
+        %i.fas.fa-chevron-down.decoratedchevron
 
       .field
         = f.label :商品のサイズ, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.collection_select :size_id, Size.all, :id, :name, {:include_blank => true}
-   
+        = f.collection_select :size_id, Size.all, :id, :name, {:include_blank => true}, class:"decoratedselect"
+        %i.fas.fa-chevron-down.decoratedchevron
 
       .field
         = f.label :配送料の負担, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.collection_select :deliverycost_id, Deliverycost.all, :id, :name, {:include_blank => true}
-   
+        = f.collection_select :deliverycost_id, Deliverycost.all, :id, :name, {:include_blank => true}, class:"decoratedselect"
+        %i.fas.fa-chevron-down.decoratedchevron
 
       .field
         = f.label :配送の方法, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.collection_select :deliveryway_id, Deliveryway.all, :id, :name, {:include_blank => true}
-   
-
-      .field
-        = f.label :発送元の地域, class:"field__formlabel"
-        %span.field__formspan 必須
-        %br/
-        .field__formprefecture
-          = f.select :delivery_from, Item.delivery_froms.keys, prompt: '選択してください'
+        = f.collection_select :deliveryway_id, Deliveryway.all, :id, :name, {:include_blank => true}, class:"decoratedselect"
+        %i.fas.fa-chevron-down.decoratedchevron
 
       .field
         = f.label :発送までの日数, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
-        = f.collection_select :deliverytime_id, Deliverytime.all, :id, :name, {:include_blank => true}
-   
+        = f.collection_select :deliverytime_id, Deliverytime.all, :id, :name, {:include_blank => true}, class:"decoratedselect"
+        %i.fas.fa-chevron-down.decoratedchevron
       
       .field
         = f.label :販売価格（￥３００〜￥９９９９９９９）, class:"field__formlabel"
