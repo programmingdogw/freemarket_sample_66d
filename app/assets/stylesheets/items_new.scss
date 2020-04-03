@@ -37,12 +37,26 @@
         color: red;
       }
       
+
+
       // フォーム部分
       .field{
         width: 100%;
         padding-top:30px ;
         position: relative;
         min-width: 768px;
+        #image-box{
+          background-color: red;
+          .previewlabel{
+            background-color: blue;
+            width:46%;
+            .js-file{
+              background-color: green;
+              z-index: 1;
+            }
+          }    
+        }
+        
         &__formlabel{
           position: absolute;
           left: 28%;

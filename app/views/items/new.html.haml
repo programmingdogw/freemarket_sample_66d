@@ -24,11 +24,13 @@
                 = image_tag images.image.url, data: { index: i }, width: "100", height: '100'
           = f.fields_for :images do |image|
             .js-file_group{"data-index" => "#{image.index}"}
+              %i.fas.fa-camera 画像１
               = image.file_field :image, class:"js-file"
               %br
               %span.js-remove 削除
               - if @item.persisted?
                 = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
           - if @item.persisted?
             .js-file_group{"data-index" => "#{@item.images.count}"}
               =file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class:'js-file'
@@ -61,6 +63,7 @@
           .listing-select-wrapper
             .listing-select-wrapper__box
               = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+              
  
 
 
