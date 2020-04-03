@@ -47,6 +47,11 @@
         min-width: 768px;
         #image-box{
           background-color: red;
+          #previews{
+            background-color: yellow;
+            width: 540px;
+            margin: auto;
+          }
           .previewlabel{
             background-color: blue;
             width:46%;
