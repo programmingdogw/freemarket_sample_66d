@@ -87,10 +87,32 @@
         .decoratedchevron{
           margin-left: -30px;
         }
-        
-        
-
       }
+
+      // カテゴリ部分
+      .listing-form-box{
+        width: 100%;
+        padding-top:30px ;
+        position: relative;
+        min-width: 768px;
+        .listing-default__label{
+          position: absolute;
+          left: 28%;
+        }
+        .listing-default--require{
+          color:red;
+          background-color:lightblue;
+          color: white;
+          position: absolute;
+          width: 40px;
+          right: 28%;
+          border-radius: 10%;
+        }
+      }
+      
+      
+
+      
       .nextbtn{
         margin-top: 30px;
         background-color: skyblue;

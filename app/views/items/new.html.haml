@@ -61,14 +61,15 @@
           .listing-select-wrapper
             .listing-select-wrapper__box
               = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-              %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+ 
 
 
       .field
         = f.label :発送元の地域, class:"field__formlabel"
+        = f.select :delivery_from, Item.delivery_froms.keys, prompt: '---', class:"decoratedselect"
         %span.field__formspan 必須
         %br/
-        = f.select :delivery_from, Item.delivery_froms.keys, prompt: '選択してください', class:"decoratedselect"
+        
 
       .field
         = f.label :商品の状態, class:"field__formlabel"
