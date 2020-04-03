@@ -23,3 +23,13 @@ Rails.application.config.assets.precompile += %w( experiment.scss )
 Rails.application.config.assets.precompile += %w( users.scss )
 
 Rails.application.config.assets.precompile += %w( items_new.scss )
+
+Rails.application.config.assets.precompile += %w( download-logo.scss )
+Rails.application.config.assets.precompile += %w( exhibition-icon.scss )
+Rails.application.config.assets.precompile += %w( footer.scss )
+Rails.application.config.assets.precompile += %w( header.scss )
+Rails.application.config.assets.precompile += %w( last-view.scss )
+Rails.application.config.assets.precompile += %w( pickup-bland.scss )
+Rails.application.config.assets.precompile += %w( pickup-category.scss )
+Rails.application.config.assets.precompile += %w( publicity.scss )
+Rails.application.config.assets.precompile += %w( second-view.scss )
