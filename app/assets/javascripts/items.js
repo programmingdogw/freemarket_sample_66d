@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', ()=> {
   const buildFileField = function(index){
     
     const html = `
-                  <label for ="item_images_attributes_${index}_image" class="previewlabel">
+                 
                   <div data-index="${index}" class="js-file_group">
                     <i class="fas fa-camera"></i>画像${index + 1}
                     <input class="js-file" type="file"
@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', ()=> {
                     id="item_images_attributes_${index}_image">
                     <strong class="js-remove">削除</strong>
                   </div>
-                  </label>                  
+                 
                   `;
     return html;
   };
@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', ()=> {
 
 
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11];
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
@@ -54,9 +54,7 @@ $(document).on('turbolinks:load', ()=> {
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       }
-      console.log($('strong').length)
-      $('strong').show();
-      $('strong:last').hide();
+     
 
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
