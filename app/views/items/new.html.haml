@@ -26,8 +26,7 @@
             .js-file_group{"data-index" => "#{image.index}"}
               %i.fas.fa-camera 画像１
               = image.file_field :image, class:"js-file"
-              %br
-              %span.js-remove 削除
+              %strong.js-remove 削除 
               - if @item.persisted?
                 = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 

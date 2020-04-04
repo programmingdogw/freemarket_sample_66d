@@ -2,13 +2,14 @@ $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
     
-    const html = `<label for ="item_images_attributes_${index}_image" class="previewlabel">
+    const html = `
+                  <label for ="item_images_attributes_${index}_image" class="previewlabel">
                   <div data-index="${index}" class="js-file_group">
                     <i class="fas fa-camera"></i>画像${index + 1}
                     <input class="js-file" type="file"
                     name="item[images_attributes][${index}][image]"
                     id="item_images_attributes_${index}_image"><br>
-                    <div class="js-remove">削除</div>
+                    <div class="js-remove"><strong>削除</strong></div>
                   </div>
                   </label>                  
                   `;
@@ -25,7 +26,7 @@ $(document).on('turbolinks:load', ()=> {
 
 
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11];
 
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
@@ -45,11 +46,17 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-
+      if($('img').length <= 11){
+        $('#previews').append(buildImg(targetIndex, blobUrl));
+        }
       // fileIndexの先頭の数字を使ってinputを作る
+      if($('img').length <= 11){
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
+      }
+      console.log($('strong').length)
+      $('strong').show();
+      $('strong:last').hide();
 
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
