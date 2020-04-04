@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', ()=> {
 
 
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11,12];
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11];
 
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
@@ -46,13 +46,17 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
+      if($('img').length <= 11){
         $('#previews').append(buildImg(targetIndex, blobUrl));
+        }
       // fileIndexの先頭の数字を使ってinputを作る
+      if($('img').length <= 11){
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
-      // console.log($('img').length)
-      // $('strong').show();
-      // $('strong:last').hide();
+      }
+      console.log($('strong').length)
+      $('strong').show();
+      $('strong:last').hide();
 
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
