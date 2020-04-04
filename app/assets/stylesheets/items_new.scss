@@ -37,12 +37,32 @@
         color: red;
       }
       
+
+
       // フォーム部分
       .field{
         width: 100%;
         padding-top:30px ;
         position: relative;
         min-width: 768px;
+        #image-box{
+          #previews{
+            background-color: rgb(250, 243, 243);
+            width: 540px;
+            margin: auto;
+          }
+          .js-file_group{
+            width: 46%;
+            height:25px;
+            border-radius: 2%;
+            border: solid 1px lightgray;
+            background-color: rgb(220, 240, 253);
+            margin: auto;
+            margin-top:4px ;
+          }
+    
+        }
+        
         &__formlabel{
           position: absolute;
           left: 28%;

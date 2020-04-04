@@ -1,25 +1,32 @@
 $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
-    const html = `<div data-index="${index}" class="js-file_group">
+    
+    const html = `
+                  <label for ="item_images_attributes_${index}_image" class="previewlabel">
+                  <div data-index="${index}" class="js-file_group">
+                    <i class="fas fa-camera"></i>画像${index + 1}
                     <input class="js-file" type="file"
                     name="item[images_attributes][${index}][image]"
-                    id="item_images_attributes_${index}_image"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
+                    id="item_images_attributes_${index}_image">
+                    <strong class="js-remove">削除</strong>
+                  </div>
+                  </label>                  
+                  `;
     return html;
   };
 
   // プレビュー用の画像をビルド
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `
+    <img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   };
 
 
 
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10,11];
 
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
@@ -39,11 +46,17 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-
+      if($('img').length <= 11){
+        $('#previews').append(buildImg(targetIndex, blobUrl));
+        }
       // fileIndexの先頭の数字を使ってinputを作る
+      if($('img').length <= 11){
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
+      }
+      console.log($('strong').length)
+      $('strong').show();
+      $('strong:last').hide();
 
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
@@ -97,8 +110,7 @@ $(document).on('turbolinks:load', ()=> {
                           <select class="listing-select-wrapper__box--select" id="child_category" name="item[childcategory]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
-                          <select>
-                          <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                          <select>                         
                         </div>
                       </div>`;
     $('.listing-product-detail__category').append(childSelectHtml);
@@ -111,8 +123,7 @@ $(document).on('turbolinks:load', ()=> {
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
-                                </select>
-                                <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                                </select>                               
                               </div>
                             </div>`;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
