@@ -1,0 +1,33 @@
+
+= render "header"
+
+.details
+  .details__contents
+    .details__contents__upper
+      .details__contents__upper__
+
+
+
+
+
+
+    .details__contents__middle
+      %input{type: "textarea", class: "details__contents__middle__textarea"}
+      .details__contents__middle__text
+        相手のことを考え丁寧なコメントを心がけましょう。
+        %br
+        不快な言葉遣いなどは利用制限や退会処分とあることがあります。
+      %button{type: "submit", class: "details__contents__middle__btn"}
+        コメントする
+
+    .details__contents__lower
+      .details__contents__lower__nextItem
+        = link_to details_path, class: "details__contents__lower__nextItem__link" do
+          < 前の商品
+        = link_to details_path, class: "details__contents__lower__nextItem__link" do
+          後ろの商品 >
+      = link_to details_path, class: "details__contents__lower__moreSearch" do
+        メンズをもっと見る
+
+= render "last-view"
+= render "footer"
