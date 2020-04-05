@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', ()=> {
   const buildFileField = function(index){
     
     const html = `
-                 
+                  
                   <div data-index="${index}" class="js-file_group">
                     <i class="fas fa-camera"></i>画像${index + 1}
                     <input class="js-file" type="file"
@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', ()=> {
                     id="item_images_attributes_${index}_image">
                     <strong class="js-remove">削除</strong>
                   </div>
-                 
+                  
                   `;
     return html;
   };
@@ -54,7 +54,9 @@ $(document).on('turbolinks:load', ()=> {
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
       }
-     
+      console.log($('strong').length)
+      $('strong').show();
+      $('strong:last').hide();
 
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
