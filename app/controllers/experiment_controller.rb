@@ -1,6 +1,7 @@
 class ExperimentController < ApplicationController
   def index
     @user = current_user
+    
     @pickupitems = Item.includes(:images).last(3)
     @item1 = @pickupitems[0]
     @item2 = @pickupitems[1] 
