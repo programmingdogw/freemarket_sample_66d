@@ -1,0 +1,17 @@
+商品詳細ページ
+%br
+%p 商品の情報は@itemに入ってるので.カラム名で取得してください
+%p 追加で欲しい値とか変更して欲しいことあったら言ってください
+
+%p 例
+%p id
+= @item.id
+%p 商品名
+= @item.name
+%p 価格
+= @item.price
+
+%p 画像一覧
+- @item.images.each do |images|
+  = image_tag images.image.url 
+ 

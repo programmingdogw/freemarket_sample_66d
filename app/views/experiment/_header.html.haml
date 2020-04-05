@@ -20,6 +20,8 @@
         - if user_signed_in?
           = link_to destroy_user_session_path, class: "header__contents__bottom__right--tag" do
             ログアウト
+          = link_to user_path(@user), class: "header__contents__bottom__right--tag" do
+            マイページへ
           = link_to sample_path, class: "header__contents__bottom__right--tag" do
             サンプルページへ
             -# ↑作業用のページ。
