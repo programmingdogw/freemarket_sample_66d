@@ -2,7 +2,7 @@
 .details {
   background-color: $light-gray;
   width: 100%;
-  height: 150vh;
+  height: 200vh;
 
   &__contents {
     background-color: $white;
@@ -10,10 +10,81 @@
     height: 120vh;
     margin: 0 auto;
 
+    &__upper {
+      background-color: $white;
+      padding: 24px 40px 40px;
+      &__Table {
+        width: 100%;
+        height: 375px;
+        border-collapse: collapse;
+        border: 1px solid $heavy-gray;
+        display: table;
+        margin-bottom: 20px;
+        &__Tr {
+          display: table-row-group;
+
+          th {
+            background-color: #eee;
+            border: 1px solid $heavy-gray;
+            width: 20%;
+            font-size: 15px;
+            text-align: center;
+            padding: 8px;
+            display: table-row;
+          }
+
+          td {
+            background-color: $white;
+            border: 1px solid $heavy-gray;
+            width: 80%;
+            font-size: 15px;
+            padding: 15px 15px;
+          }
+        }
+        &__link {
+          text-decoration: none;
+          color: $skyblue;
+        }
+      }
+
+      &__Button {
+        @include space-between;
+        margin: 20px;
+
+        &__Love {
+          color: $skyblue;
+          border: 1px solid burlywood;
+          line-height: 35px;
+          font-size: 16px;
+          border-radius: 100px;
+        }
+        &__Love:hover {
+          opacity: 0.5;
+        }
+        &__Love:focus {
+          outline: none;
+        }
+        &__Report {
+          color: $black;
+          border: 1px solid $black;
+          font-size: 14px;
+          border-radius: 5px;
+          padding: 12px;
+          text-decoration: none;
+        }
+        &__Report:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+
     &__middle {
       text-align: center;
+      padding: 20px;
+      margin: 10px 0px;
+      
       &__textarea {
-        width: 100%;
+        width: 90%;
         height: 100px;
         border: 1px solid $black;
         padding: 10px;
@@ -35,6 +106,9 @@
       }
       &__btn:focus {
         outline: none;
+      }
+      &__btn:hover {
+        opacity: 0.5;
       }
 
     }

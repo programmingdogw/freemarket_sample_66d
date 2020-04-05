@@ -1,18 +1,25 @@
 $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
-    const html = `<div data-index="${index}" class="js-file_group">
+    
+    const html = `
+                  
+                  <div data-index="${index}" class="js-file_group">
+                    <i class="fas fa-camera"></i>画像${index + 1}
                     <input class="js-file" type="file"
                     name="item[images_attributes][${index}][image]"
-                    id="item_images_attributes_${index}_image"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
+                    id="item_images_attributes_${index}_image">
+                    <strong class="js-remove">削除</strong>
+                  </div>
+                  
+                  `;
     return html;
   };
 
   // プレビュー用の画像をビルド
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `
+    <img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   };
 
@@ -39,11 +46,17 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-
+      if($('img').length <= 11){
+        $('#previews').append(buildImg(targetIndex, blobUrl));
+        }
       // fileIndexの先頭の数字を使ってinputを作る
+      if($('img').length <= 11){
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
+      }
+      console.log($('strong').length)
+      $('strong').show();
+      $('strong:last').hide();
 
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
@@ -67,6 +80,20 @@ $(document).on('turbolinks:load', ()=> {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 
+  //画像がない時はボタンが無効に。画像がある時は有効に.
+  $('#itembtn').on('mouseenter', function() {
+    if ($('.js-file').length == 1) {
+      $("#itembtn").attr("disabled", true);
+    }else{
+      $("#itembtn").attr('disabled', false);
+    }
+  });
+  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、画像ファイルに変化があれば発火してボタン有効化してる
+  // 上の記述も一応残しておくが、基本的に有効化はこっちが発火してる
+  $('#image-box').on('change', '.js-file', function(e) {
+    $("#itembtn").attr('disabled', false);
+  });
+
 
   // こっから先はカテゴリーのフォームに関する記述
 
@@ -83,8 +110,7 @@ $(document).on('turbolinks:load', ()=> {
                           <select class="listing-select-wrapper__box--select" id="child_category" name="item[childcategory]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
-                          <select>
-                          <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                          <select>                         
                         </div>
                       </div>`;
     $('.listing-product-detail__category').append(childSelectHtml);
@@ -97,8 +123,7 @@ $(document).on('turbolinks:load', ()=> {
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
-                                </select>
-                                <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                                </select>                               
                               </div>
                             </div>`;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
@@ -116,8 +141,6 @@ $(document).on('turbolinks:load', ()=> {
       .done(function(children){
         $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
         $('#grandchildren_wrapper').remove();
-        $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -130,8 +153,6 @@ $(document).on('turbolinks:load', ()=> {
     }else{
       $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
   // 子カテゴリー選択後のイベント
@@ -147,8 +168,6 @@ $(document).on('turbolinks:load', ()=> {
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -166,5 +185,5 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
-  
+
 });
