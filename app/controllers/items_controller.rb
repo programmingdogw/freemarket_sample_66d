@@ -42,6 +42,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -68,6 +69,5 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
   def set_item
     @item = Item.find(params[:id])
   end
-  
 
 end
