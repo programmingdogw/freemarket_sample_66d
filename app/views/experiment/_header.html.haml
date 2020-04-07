@@ -13,7 +13,14 @@
       .header__contents__bottom__left
         .header__contents__bottom__left--tag
           カテゴリー
-        -# まずは、見本の見た目と同様に実装。後ほど非同期にてリストを追加する。
+          -# リンク一覧を表示する部分開発中
+          .categoryparentlist
+            - @category_parent_array.each do |parent|
+              =parent
+              %br
+          
+
+          
         .header__contents__bottom__left--tag
           ブランド
       .header__contents__bottom__right
@@ -30,3 +37,6 @@
             ログイン
           = link_to new_user_registration_path, class: "header__contents__bottom__right--tag" do
             新規会員登録
+
+    
+    

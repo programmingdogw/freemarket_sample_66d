@@ -59,11 +59,10 @@
         .listing-product-detail__category
           = f.label 'カテゴリー', class: 'listing-default__label'
           %span.listing-default--require 必須
-          .listing-select-wrapper
-            .listing-select-wrapper__box
-              = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          .listing-select-wrapper            
+            = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
               
- 
+  
 
 
       .field

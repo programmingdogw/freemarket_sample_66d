@@ -7,8 +7,10 @@ class ExperimentController < ApplicationController
     @item2 = @pickupitems[1] 
     @item3 = @pickupitems[2]
 
-     #リンクボックスの初期値設定
-     @category_parent_array = ["---"]
+    #  不要と判断削除予定#リンクボックスの初期値設定
+    #  @category_parent_array = ["---"]
+    @category_parent_array = []
+
      #データベースから、親カテゴリーのみ抽出し、配列化
      Category.where(ancestry: nil).each do |parent|
        @category_parent_array << parent.name

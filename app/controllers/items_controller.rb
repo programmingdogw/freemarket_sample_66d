@@ -43,6 +43,8 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def show
     @item = Item.find(params[:id])
+    @child = Category.find(@item.childcategory)
+    @grandchild = Category.find(@item.category_id)
   end
 
   def edit
