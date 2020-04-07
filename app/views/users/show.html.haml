@@ -103,8 +103,52 @@
                   ログアウト
                   %i.fas.fa-chevron-right
 
-                = render "mypage_main"
-        
+                -# = render "mypage_main"
+        .container-mypage
+          .mypage__user-icon
+            %a{:href => ""}
+              %figure
+                -# %img{:alt => "", :src => "assets/images/icon_camera.png", :width => "60"}/
+              %h2.mypage__user-name ユーザーネーム
+              .user-namber
+                %div
+                  評価
+                  %span.bold 0
+                %div
+                  出品数
+                  %span.bold 0
+
+          %section.mypage-tab-container-notification-todo
+            %ul.mypage-tabs
+              %li.list
+                %h3
+                  %a{"data-toggle" => "tab", :href => ""}
+                    お知らせ
+                    %span.mypage-nav-number.hidden-large
+                      
+              %li.list
+                %h3
+                  %a{"data-toggle" => "tab", :href => ""}
+                    やることリスト
+
+          %section.mypage-tab-container
+            %h2.mypage-tab-head 購入した商品
+            %ul.mypage-tabs
+              %li.active
+                %h3
+                  %a{"data-toggle" => "tab", :href => ""}
+                    取引中
+              %li
+                %h3
+                  %a{"data-toggle" => "tab", :href => ""}
+                    過去の取引
+            .tab-content
+              %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
+                %li.mypage-item-not-found.bold 取引中の商品がありません
+              %ul#mypage-tab-transaction-old.mypage-item-list.tab-pane
+                %li.mypage-item-not-found.bold 過去に取引した商品がありません
+
+
       %ul
         %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
           %a{:href => "https://www.mercari.com/jp/", :itemprop => "url"}
@@ -113,4 +157,4 @@
         %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
           %span{:itemprop => "title"} マイページ
     
-= render 'views/devise/registraions/footer'
+-# = render 'views/devise/registraions/footer'
