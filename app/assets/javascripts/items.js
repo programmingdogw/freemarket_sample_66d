@@ -172,12 +172,10 @@ $(document).on('turbolinks:load', ()=> {
         }
       })
       .fail(function(){
-        alert('カテゴリー取得に失敗しましただわん');
+        alert('カテゴリー取得に失敗しました');
       })
     }else{
       $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
 
