@@ -10,6 +10,14 @@
 = @item.name
 %p 価格
 = @item.price
+%p 親カテゴリ
+= @item.parentcategory
+%p 子カテゴリ
+= @child.name
+%p 孫カテゴリ
+= @grandchild.name
+
+
 
 %p 画像一覧
 - @item.images.each do |images|
