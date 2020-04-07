@@ -22,9 +22,10 @@ h3{
   // justify-content: space-between;
   .container-mypage{
     width: 700px;
-    &__user-icon{
+    .mypage__user{
       height: 200px;
       width: 700px;
+      text-align: center;
       background-color: rgb(85, 88, 88);
       color: currentColor;
       float: right;

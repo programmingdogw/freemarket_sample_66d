@@ -14,7 +14,7 @@
           %nav.mypage-nav
             %ul.mypage-nav-list
               %li
-                = link_to "", class:"mypage-nav-list__item__mypage" do
+                = link_to "user_path(@user)", class:"mypage-nav-list__item__mypage" do
                   マイページ
                   %i.fas.fa-chevron-right
               %li
@@ -105,11 +105,11 @@
 
                 -# = render "mypage_main"
         .container-mypage
-          .mypage__user-icon
+          .mypage__user
             %a{:href => ""}
               %figure
                 -# %img{:alt => "", :src => "assets/images/icon_camera.png", :width => "60"}/
-              %h2.mypage__user-name ユーザーネーム
+              %h2.mypage__user-name @user = nickname
               .user-namber
                 %div
                   評価
