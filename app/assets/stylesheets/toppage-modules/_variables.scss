@@ -70,3 +70,9 @@ $heavy-gray: #dedede;
   text-align: left;
   flex-direction: column;
 }
+
+@mixin table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 15px 15px;
+}

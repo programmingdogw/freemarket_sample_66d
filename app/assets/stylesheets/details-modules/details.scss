@@ -1,49 +1,94 @@
 
 .details {
   background-color: $light-gray;
-  width: 100%;
-  height: 200vh;
+  padding: 40px;
 
   &__contents {
-    background-color: $white;
-    width: calc( 100% / 2 );
-    height: 120vh;
+    width: 65%;
     margin: 0 auto;
 
     &__upper {
       background-color: $white;
       padding: 24px 40px 40px;
+      margin-bottom: 10px;
+
+      &__ItemName {
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        margin: 16px 0px;
+      }
+
+      &__ItemImageBox {
+        &__main {
+          &__image {
+            height: 350px;
+            width: 100%;
+          }
+        }
+        &__sub {
+          &__list {
+            display: flex;
+            justify-content: start;
+          }
+        }
+      }
+
+      &__ItemPrice {
+        margin: 24px 0px;
+        text-align: center;
+
+        h2 {
+          font-size: 46px;
+          font-weight: bold;
+        }
+        span {
+          font-size: 16px;
+        }
+      }
+
+      &__ItemExplanation {
+        line-height: 1.5;
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
       &__Table {
+        display: table;
         width: 100%;
         height: 375px;
         border-collapse: collapse;
         border: 1px solid $heavy-gray;
-        display: table;
         margin-bottom: 20px;
-        &__Tr {
+
+        &__Box {
           display: table-row-group;
 
-          th {
+          &--Row {
+            display: table-row;
             background-color: #eee;
             border: 1px solid $heavy-gray;
-            width: 20%;
-            font-size: 15px;
+            font-size: 12px;
             text-align: center;
-            padding: 8px;
-            display: table-row;
-          }
 
-          td {
-            background-color: $white;
-            border: 1px solid $heavy-gray;
-            width: 80%;
-            font-size: 15px;
-            padding: 15px 15px;
+
+            &--Cell--left {
+              @include table-cell;
+              width: 20%;
+            }
+
+            &--Cell {
+              @include table-cell;
+              text-align: left;
+              background-color: $white;
+              border: 1px solid $heavy-gray;
+
+              &__link {
+                text-decoration: none;
+                color: $skyblue;
+              }
+            }
           }
-        }
-        &__link {
-          text-decoration: none;
-          color: $skyblue;
         }
       }
 
@@ -79,15 +124,20 @@
     }
 
     &__middle {
+      background-color: $white;
       text-align: center;
       padding: 20px;
-      margin: 10px 0px;
+      margin: 0 auto;
       
       &__textarea {
-        width: 90%;
-        height: 100px;
-        border: 1px solid $black;
-        padding: 10px;
+        // height: 100px;
+
+        &--input {
+          width: 95%;
+          height: 100px;
+          border: 1px solid $black;
+          padding: 10px;
+        }
       }
       &__text {
         background-color: $light-gray;
@@ -115,6 +165,7 @@
 
     &__lower {
       background-color: $light-gray;
+      margin-top: 10px;
 
       &__nextItem {
         @include space-between;

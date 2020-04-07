@@ -4,9 +4,7 @@
   = link_to "#", class: "pickup__contents__link" do
     新規投稿商品
   .pickup__contents__list
-<<<<<<< HEAD
-    = link_to details_path, class: "pickup__contents__list__product" do
-=======
+    -# = link_to details_path, class: "pickup__contents__list__product" do
 
     -# 最新の投稿三つの画像、名前、値段、詳細へのリンク
     -# = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません'
@@ -24,12 +22,8 @@
 
     -# カテゴリのリンク
     -# フォームのロジックを元に作る予定。
-    
-    
-    
 
-    = link_to "#", class: "pickup__contents__list__product" do
->>>>>>> 342d0f288e2f9808ce44053e22f9fa08d0e770af
+    = link_to details_path, class: "pickup__contents__list__product" do
       .pickup__contents__list__product__image
         = image_tag 'pict/観葉植物.jpeg', class: 'product-image'
       .pickup__contents__list__product__details
