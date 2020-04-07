@@ -43,6 +43,11 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def show
     @item = Item.find(params[:id])
+    @user = User.find(@item.user_id)
+    @size = Size.find(@item.size_id)
+    @condition = Condition.find(@item.condition_id)
+    @deliverycost = Deliverycost.find(@item.deliverycost_id)
+    @deliverytime = Deliverytime.find(@item.deliverytime_id)
     @child = Category.find(@item.childcategory)
     @grandchild = Category.find(@item.category_id)
   end
