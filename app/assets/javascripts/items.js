@@ -103,28 +103,24 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
   // 子カテゴリーの表示作成
-  function appendChidrenBox(insertHTML){
+  function appendChildrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
-                        <div class='listing-select-wrapper__box'>
+    childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>                        
                           <select class="listing-select-wrapper__box--select" id="child_category" name="item[childcategory]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
-                          <select>                         
-                        </div>
+                          <select>                                                 
                       </div>`;
     $('.listing-product-detail__category').append(childSelectHtml);
   }
-  // 孫カテゴリーの表示作成
+  // 孫カテゴリーの表示作成 
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
-                              <div class='listing-select-wrapper__box'>
+    grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>                            
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
-                                </select>                               
-                              </div>
+                                </select>                                                           
                             </div>`;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
   }
@@ -139,19 +135,19 @@ $(document).on('turbolinks:load', ()=> {
         dataType: 'json'
       })
       .done(function(children){
-        $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
+        $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
         $('#grandchildren_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
         });
-        appendChidrenBox(insertHTML);
+        appendChildrenBox(insertHTML);
       })
       .fail(function(){
-        alert('カテゴリー取得に失敗しましたよん');
+        alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
+      $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
       $('#grandchildren_wrapper').remove();
     }
   });
@@ -167,7 +163,7 @@ $(document).on('turbolinks:load', ()=> {
       })
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
-          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
