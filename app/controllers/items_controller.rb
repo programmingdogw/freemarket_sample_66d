@@ -53,6 +53,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update

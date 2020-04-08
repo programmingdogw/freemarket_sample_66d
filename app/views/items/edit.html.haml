@@ -12,7 +12,7 @@
     .flashbox
       = flash[:itemnotice]  
     %h1.mainh1 商品登録ページ
-    = form_for(@item, url: items_path) do |f|
+    = form_for(@item, url: item_path) do |f|
 
       .field
         = f.label :商品名, class:"field__formlabel"
