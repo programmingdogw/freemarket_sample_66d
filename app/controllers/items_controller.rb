@@ -7,6 +7,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     @items = Item.includes(:images).order('created_at DESC')
   end
 
+
   def new
     @item = Item.new
     @image = @item.images.new
@@ -17,20 +18,9 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
-
-    # 親カテゴリーが選択された後に動くアクション
-    def get_category_children
-      #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-      @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-    end
-
-    # 子カテゴリーが選択された後に動くアクション
-    def get_category_grandchildren
-      #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-      @category_grandchildren = Category.find("#{params[:child_id]}").children
-    end
-          
+      
   end
+
 
   def create
     @item = Item.new(item_params)
@@ -40,6 +30,10 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
       redirect_to new_item_path, flash: {itemnotice:'入力されていないか無効な項目があります'}
     end
   end
+
+
+
+
 
   def show
     @item = Item.find(params[:id])
@@ -52,6 +46,10 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     @grandchild = Category.find(@item.category_id)
   end
 
+
+
+
+
   def edit
     @item = Item.find(params[:id])
      #セレクトボックスの初期値設定
@@ -60,21 +58,15 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
      Category.where(ancestry: nil).each do |parent|
        @category_parent_array << parent.name
      end
- 
-     # 親カテゴリーが選択された後に動くアクション
-     def get_category_children
-       #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-       @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-     end
- 
-     # 子カテゴリーが選択された後に動くアクション
-     def get_category_grandchildren
-       #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-       @category_grandchildren = Category.find("#{params[:child_id]}").children
-     end
 
+    #  実験中の記述
+    @editpage_category_children = Category.find_by(name:@item.parentcategory, ancestry:nil).children
+    
 
   end
+
+
+
 
   def update
     if @item.update(item_params)
@@ -83,6 +75,10 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
       render :edit
     end
   end
+
+
+
+
 
   def destroy
     user = User.find(@item.user_id)
@@ -97,6 +93,21 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     end
   end
 
+
+
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+  
   private
   def item_params
     params.require(:item).permit(:user_id, :address_id, :category_id, :parentcategory, :childcategory, :name, :price, :condition_id, :description, :size_id, :deliverycost_id, :deliveryway_id, :delivery_from, :deliverytime_id, :brand, :auction, :dealing, :sold, images_attributes: [:image])
