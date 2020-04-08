@@ -4,9 +4,10 @@
   %head
     %meta{:charset => "utf-8"}
     %title マイページ - フリマアプリ
+  = render partial:"experiment/header"
   %body
+    
     .content
-      %header.head
 
       %main.container 
         -# = render "mypage_side"
@@ -157,4 +158,4 @@
         %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
           %span{:itemprop => "title"} マイページ
     
--# = render 'views/devise/registraions/footer'
+    = render partial:'experiment/footer'
