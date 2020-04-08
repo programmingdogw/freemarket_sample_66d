@@ -1,4 +1,4 @@
-商品編集ページ
+
 = stylesheet_link_tag 'items_edit'
 
 .pagecontainer
@@ -11,7 +11,7 @@
   %main.pagecontainer__main
     .flashbox
       = flash[:itemnotice]  
-    %h1.mainh1 商品登録ページ
+    %h1.mainh1 商品編集ページ 
     = form_for(@item, url: item_path) do |f|
 
       -# .field
