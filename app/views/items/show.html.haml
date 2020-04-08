@@ -18,16 +18,21 @@
 = @grandchild.name
 
 -# ログインユーザーのものかで表示切り替え。マークアップ時はどの程度ページを差し替えるかによるけどパーシャルファイルを変えてレンダーした方がいいかもしれませんよ。
-- if @user == current_user
-  %p 編集リンクが表示される
-  = link_to '商品編集ページへ', edit_item_path(@item)
-  %p 削除リンクが表示される
-  = link_to '削除', item_path(@item), method: :delete
-- elsif @user != current_user
+- if user_signed_in?
+  - if @user == current_user
+    %p 編集リンクが表示される
+    = link_to '商品編集ページへ', edit_item_path(@item)
+    %p 削除リンクが表示される
+    = link_to '削除', item_path(@item), method: :delete
+  - elsif @user != current_user
+    %p 購入リンクが表示される
+    = link_to '商品購入へ(購入機能はまだ作ってないのでpathは仮置き)', '#'
+  - else
+    %p これが表示されることはないはず
+- else
   %p 購入リンクが表示される
   = link_to '商品購入へ(購入機能はまだ作ってないのでpathは仮置き)', '#'
-- else
-  %p これが表示されることはないはず
+
 
 
 
@@ -36,8 +41,7 @@
 - @item.images.each do |images|
   = image_tag images.image.url 
 
-= @user.id
-= current_user.id
+
 
 
 -# 以下は例の部分で表示しなかったけどコードレビュー用に見本サイトにあった項目を表示してある物です。マークアップ担当者はこのあたり使いながらマークアップして見てください。

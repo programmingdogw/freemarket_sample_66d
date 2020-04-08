@@ -64,8 +64,13 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
   end
 
   def destroy
-    @item.destroy
-    redirect_to root_path
+    user = User.find(@item.user_id)
+    if user == current_user
+      @item.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
