@@ -56,12 +56,14 @@
         = f.text_field :brand, class:"field__forminput", :placeholder => "例)シャネル"
 
 
-      -# .listing-form-box
-      -#   .listing-product-detail__category
-      -#     = f.label 'カテゴリー', class: 'listing-default__label'
-      -#     %span.listing-default--require 必須
-      -#     .listing-select-wrapper            
-      -#       = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+      .listing-form-box
+        .listing-product-detail__category
+          = f.label 'カテゴリー', class: 'listing-default__label'
+          %span.listing-default--require 必須
+          .listing-select-wrapper            
+            = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          -# とりあえず親のセレクトは登録された値入りで表示されることは確認したので、フォームのロジックはそのままにしてフィールドを最初から表示しとくか
+          -# jsで組み立ててあるセレクトのフィールドを最初から表示させときゃ何とかなるか？
       
       .field
         = f.label :発送元の地域, class:"field__formlabel"
