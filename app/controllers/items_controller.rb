@@ -66,8 +66,11 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
   def destroy
     user = User.find(@item.user_id)
     if user == current_user
-      @item.destroy
-      redirect_to root_path
+      if @item.destroy
+        redirect_to root_path
+      else
+        redirect_to item_path(@item)
+      end
     else
       redirect_to root_path
     end
