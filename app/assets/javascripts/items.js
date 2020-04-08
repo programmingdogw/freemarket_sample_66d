@@ -179,5 +179,10 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
+  // 編集ページの二段目が初めて押された時だけフォームをクリアするメソッド
+  $('.listing-product-detail__category').on('click', '.special-class-for-reset', function(){
+    $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
+    $('#grandchildren_wrapper').remove();
+  });
 
 });
