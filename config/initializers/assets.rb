@@ -24,6 +24,8 @@ Rails.application.config.assets.precompile += %w( users.scss )
 
 Rails.application.config.assets.precompile += %w( items_new.scss )
 
+Rails.application.config.assets.precompile += %w( items_edit.scss )
+
 Rails.application.config.assets.precompile += %w( characteristic.scss )
 Rails.application.config.assets.precompile += %w( download-logo.scss )
 Rails.application.config.assets.precompile += %w( exhibition-icon.scss )
