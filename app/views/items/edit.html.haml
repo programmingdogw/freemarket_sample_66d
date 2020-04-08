@@ -61,12 +61,37 @@
           = f.label 'カテゴリー', class: 'listing-default__label'
           %span.listing-default--require 必須
           .listing-select-wrapper            
-            = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}            
-          #edit_children_wrapper.listing-select-wrapper__added         
-            = f.collection_select :childcategory, @edit_category_children, :id, :name
-          #edit_grandchildren_wrapper.listing-select-wrapper__added
-            = f.collection_select :category_id, @edit_category_grandchildren, :id, :name
-        
+            = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          -# とりあえず親のセレクトは登録された値入りで表示されることは確認したので、フォームのロジックはそのままにしてフィールドを最初から表示しとくか
+          -# jsで組み立ててあるセレクトのフィールドを最初から表示させときゃ何とかなるか？
+          -# 子
+          -# <div class='listing-select-wrapper__added' id= 'children_wrapper'>                        
+          -#   <select class="listing-select-wrapper__box--select" id="child_category" name="item[childcategory]">
+          -#     <option value="---" data-category="---">---</option>
+          -#     ${insertHTML}
+                  insertHTMLにvalue入りのオプション並べる感じ。下のをforeachで並べる的な
+                  <option value="${category.id}" data-category="${category.id}">${category.name}</option>
+          -#   <select>                                                 
+          -# </div>
+          -# 孫
+            <div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>                            
+                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
+                  <option value="---" data-category="---">---</option>
+                  ${insertHTML}
+                </select>                                                           
+            </div>`;
+          -# これは一応表示ができるけどjsうまく動かん
+          #children_wrapper.listing-select-wrapper__added
+            -# = f.select :childcategory, @editpage_category_children, {}, {class: 'listing-select-wrapper__box--select', id: 'child_category'}
+              -# = collection_select オブジェクト名, プロパティ名, オブジェクトの配列, value属性にセットしたいオブジェクトの属性, 表示に使用するオブジェクトの属性
+            = f.collection_select :childcategory, @editpage_category_children, :id, :name
+          #grandchildren_wrapper.listing-select-wrapper__added
+            = f.collection_select :category_id, @editpage_category_grandchildren, :id, :name
+          -# さらなる実験記述
+          -# #grandchildren_wrapper.listing-select-wrapper__added
+          -#   %select#grandchild_category.listing-select-wrapper__box--select{:name => "item[category_id]"}
+          -#     %option{"data-category" => "---", :value => "---"} ---
+
           
       
       .field
