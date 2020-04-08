@@ -61,7 +61,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
     #  実験中の記述
     @editpage_category_children = Category.find_by(name:@item.parentcategory, ancestry:nil).children
-    
+    @editpage_category_grandchildren = Category.find_by(id:@item.childcategory).children
 
   end
 
