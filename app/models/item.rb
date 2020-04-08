@@ -4,21 +4,24 @@ class Item < ApplicationRecord
   belongs_to :address, optional:true
   belongs_to :category, optional:true
   has_many :comments
-  has_many :images
+  has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :appropriations
   has_many :evaluations
 
-
+  validates :category_id, presence: true
   validates :name, presence: true, length: { maximum: 40 }
-  validates :price, presence: true
-  validates :condition, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :condition_id, presence: true
   validates :description, presence: true, length: { maximum: 1000 }
-  validates :size, presence: true
-  validates :delivery_way, presence: true
-  validates :delivery_cost, presence: true
+  validates :size_id, presence: true
+  validates :deliveryway_id, presence: true
+  validates :deliverycost_id, presence: true
   validates :delivery_from, presence: true
-  validates :delivery_time, presence: true
+  validates :deliverytime_id, presence: true
+
+  validates :parentcategory, presence: true
+  validates :childcategory, presence: true
 
 
 
@@ -32,5 +35,15 @@ class Item < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
+
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :size
+  belongs_to_active_hash :deliveryway
+  belongs_to_active_hash :deliverycost
+  belongs_to_active_hash :deliverytime
+
+
 
 end

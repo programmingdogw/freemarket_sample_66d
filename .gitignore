@@ -29,4 +29,6 @@
 # Ignore uploaded files in development
 public/uploads/*
 
-app/views/experiment/sample2.html.erb
+# git の管理下から除外
+*.DS_Store
+*.jpeg

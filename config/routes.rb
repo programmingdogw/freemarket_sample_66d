@@ -12,13 +12,28 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:index, :new] 
-  resources :items
+  
+  resources :items do
+    #Ajaxで動くアクションのルートを作成
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
   
 
   
   root 'experiment#index' 
+
+  resources :experiment, only: [:index, :sample] do
+    #Ajaxで動くアクションのルートを作成
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+
   get 'sample', to: 'experiment#sample'
-  get 'sample2', to: 'experiment#sample2'
   
   
 end

@@ -1,0 +1,25 @@
+
+.last-view {
+  color: $white;
+  @include text-shadow;
+  padding: 100px 40px;
+  background-image: url(pict/bg-appBanner-pict.jpg);
+  background-size: cover;
+  text-align: center;
+
+  &__contents {
+    &__text {
+      @include message-font;
+      font-size: 24px;
+    }
+
+    &__message {
+      font-size: 35px;
+      line-height: 1.4;
+    }
+
+    &__link {
+      margin-top: 15px;
+    }
+  }
+}

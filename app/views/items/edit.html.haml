@@ -1,0 +1,134 @@
+商品編集ページ
+
+= form_for(@item, url: item_path) do |f|
+
+  .field
+    = f.label :出品画像（１０枚まで）, class:"field__formlabel"
+    %span.field__formspan 必須
+    %br/
+    #image-box
+      #previews
+        - if @item.persisted?
+          - @item.images.each_with_index do |images, i|
+            = image_tag images.image.url, data: { index: i }, width: "100", height: '100'
+      = f.fields_for :images do |image|
+        .js-file_group{"data-index" => "#{image.index}"}
+          = image.file_field :image, class:"js-file"
+          %br
+          %span.js-remove 削除
+          - if @item.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+      - if @item.persisted?
+        .js-file_group{"data-index" => "#{@item.images.count}"}
+          =file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class:'js-file'
+          .js-remove 削除
+    %br/
+  .actions
+    = f.submit "更新する", class:"nextbtn"
+    
+
+-# 一旦無くてもいいとこコメントアウト編集ページを作る時に復活させる
+-# =@item.name
+-# = form_for(@item, url: item_path) do |f|
+
+-#   .field
+-#     = f.label :出品画像（１０枚まで）, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     #image-box
+-#       #previews
+-#         - if @item.persisted?
+-#           - @item.images.each_with_index do |images, i|
+-#             = image_tag images.image.url, data: { index: i }, width: "100", height: '100'
+-#       = f.fields_for :images do |image|
+-#         .js-file_group{"data-index" => "#{image.index}"}
+-#           = image.file_field :image, class:"js-file"
+-#           %br
+-#           %span.js-remove 削除
+-#           - if @item.persisted?
+-#             = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+-#       - if @item.persisted?
+-#         .js-file_group{"data-index" => "#{@item.images.count}"}
+-#           =file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class:'js-file'
+-#           .js-remove 削除
+
+
+-#   .field
+-#     = f.label :商品名, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.text_field :name, class:"field__forminput", placeholder: "40文字まで"
+
+-#   .field
+-#     = f.label :商品説明, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.text_area :description, class:"field__textarea", size:'20x10', placeholder: "1000文字まで"
+
+-#   .field
+-#     = f.label :カテゴリー, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.text_field :category_id, class:"field__forminput"
+
+-#   .field
+-#     = f.label :ブランド, class:"field__formlabel"
+-#     %span.field__formspan 任意
+-#     %br/
+-#     = f.text_field :brand, class:"field__forminput", :placeholder => "例)シャネル"
+
+-#   .field
+-#     = f.label :商品の状態, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.select :condition, ['新品、未使用', '未使用に近い', '目立った傷や汚れなし', 'やや傷や汚れあり', '傷や汚れあり', '全体的に状態が悪い'], {include_blank: '選択してください'}
+
+-#   .field
+-#     = f.label :商品のサイズ, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.select :size, ['100cm', '110cm', '120cm', '130cm', '140cm', '150cm', '160cm'], {include_blank: '選択してください'}
+
+-#   .field
+-#     = f.label :配送料の負担, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.select :delivery_cost, ['送料込み（出品者負担）', '着払い（購入者負担）'], {include_blank: '選択してください'}
+
+-#   .field
+-#     = f.label :配送の方法, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.select :delivery_way, ['未定', 'ラクラクFURIMA便', 'ゆうメール', 'レターパック', '普通郵便（定形、定形外）', 'クロネコヤマト', 'ゆうパック', 'クリックポスト', 'ゆうパケット'], {include_blank: '選択してください'}
+
+-#   .field
+-#     = f.label :発送元の地域, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     .field__formprefecture
+-#       = f.select :delivery_from, Item.delivery_froms.keys, prompt: '選択してください'
+
+-#   .field
+-#     = f.label :発送までの日数, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.select :delivery_time, ['1~2日で発送', '2~3日で発送', '4~7日で発送'], {include_blank: '選択してください'}
+
+-#   .field
+-#     = f.label :販売価格, class:"field__formlabel"
+-#     %span.field__formspan 必須
+-#     %br/
+-#     = f.number_field :price, class:"field__forminput"
+
+-#   .field
+-#     = f.hidden_field :user_id, :value => current_user.id
+-#     = f.hidden_field :auction, :value => true
+-#     = f.hidden_field :dealing, :value => false
+-#     = f.hidden_field :sold, :value => false 
+      
+
+
+
+-#   %br/
+-#   .actions
+-#     = f.submit "更新する", class:"nextbtn"

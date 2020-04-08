@@ -9,7 +9,7 @@
   %main.pagecontainer__main
     %h1.signupnav アカウントをお持ちでない方はこちら
     .signuplink
-      =link_to "新規登録へ", root_path, class:'signuplink__btn'
+      =link_to "新規登録へ", new_user_registration_path, class:'signuplink__btn'
 
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

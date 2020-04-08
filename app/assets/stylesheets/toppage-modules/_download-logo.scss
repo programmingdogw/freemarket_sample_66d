@@ -1,0 +1,8 @@
+
+.furima-logo,.app-store-image,.google-play-image {
+  @include toppage-logo-size;
+}
+
+.app-store-logo,.google-play-logo {
+  text-decoration: none;
+}

@@ -1,0 +1,66 @@
+
+.pickup {
+  background-color: $light-gray;
+
+  &__contents {
+    padding-top: 80px;
+    height: 100%;
+    text-align: center;
+
+    &__message {
+      @include message-font;
+      font-size: 28px;
+      letter-spacing: 5px;
+    }
+
+    &__link {
+      color: $skyblue;
+      @include message-font;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    &__list {
+      display: flex;
+      justify-content: space-around;
+      margin: 26px auto;
+
+      &__product {
+        width: 220px;
+        text-decoration: none;
+        background-color: $white;
+
+        &__image {
+          .product-image {
+            height: 150px;
+            width: 220px;
+            overflow: hidden;
+          }
+        }
+
+        &__details {
+          color: $black;
+          padding: 16px;
+
+          &-name {
+            @include message-font;
+            font-size: 16px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          &-contents {
+            @include space-between;
+          }
+
+          &-tax {
+            font-size: 10px;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}

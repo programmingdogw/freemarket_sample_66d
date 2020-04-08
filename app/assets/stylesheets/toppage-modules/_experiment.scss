@@ -1,0 +1,19 @@
+
+@import "download-logo";
+@import "exhibition-icon";
+
+@import "header";
+
+.main-contents {
+  width: 100%;
+  background-color: $light-gray;
+
+  @import "first-view";
+  @import "publicity";
+  @import "second-view";
+  @import "characteristic";
+  @import "pickup";
+  @import "last-view";
+}
+
+@import "footer";

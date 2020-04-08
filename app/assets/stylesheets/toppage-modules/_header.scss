@@ -1,0 +1,77 @@
+
+.header {
+  height: 100px;
+  width: 100%;
+  background-color: $white;
+
+  &__contents {
+    padding: 0px 60px;
+    line-height: 50px;
+
+    &__top {
+      height: 50px;
+      margin-top: 15px;
+      display: flex;
+      
+      &__logo {
+        cursor: pointer;
+      }
+
+      &__search-form {
+        width: 100%;
+        @include center;
+
+      .text-form {
+        height: 36px;
+        width: calc(100% - 36px);
+        padding-left: 5px;
+        margin-left: 20px;
+      }
+
+      .search-btn {
+        height: 40px;
+        width: 40px;
+        background-color: $skyblue;
+        cursor: pointer;
+
+        .search-icon__image {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+  }
+
+    &__bottom {
+      @include space-between;
+      font-size: 14px;
+
+      &__left {
+        @include space-between;
+
+        &--tag {
+          margin-right: 30px;
+          cursor: pointer;
+        }
+        // &--tag:hover {
+        //   color: burlywood;
+        // }
+        .categoryparentlist{
+          background-color:blue;
+          color: red;
+          width: 200px;
+        }
+      }
+
+      &__right {
+        @include space-between;
+
+        &--tag {
+          margin-left: 16px;
+          text-decoration: none;
+          color: $black;
+        }
+      }
+    }
+  }
+}
