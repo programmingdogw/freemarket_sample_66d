@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `
                   
                   <div data-index="${index}" class="js-file_group">
-                    <i class="fas fa-camera"></i>画像${index + 1}
+                    <i class="fas fa-camera"></i>画像
                     <input class="js-file" type="file"
                     name="item[images_attributes][${index}][image]"
                     id="item_images_attributes_${index}_image">
