@@ -113,7 +113,8 @@
             %a{:href => ""}
               %figure
                 -# %img{:alt => "", :src => "assets/images/icon_camera.png", :width => "60"}/
-              %h2.mypage__user-name @user.nickname
+              %h2.mypage__user-name
+                =@user.nickname
               .user-namber
                 %div
                   評価
