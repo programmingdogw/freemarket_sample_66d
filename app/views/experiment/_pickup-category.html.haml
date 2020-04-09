@@ -5,6 +5,52 @@
     新規投稿商品
   .pickup__contents__list
 
+
+    = link_to item_path(@item1), class: "pickup__contents__list__product" do
+
+    -# 最新の投稿三つの画像、名前、値段、詳細へのリンク
+    -if @item1 != nil
+      = link_to item_path(@item1), class: "" do
+        = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません'
+        %br
+        = "商品名#{@item1.name}"
+        %br 
+        = "価格#{@item1.price}"
+    -else
+      = image_tag 'pict/観葉植物.jpeg', class: 'product-image'
+      
+    -if @item2 != nil
+      = link_to item_path(@item2), class: "" do
+        = image_tag @item2.images.first.image.url,  alt: '商品が投稿されていません'
+        %br  
+        = "商品名#{@item2.name}"
+        %br 
+        = "価格#{@item2.price}"      
+    -else
+      = image_tag 'pict/車.jpeg', class: 'product-image'
+
+    -if @item3 != nil
+      = link_to item_path(@item3), class: "" do
+        = image_tag @item3.images.first.image.url,  alt: '商品が投稿されていません' 
+        %br  
+        = "商品名#{@item3.name}"
+        %br 
+        = "価格#{@item3.price}"
+    -else
+      = image_tag 'pict/アーモンドチョコ.jpeg', class: 'product-image'
+    
+   
+    
+
+    -# カテゴリのリンク
+    -# フォームのロジックを元に作る予定。
+    
+    
+    
+
+    = link_to "#", class: "pickup__contents__list__product" do
+
+
       .pickup__contents__list__product__image
         = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません', class: 'product-image'
       .pickup__contents__list__product__details
