@@ -1,0 +1,113 @@
+
+= render "header"
+
+.details
+  .details__contents
+    .details__contents__upper
+      .details__contents__upper__ItemName
+        %h2 MacBook Air 13インチ 最新
+      .details__contents__upper__ItemImageBox
+        .details__contents__upper__ItemImageBox__main
+          = image_tag 'pict/パソコン.jpeg', class: 'details__contents__upper__ItemImageBox__main__image'
+        .details__contents__upper__ItemImageBox__sub
+          %ul.details__contents__upper__ItemImageBox__sub__list
+            %li
+            %li
+            %li
+      .details__contents__upper__ItemPrice
+        %h2 ¥ 265,000
+        %span （税込）
+        %span 送料込み
+      .details__contents__upper__ItemExplanation
+        最新モデル Apple MacBook Air 
+        %br
+        13インチAir
+        %br
+        1.1GHzクアッドコア第10世代のIntel Core i5プロセッサ
+        %br
+        8GB RAM
+        %br
+        512GB
+        %br
+        スペースグレイ
+
+      .details__contents__upper__Table
+        .details__contents__upper__Table__Box
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              出品者
+            %p.details__contents__upper__Table__Box--Row--Cell
+              Shun
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              カテゴリー
+            %p.details__contents__upper__Table__Box--Row--Cell
+              = link_to details_path, class: "details__contents__upper__Table__Box--Row--Cell__link" do
+                家電・スマホ・カメラ
+              %br
+              = link_to details_path, class: "details__contents__upper__Table__Box--Row--Cell__link" do
+                PC/タブレット
+              %br
+              = link_to details_path, class: "details__contents__upper__Table__Box--Row--Cell__link" do
+                ノートPC
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              ブランド
+            %p.details__contents__upper__Table__Box--Row--Cell
+              Apple
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              商品のサイズ
+            %p.details__contents__upper__Table__Box--Row--Cell
+              13インチ
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              商品の状態
+            %p.details__contents__upper__Table__Box--Row--Cell
+              新品/未使用
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              配送料の負担
+            %p.details__contents__upper__Table__Box--Row--Cell
+              着払い（購入者負担）
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              発送元の地域
+            %p.details__contents__upper__Table__Box--Row--Cell
+              = link_to details_path, class: "details__contents__upper__Table__Box--Row--Cell__link" do
+                秋田県
+          .details__contents__upper__Table__Box--Row
+            %p.details__contents__upper__Table__Box--Row--Cell--left
+              発送日の目安
+            %p.details__contents__upper__Table__Box--Row--Cell
+              1-2日で発送
+
+
+      .details__contents__upper__Button
+        %button{type: "button", class: "details__contents__upper__Button__Love"}
+          ★ お気に入り 0
+        = link_to details_path, class: "details__contents__upper__Button__Report" do
+          ◆ 不適切な商品の通報
+
+    .details__contents__middle
+      .details__contents__middle__textarea
+        %input{type: "textarea", class: "details__contents__middle__textarea--input"}
+      .details__contents__middle__text
+        相手のことを考え丁寧なコメントを心がけましょう。
+        %br
+        不快な言葉遣いなどは利用制限や退会処分とあることがあります。
+      %button{type: "submit", class: "details__contents__middle__btn"}
+        ▼ コメントする
+
+    .details__contents__lower
+      .details__contents__lower__nextItem
+        = link_to details_path, class: "details__contents__lower__nextItem__link" do
+          < 前の商品
+        = link_to details_path, class: "details__contents__lower__nextItem__link" do
+          後ろの商品 >
+      = link_to details_path, class: "details__contents__lower__moreSearch" do
+        メンズをもっと見る
+
+= render "last-view"
+= render "footer"
+= render "exhibitionIcon"

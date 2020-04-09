@@ -13,22 +13,17 @@
       .header__contents__bottom__left
         .header__contents__bottom__left--tag
           カテゴリー
-          -# リンク一覧を表示する部分開発中
-          .categoryparentlist
-            - @category_parent_array.each do |parent|
-              =parent
-              %br
-          
 
-          
         .header__contents__bottom__left--tag
           ブランド
       .header__contents__bottom__right
         - if user_signed_in?
           = link_to destroy_user_session_path, class: "header__contents__bottom__right--tag" do
             ログアウト
+            
           = link_to current_user, class: "header__contents__bottom__right--tag" do
             マイページへ
+
           = link_to sample_path, class: "header__contents__bottom__right--tag" do
             サンプルページへ
             -# ↑作業用のページ。

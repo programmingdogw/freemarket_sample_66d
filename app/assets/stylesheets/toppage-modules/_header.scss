@@ -39,6 +39,12 @@
           width: 20px;
         }
       }
+      .search-btn:focus {
+        outline: none;
+      }
+      .search-btn:hover {
+        opacity: 0.8;
+      }
     }
   }
 
@@ -74,4 +80,8 @@
       }
     }
   }
+}
+
+body {
+  background-color: $light-gray;
 }

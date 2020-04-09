@@ -46,6 +46,4 @@ Rails.application.routes.draw do
 
   get 'sample', to: 'experiment#sample'
 
-  
-  
 end
