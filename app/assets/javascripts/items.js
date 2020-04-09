@@ -50,14 +50,8 @@ $(document).on('turbolinks:load', ()=> {
         $('#previews').append(buildImg(targetIndex, blobUrl));
         }
       // fileIndexの先頭の数字を使ってinputを作る
-      if($('img').length <= 11){
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
-      }
-      console.log($('strong').length)
-      $('strong').show();
-      $('strong:last').hide();
-
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
@@ -66,34 +60,55 @@ $(document).on('turbolinks:load', ()=> {
   
   
   $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index')
-    // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // 削除を押した時、もしチェックボックスが存在すればチェックを入れる。:_destroyを送るため
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-    // 削除を押すとjs-file_groupを削除
-    $(this).parent().remove();
-    // imgも削除
-    $(`img[data-index="${targetIndex}"]`).remove();
     
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    // 最後の削除ボタン、つまり新規投稿用の値の入っていないボタンが削除された時は反応させない。
+    // 新規フォームが作成されなくなる問題を防ぐため
+    if (($('.js-remove').index(this)) == ($('.js-remove').length) - 1){
+      console.log('新規投稿用のフォームは消さない')
+    }else{
+
+            const targetIndex = $(this).parent().data('index')
+            // 該当indexを振られているチェックボックスを取得する
+            const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+            // 削除を押した時、もしチェックボックスが存在すればチェックを入れる。:_destroyを送るため
+            if (hiddenCheck) hiddenCheck.prop('checked', true);
+            // 削除を押すとjs-file_groupを削除
+            $(this).parent().remove();
+            // imgも削除
+            $(`img[data-index="${targetIndex}"]`).remove();
+            
+            
+
+            // 画像入力欄が0個にならないようにしておく
+            if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+
+          }
+
   });
+
+
+  
 
   //画像がない時はボタンが無効に。画像がある時は有効に.
   $('#itembtn').on('mouseenter', function() {
     if ($('.js-file').length == 1) {
       $("#itembtn").attr("disabled", true);
-    }else{
-      $("#itembtn").attr('disabled', false);
+    }
+    // 11枚以上の時も同様に押せないようにした
+    if ($('.js-file').length >= 11) {
+      $("#itembtn").attr("disabled", true);
     }
   });
-  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、画像ファイルに変化があれば発火してボタン有効化してる
+  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、
+  // 画像ファイルに変化があるか、削除ボタンを押せば発火してボタン有効化してる
   // 上の記述も一応残しておくが、基本的に有効化はこっちが発火してる
   $('#image-box').on('change', '.js-file', function(e) {
     $("#itembtn").attr('disabled', false);
   });
-
+  $('#image-box').on('click', '.js-remove', function(e) {
+    $("#itembtn").attr('disabled', false);
+  });
+  
 
   // こっから先はカテゴリーのフォームに関する記述
 
