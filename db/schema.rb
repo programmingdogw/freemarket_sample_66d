@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.string "lastname_kana", null: false
     t.string "firstname_kana", null: false
     t.text "postal_code", null: false
-    t.text "prefecture", null: false
+    t.integer "prefecture", null: false
     t.text "municipality", null: false
     t.text "street", null: false
     t.text "building"
@@ -36,17 +36,10 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "ancestry：string：index"
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
@@ -77,16 +70,14 @@ ActiveRecord::Schema.define(version: 2020_03_26_091148) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.text "image", null: false
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "brand_id", null: false
     t.bigint "category_id", null: false
-    t.bigint "address_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
     t.integer "condition_id", null: false

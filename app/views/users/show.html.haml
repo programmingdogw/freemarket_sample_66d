@@ -4,18 +4,21 @@
   %head
     %meta{:charset => "utf-8"}
     %title マイページ - フリマアプリ
-  = render partial:"experiment/header"
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+    -# %script{:src => "users.js"}
+
+
   %body
     
     .content
-
+      = render partial:"experiment/header"
       %main.container 
         -# = render "mypage_side"
         .container-side
           %nav.mypage-nav
             %ul.mypage-nav-list
               %li
-                = link_to "user_path(@user)", class:"mypage-nav-list__item__mypage" do
+                = link_to "", class:"mypage-nav-list__item__mypage" do
                   マイページ
                   %i.fas.fa-chevron-right
               %li
@@ -110,7 +113,7 @@
             %a{:href => ""}
               %figure
                 -# %img{:alt => "", :src => "assets/images/icon_camera.png", :width => "60"}/
-              %h2.mypage__user-name @user = nickname
+              %h2.mypage__user-name @user.nickname
               .user-namber
                 %div
                   評価
@@ -119,43 +122,77 @@
                   出品数
                   %span.bold 0
 
-          %section.mypage-tab-container-notification-todo
+          .mypage-tab-content
             %ul.mypage-tabs
               %li.list
-                %h3
-                  %a{"data-toggle" => "tab", :href => ""}
+                %h3 
+                  %a#notification.mypage-tab-btn.active{href: "#"} 
                     お知らせ
-                    %span.mypage-nav-number.hidden-large
-                      
+                    %span.mypage-nav-number.hidden-large       
               %li.list
                 %h3
-                  %a{"data-toggle" => "tab", :href => ""}
+                  %a#todo.mypage-tab-btn{href: "#"}
                     やることリスト
+            .tab-content
+              #notification.mypage-item-list.show お知らせがありません
+              #todo.mypage-item-list やる事リストはありません
 
-          %section.mypage-tab-container
+
+          .mypage-tab-container
             %h2.mypage-tab-head 購入した商品
             %ul.mypage-tabs
               %li.active
                 %h3
-                  %a{"data-toggle" => "tab", :href => ""}
-                    取引中
+                  %a#transaction-now.mypage-tab-btn.active{href: "#"}
+                    取引中 
               %li
                 %h3
-                  %a{"data-toggle" => "tab", :href => ""}
+                  %a#transaction-old.mypage-tab-btn{href: "#"}
                     過去の取引
             .tab-content
-              %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
+              %ul#transaction-now.mypage-item-list.show
                 %li.mypage-item-not-found.bold 取引中の商品がありません
-              %ul#mypage-tab-transaction-old.mypage-item-list.tab-pane
+              %ul#transaction-old.mypage-item-list
                 %li.mypage-item-not-found.bold 過去に取引した商品がありません
 
+    :javascript
+      $(function() {
+        // タブのDOM要素を取得し、変数で定義
+        var tabs = $(".mypage-tab-btn");
+        // tabsを配列に変換する
+        tabsAry = Array.prototype.slice.call(tabs);
 
-      %ul
-        %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
-          %a{:href => "https://www.mercari.com/jp/", :itemprop => "url"}
-            %span{:itemprop => "title"} メルカリ
-          %i.icon-arrow-right
-        %li{:itemscope => "", :itemtype => "http://data-vocabulary.org/Breadcrumb"}
-          %span{:itemprop => "title"} マイページ
+        // クラスの切り替えをtabSwitch関数で定義
+        function tabSwitch() {
+          // 全てのactiveクラスのうち、最初の要素を削除（"[0]は、最初の要素の意味"）
+          $(".active").removeClass("active");
+          // クリックしたタブにactiveクラスを追加
+          $(this).addClass("active");
+
+          // コンテンツの全てのshowクラスのうち、最初の要素を削除
+          $('.show').removeClass("show");
+
+          // 何番目の要素がクリックされたかを、配列tabsから要素番号を取得
+          const index = tabs.index(this);
+
+          // クリックしたcoutentクラスにshowクラスを追加する
+          $(".content").removeClass("show").eq(index).addClass("show");
+        }
+
+        // タブメニューの中でクリックイベントが発生した場所を探し、下で定義したtabSwitch関数を呼び出す
+        tabsAry.forEach(function(value) {
+          //`value.`の後に、イベントリスナーでクリックイベントが発生した時に、tabSwitch関数を呼び出す処理を。
+          value.addEventListener("click", tabSwitch);
+        });
+
+        $(function() {
+          console.log($(".mypage-tab-btn"));
+        });
+
+      });
+
     
+
+
     = render partial:'experiment/footer'
+    = render partial:"experiment/exhibitionIcon"
