@@ -15,7 +15,7 @@
     = form_for(@item, url: item_path) do |f|
 
       .field
-        = f.label :出品画像（１０枚まで）, class:"field__formlabel"
+        = f.label :出品画像（１０枚まで。削除ボタンで即削除）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         #image-box
