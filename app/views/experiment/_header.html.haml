@@ -13,15 +13,17 @@
       .header__contents__bottom__left
         .header__contents__bottom__left--tag
           カテゴリー
-        -# まずは、見本の見た目と同様に実装。後ほど非同期にてパンくずリストを追加する。
+
         .header__contents__bottom__left--tag
           ブランド
       .header__contents__bottom__right
         - if user_signed_in?
           = link_to destroy_user_session_path, class: "header__contents__bottom__right--tag" do
             ログアウト
-          -# = link_to user_path(@user), class: "header__contents__bottom__right--tag" do
-          -#   マイページへ
+            
+          = link_to current_user, class: "header__contents__bottom__right--tag" do
+            マイページへ
+
           = link_to sample_path, class: "header__contents__bottom__right--tag" do
             サンプルページへ
             -# ↑作業用のページ。
@@ -30,3 +32,6 @@
             ログイン
           = link_to new_user_registration_path, class: "header__contents__bottom__right--tag" do
             新規会員登録
+
+    
+    

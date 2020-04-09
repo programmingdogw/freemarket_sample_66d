@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', ()=> {
     const html = `
                   
                   <div data-index="${index}" class="js-file_group">
-                    <i class="fas fa-camera"></i>画像${index + 1}
+                    <i class="fas fa-camera"></i>画像
                     <input class="js-file" type="file"
                     name="item[images_attributes][${index}][image]"
                     id="item_images_attributes_${index}_image">
@@ -50,50 +50,68 @@ $(document).on('turbolinks:load', ()=> {
         $('#previews').append(buildImg(targetIndex, blobUrl));
         }
       // fileIndexの先頭の数字を使ってinputを作る
-      if($('img').length <= 11){
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
-      }
-      console.log($('strong').length)
-      $('strong').show();
-      $('strong:last').hide();
-
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
     
+    console.log($('strong').length)
+    $('strong').show()
+    $('strong:last').hide()
+
   });
   
   
   $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index')
-    // 該当indexを振られているチェックボックスを取得する
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // 削除を押した時、もしチェックボックスが存在すればチェックを入れる。:_destroyを送るため
-    if (hiddenCheck) hiddenCheck.prop('checked', true);
-    // 削除を押すとjs-file_groupを削除
-    $(this).parent().remove();
-    // imgも削除
-    $(`img[data-index="${targetIndex}"]`).remove();
     
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    // 最後の削除ボタン、つまり新規投稿用の値の入っていないボタンが削除された時は反応させない。
+    // 新規フォームが作成されなくなる問題を防ぐため
+    if (($('.js-remove').index(this)) == ($('.js-remove').length) - 1){
+      console.log('新規投稿用のフォームは消さない')
+    }else{
+
+            const targetIndex = $(this).parent().data('index')
+            // 該当indexを振られているチェックボックスを取得する
+            const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+            // 削除を押した時、もしチェックボックスが存在すればチェックを入れる。:_destroyを送るため
+            if (hiddenCheck) hiddenCheck.prop('checked', true);
+            // 削除を押すとjs-file_groupを削除
+            $(this).parent().remove();
+            // imgも削除
+            $(`img[data-index="${targetIndex}"]`).remove();
+            
+            
+
+            // 画像入力欄が0個にならないようにしておく
+            if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+
+          }
+
   });
+
+
+  
 
   //画像がない時はボタンが無効に。画像がある時は有効に.
   $('#itembtn').on('mouseenter', function() {
     if ($('.js-file').length == 1) {
       $("#itembtn").attr("disabled", true);
-    }else{
-      $("#itembtn").attr('disabled', false);
+    }
+    // 11枚以上の時も同様に押せないようにした
+    if ($('.js-file').length >= 11) {
+      $("#itembtn").attr("disabled", true);
     }
   });
-  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、画像ファイルに変化があれば発火してボタン有効化してる
-  // 上の記述も一応残しておくが、基本的に有効化はこっちが発火してる
+  // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、
+  // 画像ファイルに変化があるか、削除ボタンを押せば発火してボタン有効化してる
   $('#image-box').on('change', '.js-file', function(e) {
     $("#itembtn").attr('disabled', false);
   });
-
+  $('#image-box').on('click', '.js-remove', function(e) {
+    $("#itembtn").attr('disabled', false);
+  });
+  
 
   // こっから先はカテゴリーのフォームに関する記述
 
@@ -103,28 +121,24 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
   // 子カテゴリーの表示作成
-  function appendChidrenBox(insertHTML){
+  function appendChildrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>
-                        <div class='listing-select-wrapper__box'>
+    childSelectHtml = `<div class='listing-select-wrapper__added' id= 'children_wrapper'>                        
                           <select class="listing-select-wrapper__box--select" id="child_category" name="item[childcategory]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
-                          <select>                         
-                        </div>
+                          <select>                                                 
                       </div>`;
     $('.listing-product-detail__category').append(childSelectHtml);
   }
-  // 孫カテゴリーの表示作成
+  // 孫カテゴリーの表示作成 
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>
-                              <div class='listing-select-wrapper__box'>
+    grandchildSelectHtml = `<div class='listing-select-wrapper__added' id= 'grandchildren_wrapper'>                            
                                 <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
-                                </select>                               
-                              </div>
+                                </select>                                                           
                             </div>`;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
   }
@@ -139,19 +153,19 @@ $(document).on('turbolinks:load', ()=> {
         dataType: 'json'
       })
       .done(function(children){
-        $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
+        $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
         $('#grandchildren_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
         });
-        appendChidrenBox(insertHTML);
+        appendChildrenBox(insertHTML);
       })
       .fail(function(){
-        alert('カテゴリー取得に失敗しましたよん');
+        alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
+      $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
       $('#grandchildren_wrapper').remove();
     }
   });
@@ -167,7 +181,7 @@ $(document).on('turbolinks:load', ()=> {
       })
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
-          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
+          $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -176,14 +190,17 @@ $(document).on('turbolinks:load', ()=> {
         }
       })
       .fail(function(){
-        alert('カテゴリー取得に失敗しましただわん');
+        alert('カテゴリー取得に失敗しました');
       })
     }else{
       $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
 
+  // 編集ページの二段目が初めて押された時だけフォームをクリアするメソッド
+  $('.listing-product-detail__category').on('click', '.special-class-for-reset', function(){
+    $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
+    $('#grandchildren_wrapper').remove();
+  });
 
 });

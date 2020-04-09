@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+
+
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -19,6 +22,14 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+
+    member do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }      
+    end
+
+    get 'images/destroy'
+    
   end
   
 
@@ -34,6 +45,5 @@ Rails.application.routes.draw do
   end
 
   get 'sample', to: 'experiment#sample'
-  get 'details', to: 'experiment#details'
-  
+
 end

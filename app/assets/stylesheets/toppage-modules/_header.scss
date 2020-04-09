@@ -59,8 +59,13 @@
           margin-right: 30px;
           cursor: pointer;
         }
-        &--tag:hover {
-          color: burlywood;
+        // &--tag:hover {
+        //   color: burlywood;
+        // }
+        .categoryparentlist{
+          background-color:blue;
+          color: red;
+          width: 200px;
         }
       }
 
