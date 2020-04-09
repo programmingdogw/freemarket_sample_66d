@@ -56,6 +56,10 @@ $(document).on('turbolinks:load', ()=> {
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
     
+    console.log($('strong').length)
+    $('strong').show()
+    $('strong:last').hide()
+
   });
   
   
@@ -101,7 +105,6 @@ $(document).on('turbolinks:load', ()=> {
   });
   // 恐らくページ読み込み時に長さを取得してるため、上の有効化処理がマウスオーバーで発火しないので、
   // 画像ファイルに変化があるか、削除ボタンを押せば発火してボタン有効化してる
-  // 上の記述も一応残しておくが、基本的に有効化はこっちが発火してる
   $('#image-box').on('change', '.js-file', function(e) {
     $("#itembtn").attr('disabled', false);
   });
