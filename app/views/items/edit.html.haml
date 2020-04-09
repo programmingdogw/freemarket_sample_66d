@@ -21,8 +21,8 @@
         #image-box
           #previews
           - @item.images.each do |images|
-            = image_tag images.image.url 
-            = link_to '画像削除へ', "#", method: :delete
+            = image_tag images.image.url, width: "100", height: '100' 
+            = link_to '画像削除', item_images_destroy_path(item_id: @item.id, id: images.id)#method: :delete, class: "edit-remove"
 
           -#   - if @item.persisted?
           -#     - @item.images.each_with_index do |images, i|
