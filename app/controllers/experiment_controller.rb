@@ -35,4 +35,7 @@ class ExperimentController < ApplicationController
     @item = Item.new
   end
 
+  def details
+  end
+
 end

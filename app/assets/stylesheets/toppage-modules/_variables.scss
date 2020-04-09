@@ -5,6 +5,7 @@ $white: #ffffff;
 $skyblue: #3CCACE;
 $black: #333333;
 $light-gray: #f8f8f8;
+$heavy-gray: #dedede;
 
 // mixin
 
@@ -68,4 +69,10 @@ $light-gray: #f8f8f8;
   align-items: center;
   text-align: left;
   flex-direction: column;
+}
+
+@mixin table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 15px 15px;
 }

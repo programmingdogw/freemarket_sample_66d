@@ -4,85 +4,114 @@
   = link_to "#", class: "pickup__contents__link" do
     新規投稿商品
   .pickup__contents__list
-
-    -# 最新の投稿三つの画像、名前、値段、詳細へのリンク
-    -if @item1 != nil
-      = link_to item_path(@item1), class: "" do
-        = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません'
-        %br
-        = "商品名#{@item1.name}"
-        %br 
-        = "価格#{@item1.price}"
-    -else
-      = image_tag 'pict/観葉植物.jpeg', class: 'product-image'
+    = link_to item_path(@item1), class: "pickup__contents__list__product" do
+      -if @item1 != nil
+        = link_to item_path(@item1), class: "" do
+          = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません'
+          %br
+          = "商品名#{@item1.name}"
+          %br 
+          = "価格#{@item1.price}"
+      -else
+        = image_tag 'pict/観葉植物.jpeg', class: 'product-image'
       
-    -if @item2 != nil
-      = link_to item_path(@item2), class: "" do
-        = image_tag @item2.images.first.image.url,  alt: '商品が投稿されていません'
-        %br  
-        = "商品名#{@item2.name}"
-        %br 
-        = "価格#{@item2.price}"      
-    -else
-      = image_tag 'pict/車.jpeg', class: 'product-image'
+      -if @item2 != nil
+        = link_to item_path(@item2), class: "" do
+          = image_tag @item2.images.first.image.url,  alt: '商品が投稿されていません'
+          %br  
+          = "商品名#{@item2.name}"
+          %br 
+          = "価格#{@item2.price}"      
+      -else
+        = image_tag 'pict/車.jpeg', class: 'product-image'
 
-    -if @item3 != nil
-      = link_to item_path(@item3), class: "" do
-        = image_tag @item3.images.first.image.url,  alt: '商品が投稿されていません' 
-        %br  
-        = "商品名#{@item3.name}"
-        %br 
-        = "価格#{@item3.price}"
-    -else
-      = image_tag 'pict/アーモンドチョコ.jpeg', class: 'product-image'
+      -if @item3 != nil
+        = link_to item_path(@item3), class: "" do
+          = image_tag @item3.images.first.image.url,  alt: '商品が投稿されていません' 
+          %br  
+          = "商品名#{@item3.name}"
+          %br 
+          = "価格#{@item3.price}"
+      -else
+        = image_tag 'pict/アーモンドチョコ.jpeg', class: 'product-image'
     
-   
+    -# ↑最新の投稿三つの画像、名前、値段、詳細へのリンク
     
 
     -# カテゴリのリンク
     -# フォームのロジックを元に作る予定。
-    
-    
-    
 
-    = link_to "#", class: "pickup__contents__list__product" do
+    = link_to item_path(@item1), class: "pickup__contents__list__product" do
+
       .pickup__contents__list__product__image
-        = image_tag 'pict/観葉植物.jpeg', class: 'product-image'
+        = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません', class: 'product-image'
       .pickup__contents__list__product__details
         %h3.pickup__contents__list__product__details-name
-          観葉植物
+          = @item1.name
         .pickup__contents__list__product__details-contents
           .price
-            5,000円
+            = @item1.price
           .evaluation
             ★0
         .pickup__contents__list__product__details-tax
           （税込）
 
-    = link_to "#", class: "pickup__contents__list__product" do
+    = link_to item_path(@item1), class: "pickup__contents__list__product" do
       .pickup__contents__list__product__image
-        = image_tag 'pict/車.jpeg', class: 'product-image'
+        = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません', class: 'product-image'
       .pickup__contents__list__product__details
         %h3.pickup__contents__list__product__details-name
-          ランボルギーニ
+          = @item1.name
         .pickup__contents__list__product__details-contents
           .price
-            100,000,000円
+            = @item1.price
           .evaluation
-            ★8000
+            ★0
+        .pickup__contents__list__product__details-tax
+          （税込）
+    
+    = link_to item_path(@item1), class: "pickup__contents__list__product" do
+      .pickup__contents__list__product__image
+        = image_tag @item1.images.first.image.url,  alt: '商品が投稿されていません', class: 'product-image'
+      .pickup__contents__list__product__details
+        %h3.pickup__contents__list__product__details-name
+          = @item1.name
+        .pickup__contents__list__product__details-contents
+          .price
+            = @item1.price
+          .evaluation
+            ★0
         .pickup__contents__list__product__details-tax
           （税込）
 
-    = link_to "#", class: "pickup__contents__list__product" do
-      .pickup__contents__list__product__image
-        = image_tag 'pict/アーモンドチョコ.jpeg', class: 'product-image'
-      .pickup__contents__list__product__details
-        %h3.pickup__contents__list__product__details-name
-          アーモンドチョコ
-        .pickup__contents__list__product__details-contents
-          .price
-            220円
-          .evaluation
-            ★523
-        .pickup__contents__list__product__details-tax
-          （税込）
+    -# ↑ とりあえず、３つ並べて同じページに飛ぶようにしている。
+
+    -# = link_to item_path(@item2), class: "pickup__contents__list__product" do
+    -#   .pickup__contents__list__product__image
+    -#     = image_tag @item2.images.first.image.url,  alt: '商品が投稿されていません', class: 'product-image'
+    -#   .pickup__contents__list__product__details
+    -#     %h3.pickup__contents__list__product__details-name
+    -#       = @item2.name
+    -#     .pickup__contents__list__product__details-contents
+    -#       .price
+    -#         = @item2.price
+    -#       .evaluation
+    -#         ★8000
+    -#     .pickup__contents__list__product__details-tax
+    -#       （税込）
+
+    -# = link_to item_path(@item3), class: "pickup__contents__list__product" do
+    -#   .pickup__contents__list__product__image
+    -#     = image_tag @item3.images.first.image.url,  alt: '商品が投稿されていません', class: 'product-image'
+    -#   .pickup__contents__list__product__details
+    -#     %h3.pickup__contents__list__product__details-name
+    -#       = @item3.name
+    -#     .pickup__contents__list__product__details-contents
+    -#       .price
+    -#         = @item3.price
+    -#       .evaluation
+    -#         ★523
+    -#     .pickup__contents__list__product__details-tax
+    -#       （税込）
+
+    -# ↑ ２つ目、3つ目を出品していないからエラーとなる。一旦、コメントアウトしておく。大高
