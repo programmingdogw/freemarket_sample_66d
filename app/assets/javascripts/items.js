@@ -124,7 +124,7 @@ $(document).on('turbolinks:load', ()=> {
 
   // 編集ページ用のボタン処理作成中
   $('img').on('mouseenter', function() {
-    console.log($('.preserved-remove').length)
+   
     if ($('.preserved-remove').length == 1) {
       $(".preserved-remove").hide();
     }
