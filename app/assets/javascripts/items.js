@@ -1,4 +1,9 @@
 $(document).on('turbolinks:load', ()=> {
+
+  // 編集ページ用のフォームクリア
+  $('.js-file_group_wrapper').remove()
+  console.log($('.js-file_group_wrapper').length)
+
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
     
@@ -28,6 +33,11 @@ $(document).on('turbolinks:load', ()=> {
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
+  // 編集ページでクリアしたフォームを再生成
+  if ($('.js-file_group_wrapper').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+
+
+  
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
