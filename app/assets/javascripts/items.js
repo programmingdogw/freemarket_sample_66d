@@ -105,11 +105,11 @@ $(document).on('turbolinks:load', ()=> {
 
   //画像がない時はボタンが無効に。画像がある時は有効に.
   $('#itembtn').on('mouseenter', function() {
-    if ($('.js-file').length == 1) {
+    if ($('img').length == 2) {
       $("#itembtn").attr("disabled", true);
     }
     // 11枚以上の時も同様に押せないようにした
-    if ($('.js-file').length >= 11) {
+    if ($('img').length >= 13) {
       $("#itembtn").attr("disabled", true);
     }
   });
