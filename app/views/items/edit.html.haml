@@ -11,7 +11,7 @@
   %main.pagecontainer__main
     .flashbox
       = flash[:itemnotice]  
-    %h1.mainh1 保存済み画像
+    %h1.mainh1 保存済み画像(最低１枚は残して置いてください)
     = form_for(@item, url: item_path) do |f|
       .preservedimages
         - @item.images.each do |images|
