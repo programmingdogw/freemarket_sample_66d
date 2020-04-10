@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', ()=> {
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
     
-    console.log($('strong').length)
+
     $('strong').show()
     $('strong:last').hide()
 
@@ -123,8 +123,13 @@ $(document).on('turbolinks:load', ()=> {
     $("#itembtn").attr('disabled', false);
   });
 
-
-  
+  // 編集ページ用のボタン処理作成中
+  $('img').on('mouseenter', function() {
+    console.log($('.preserved-remove').length)
+    if ($('.preserved-remove').length == 1) {
+      $(".preserved-remove").hide();
+    }
+  });
   
 
   // こっから先はカテゴリーのフォームに関する記述
