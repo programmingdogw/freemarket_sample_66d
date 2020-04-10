@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', ()=> {
+
+  console.log("切り分けテスト出品ページで表示")
+  
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
     
