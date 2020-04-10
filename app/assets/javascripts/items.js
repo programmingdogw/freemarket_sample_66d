@@ -56,9 +56,10 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      if($('img').length <= 11){
+      // プレビューは枚数制限外した方がわかり易そうだったからとりあえずコメントアウトしてる
+      // if($('img').length <= 11){
         $('#previews').append(buildImg(targetIndex, blobUrl));
-        }
+      // }
       // fileIndexの先頭の数字を使ってinputを作る
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
@@ -121,6 +122,9 @@ $(document).on('turbolinks:load', ()=> {
   $('#image-box').on('click', '.js-remove', function(e) {
     $("#itembtn").attr('disabled', false);
   });
+
+
+  
   
 
   // こっから先はカテゴリーのフォームに関する記述
