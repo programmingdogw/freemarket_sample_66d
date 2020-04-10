@@ -35,23 +35,6 @@
                 %strong.js-remove 削除 
 
 
-          -#   - if @item.persisted?
-          -#     - @item.images.each_with_index do |images, i|
-          -#       = image_tag images.image.url, data: { index: i }, width: "100", height: '100'
-          -# = f.fields_for :images do |image|
-          -#   .js-file_group{"data-index" => "#{image.index}"}
-          -#     %i.fas.fa-camera 画像
-          -#     = image.file_field :image, class:"js-file"
-          -#     %strong.js-remove 削除 
-          -#     - if @item.persisted?
-          -#       = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-
-          -# - if @item.persisted?
-          -#   .js-file_group{"data-index" => "#{@item.images.count}"}
-          -#     %i.fas.fa-camera 画像
-          -#     =file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class:'js-file'
-          -#     %strong.js-remove 削除
-
 
       .field
         = f.label :商品名, class:"field__formlabel"

@@ -2,7 +2,6 @@ $(document).on('turbolinks:load', ()=> {
 
   // 編集ページ用のフォームクリア
   $('.js-file_group_wrapper').remove()
-  console.log($('.js-file_group_wrapper').length)
 
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
