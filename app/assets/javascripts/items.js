@@ -34,10 +34,10 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
   // 編集ページでクリアしたフォームを再生成
-  if ($('.js-file_group_wrapper').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  if ($('.js-file_group').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
 
 
-  
+
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
