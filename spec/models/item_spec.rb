@@ -88,7 +88,7 @@ describe "Item" do
 
     # 有効、無効な商品 文字の長さ系
     it "is valid name less than or equal 40letters" do
-      fakename = Faker::Lorem.characters(number: 39)
+      fakename = Faker::Lorem.characters(number: 40)
       item = build(:item, name: fakename)
       expect(item).to be_valid
     end
@@ -140,7 +140,8 @@ describe "Item" do
 
   describe '#update' do
 
-    # 更新系テスト記述予定
+    # presence系
+    
     it '名前が更新される' do
       item = build(:item)
       expect(item.name).to eq '商品名'
@@ -155,6 +156,224 @@ describe "Item" do
       expect(item).to be_invalid 
     end
 
+    it '説明文が更新される' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      item.update(description: "更新済説明文")
+      expect(item.description).to eq '更新済説明文' 
+    end
+    
+    it '無効な説明文' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      item.update(description: "")
+      expect(item).to be_invalid 
+    end
+
+    it 'ブランドが更新される' do
+      item = build(:item)
+      expect(item.brand).to eq 'シャネル'
+      item.update(brand: "グッチ")
+      expect(item.brand).to eq 'グッチ' 
+    end
+    
+    it 'ブランドは任意なのでここだけ有効' do
+      item = build(:item)
+      expect(item.brand).to eq 'シャネル'
+      item.update(brand: "")
+      expect(item).to be_valid 
+    end
+
+    it '親カテゴリが更新される' do
+      item = build(:item)
+      expect(item.parentcategory).to eq 'レディース'
+      item.update(parentcategory: "ベビー・キッズ")
+      expect(item.parentcategory).to eq 'ベビー・キッズ' 
+    end
+    
+    it 'カテゴリは必須' do
+      item = build(:item)
+      expect(item.parentcategory).to eq 'レディース'
+      item.update(parentcategory: "")
+      expect(item).to be_invalid 
+    end
+
+    it '子カテゴリが更新される' do
+      item = build(:item)
+      expect(item.childcategory).to eq 21
+      item.update(childcategory: 347)
+      expect(item.childcategory).to eq 347 
+    end
+    
+    it 'カテゴリは必須' do
+      item = build(:item)
+      expect(item.childcategory).to eq 21
+      item.update(childcategory: "")
+      expect(item).to be_invalid 
+    end
+
+    it '孫カテゴリが更新される' do
+      item = build(:item)
+      expect(item.category_id).to eq 22
+      item.update(category_id: 838)
+      expect(item.category_id).to eq 838 
+    end
+    
+    it 'カテゴリは必須' do
+      item = build(:item)
+      expect(item.category_id).to eq 22
+      item.update(category_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '発送元が更新される' do
+      item = build(:item)
+      expect(item.delivery_from).to eq "北海道"
+      item.update(delivery_from: "青森県")
+      expect(item.delivery_from).to eq "青森県" 
+    end
+    
+    it '発送元は必須' do
+      item = build(:item)
+      expect(item.delivery_from).to eq "北海道"
+      item.update(delivery_from: "")
+      expect(item).to be_invalid 
+    end
+
+    it '商品の状態が更新される' do
+      item = build(:item)
+      expect(item.condition_id).to eq 1
+      item.update(condition_id: 2)
+      expect(item.condition_id).to eq 2 
+    end
+    
+    it '商品の状態は必須' do
+      item = build(:item)
+      expect(item.condition_id).to eq 1
+      item.update(condition_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '商品のサイズが更新される' do
+      item = build(:item)
+      expect(item.size_id).to eq 1
+      item.update(size_id: 2)
+      expect(item.size_id).to eq 2 
+    end
+    
+    it '商品のサイズは必須' do
+      item = build(:item)
+      expect(item.size_id).to eq 1
+      item.update(size_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '配送料の負担が更新される' do
+      item = build(:item)
+      expect(item.deliverycost_id).to eq 1
+      item.update(deliverycost_id: 2)
+      expect(item.deliverycost_id).to eq 2 
+    end
+    
+    it '配送料の負担は必須' do
+      item = build(:item)
+      expect(item.deliverycost_id).to eq 1
+      item.update(deliverycost_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '配送の方法が更新される' do
+      item = build(:item)
+      expect(item.deliveryway_id).to eq 1
+      item.update(deliveryway_id: 2)
+      expect(item.deliveryway_id).to eq 2 
+    end
+    
+    it '配送の方法は必須' do
+      item = build(:item)
+      expect(item.deliveryway_id).to eq 1
+      item.update(deliveryway_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '配送までの日数が更新される' do
+      item = build(:item)
+      expect(item.deliverytime_id).to eq 1
+      item.update(deliverytime_id: 2)
+      expect(item.deliverytime_id).to eq 2 
+    end
+    
+    it '配送までの日数は必須' do
+      item = build(:item)
+      expect(item.deliverytime_id).to eq 1
+      item.update(deliverytime_id: "")
+      expect(item).to be_invalid 
+    end
+
+    # 長さ大きさ系 
+
+    it '有効な名前の長さなら更新できる' do
+      item = build(:item)
+      expect(item.name).to eq '商品名'
+      fakename = Faker::Lorem.characters(number: 40)
+      item.update(name: fakename)
+      expect(item).to be_valid 
+    end
+
+    it '無効な名前の長さだと更新できない' do
+      item = build(:item)
+      expect(item.name).to eq '商品名'
+      fakename = Faker::Lorem.characters(number: 41)
+      item.update(name: fakename)
+      expect(item).to be_invalid 
+    end
+
+    it '有効な商品説明の長さなら更新できる' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      fakedescription = Faker::Lorem.characters(number: 1000)
+      item.update(description: fakedescription)
+      expect(item).to be_valid 
+    end
+
+    it '無効な商品説明の長さだと更新できない' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      fakedescription = Faker::Lorem.characters(number: 1001)
+      item.update(description: fakedescription)
+      expect(item).to be_invalid 
+    end
+
+    it '無効な販売価格では更新できない' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 299)
+      expect(item).to be_invalid 
+    end
+
+    it '有効な販売価格なら更新できる' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 300)
+      expect(item).to be_valid 
+    end
+
+    it '有効な販売価格' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 9999999)
+      expect(item).to be_valid 
+    end
+
+
+    it '無効な販売価格では更新できない' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 10000000)
+      expect(item).to be_invalid 
+    end
+
+    
   end
 
 end
