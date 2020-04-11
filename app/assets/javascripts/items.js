@@ -122,13 +122,22 @@ $(document).on('turbolinks:load', ()=> {
     $("#itembtn").attr('disabled', false);
   });
 
-  // 編集ページ用のボタン処理作成中
+
+  
+  // 編集ページ用のボタン処理作成中(下のロジックだと時間差発生することがあったので改修)
+  if ($('.preserved-remove').length == 1) {
+    $(".preserved-remove").hide();
+  }
+
+  // 編集ページ用のボタン処理作成中（基本的に上が発火するが保険で一応残してる）
   $('img').on('mouseenter', function() {
    
     if ($('.preserved-remove').length == 1) {
       $(".preserved-remove").hide();
     }
   });
+
+  
   
 
   // こっから先はカテゴリーのフォームに関する記述
