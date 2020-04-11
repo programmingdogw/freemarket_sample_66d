@@ -45,5 +45,6 @@ Rails.application.routes.draw do
   end
 
   get 'sample', to: 'experiment#sample'
+  get 'unexpectederrors', to: 'experiment#unexpectederrors'
 
 end

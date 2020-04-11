@@ -92,11 +92,17 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
 
   def update
-    if @item.update(item_params)
-      redirect_to root_path
+    user = User.find(@item.user_id)
+    if user == current_user
+      if @item.update(item_params)
+        redirect_to root_path
+      else
+        redirect_to edit_item_path
+      end
     else
-      redirect_to edit_item_path
+      redirect_to  unexpectederrors_path
     end
+
   end
 
 
@@ -112,7 +118,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
         redirect_to item_path(@item)
       end
     else
-      redirect_to root_path
+      redirect_to  unexpectederrors_path
     end
   end
 
