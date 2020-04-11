@@ -1,5 +1,7 @@
-= link_to new_item_path, class: "exhibition-icon" do
-  .exhibition-icon__btn
-    .exhibition-icon__btn-text
-      出品する
-    = image_tag "icon/icon_camera.png", class: "camera-icon"
+-if user_signed_in?
+  = link_to new_item_path, class: "exhibition-icon" do
+    .exhibition-icon__btn
+      .exhibition-icon__btn-text
+        出品する
+      = image_tag "icon/icon_camera.png", class: "camera-icon"
+-else
