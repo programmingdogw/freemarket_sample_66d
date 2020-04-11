@@ -138,20 +138,23 @@ describe "Item" do
     
   end
 
-  # 更新系テスト記述予定
-  it '名前が更新される' do
-    item = build(:item)
-    expect(item.name).to eq '商品名'
-    item.update(name: "更新済商品名")
-    expect(item.name).to eq '更新済商品名' 
-  end
-  
-  it '無効な名前' do
-    item = build(:item)
-    expect(item.name).to eq '商品名'
-    item.update(name: "")
-    expect(item).to be_invalid 
-  end
+  describe '#update' do
 
+    # 更新系テスト記述予定
+    it '名前が更新される' do
+      item = build(:item)
+      expect(item.name).to eq '商品名'
+      item.update(name: "更新済商品名")
+      expect(item.name).to eq '更新済商品名' 
+    end
+    
+    it '無効な名前' do
+      item = build(:item)
+      expect(item.name).to eq '商品名'
+      item.update(name: "")
+      expect(item).to be_invalid 
+    end
+
+  end
 
 end
