@@ -88,7 +88,7 @@ describe "Item" do
 
     # 有効、無効な商品 文字の長さ系
     it "is valid name less than or equal 40letters" do
-      fakename = Faker::Lorem.characters(number: 39)
+      fakename = Faker::Lorem.characters(number: 40)
       item = build(:item, name: fakename)
       expect(item).to be_valid
     end
@@ -140,7 +140,8 @@ describe "Item" do
 
   describe '#update' do
 
-    # 更新系テスト記述予定
+    # presence系
+    
     it '名前が更新される' do
       item = build(:item)
       expect(item.name).to eq '商品名'
@@ -309,6 +310,70 @@ describe "Item" do
       expect(item).to be_invalid 
     end
 
+    # 長さ大きさ系 
+
+    it '有効な名前の長さなら更新できる' do
+      item = build(:item)
+      expect(item.name).to eq '商品名'
+      fakename = Faker::Lorem.characters(number: 40)
+      item.update(name: fakename)
+      expect(item).to be_valid 
+    end
+
+    it '無効な名前の長さだと更新できない' do
+      item = build(:item)
+      expect(item.name).to eq '商品名'
+      fakename = Faker::Lorem.characters(number: 41)
+      item.update(name: fakename)
+      expect(item).to be_invalid 
+    end
+
+    it '有効な商品説明の長さなら更新できる' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      fakedescription = Faker::Lorem.characters(number: 1000)
+      item.update(description: fakedescription)
+      expect(item).to be_valid 
+    end
+
+    it '無効な商品説明の長さだと更新できない' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      fakedescription = Faker::Lorem.characters(number: 1001)
+      item.update(description: fakedescription)
+      expect(item).to be_invalid 
+    end
+
+    it '無効な販売価格では更新できない' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 299)
+      expect(item).to be_invalid 
+    end
+
+    it '有効な販売価格なら更新できる' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 300)
+      expect(item).to be_valid 
+    end
+
+    it '有効な販売価格' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 9999999)
+      expect(item).to be_valid 
+    end
+
+
+    it '無効な販売価格では更新できない' do
+      item = build(:item)
+      expect(item.price).to eq 1000
+      item.update(price: 10000000)
+      expect(item).to be_invalid 
+    end
+
+    
   end
 
 end
