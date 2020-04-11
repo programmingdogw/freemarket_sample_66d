@@ -97,7 +97,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
       if @item.update(item_params)
         redirect_to root_path
       else
-        redirect_to edit_item_path, flash: {itemnotice:'入力されていないか無効な項目があります'}
+        redirect_to edit_item_path, flash: {editnotice:'更新失敗です。入力されていないか無効な値があります。'}
       end
     else
       redirect_to  unexpectederrors_path
