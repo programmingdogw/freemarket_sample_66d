@@ -35,7 +35,6 @@ Rails.application.routes.draw do
 
   
   root 'experiment#index'
-  get 'details', to: 'experiment#details'
 
   resources :experiment, only: [:index, :sample] do
     #Ajaxで動くアクションのルートを作成
