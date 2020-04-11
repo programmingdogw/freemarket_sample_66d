@@ -155,6 +155,160 @@ describe "Item" do
       expect(item).to be_invalid 
     end
 
+    it '説明文が更新される' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      item.update(description: "更新済説明文")
+      expect(item.description).to eq '更新済説明文' 
+    end
+    
+    it '無効な説明文' do
+      item = build(:item)
+      expect(item.description).to eq '商品説明'
+      item.update(description: "")
+      expect(item).to be_invalid 
+    end
+
+    it 'ブランドが更新される' do
+      item = build(:item)
+      expect(item.brand).to eq 'シャネル'
+      item.update(brand: "グッチ")
+      expect(item.brand).to eq 'グッチ' 
+    end
+    
+    it 'ブランドは任意なのでここだけ有効' do
+      item = build(:item)
+      expect(item.brand).to eq 'シャネル'
+      item.update(brand: "")
+      expect(item).to be_valid 
+    end
+
+    it '親カテゴリが更新される' do
+      item = build(:item)
+      expect(item.parentcategory).to eq 'レディース'
+      item.update(parentcategory: "ベビー・キッズ")
+      expect(item.parentcategory).to eq 'ベビー・キッズ' 
+    end
+    
+    it 'カテゴリは必須' do
+      item = build(:item)
+      expect(item.parentcategory).to eq 'レディース'
+      item.update(parentcategory: "")
+      expect(item).to be_invalid 
+    end
+
+    it '子カテゴリが更新される' do
+      item = build(:item)
+      expect(item.childcategory).to eq 21
+      item.update(childcategory: 347)
+      expect(item.childcategory).to eq 347 
+    end
+    
+    it 'カテゴリは必須' do
+      item = build(:item)
+      expect(item.childcategory).to eq 21
+      item.update(childcategory: "")
+      expect(item).to be_invalid 
+    end
+
+    it '孫カテゴリが更新される' do
+      item = build(:item)
+      expect(item.category_id).to eq 22
+      item.update(category_id: 838)
+      expect(item.category_id).to eq 838 
+    end
+    
+    it 'カテゴリは必須' do
+      item = build(:item)
+      expect(item.category_id).to eq 22
+      item.update(category_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '発送元が更新される' do
+      item = build(:item)
+      expect(item.delivery_from).to eq "北海道"
+      item.update(delivery_from: "青森県")
+      expect(item.delivery_from).to eq "青森県" 
+    end
+    
+    it '発送元は必須' do
+      item = build(:item)
+      expect(item.delivery_from).to eq "北海道"
+      item.update(delivery_from: "")
+      expect(item).to be_invalid 
+    end
+
+    it '商品の状態が更新される' do
+      item = build(:item)
+      expect(item.condition_id).to eq 1
+      item.update(condition_id: 2)
+      expect(item.condition_id).to eq 2 
+    end
+    
+    it '商品の状態は必須' do
+      item = build(:item)
+      expect(item.condition_id).to eq 1
+      item.update(condition_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '商品のサイズが更新される' do
+      item = build(:item)
+      expect(item.size_id).to eq 1
+      item.update(size_id: 2)
+      expect(item.size_id).to eq 2 
+    end
+    
+    it '商品のサイズは必須' do
+      item = build(:item)
+      expect(item.size_id).to eq 1
+      item.update(size_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '配送料の負担が更新される' do
+      item = build(:item)
+      expect(item.deliverycost_id).to eq 1
+      item.update(deliverycost_id: 2)
+      expect(item.deliverycost_id).to eq 2 
+    end
+    
+    it '配送料の負担は必須' do
+      item = build(:item)
+      expect(item.deliverycost_id).to eq 1
+      item.update(deliverycost_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '配送の方法が更新される' do
+      item = build(:item)
+      expect(item.deliveryway_id).to eq 1
+      item.update(deliveryway_id: 2)
+      expect(item.deliveryway_id).to eq 2 
+    end
+    
+    it '配送の方法は必須' do
+      item = build(:item)
+      expect(item.deliveryway_id).to eq 1
+      item.update(deliveryway_id: "")
+      expect(item).to be_invalid 
+    end
+
+    it '配送までの日数が更新される' do
+      item = build(:item)
+      expect(item.deliverytime_id).to eq 1
+      item.update(deliverytime_id: 2)
+      expect(item.deliverytime_id).to eq 2 
+    end
+    
+    it '配送までの日数は必須' do
+      item = build(:item)
+      expect(item.deliverytime_id).to eq 1
+      item.update(deliverytime_id: "")
+      expect(item).to be_invalid 
+    end
+
   end
 
 end
