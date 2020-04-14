@@ -27,9 +27,13 @@
           }
         }
         &__sub {
-          &__list {
-            display: flex;
-            justify-content: start;
+          display: flex;
+          justify-content: center;
+          margin-top: 10px;
+
+          &__image {
+            height: 87px;
+            margin-right: 5px;
           }
         }
       }
