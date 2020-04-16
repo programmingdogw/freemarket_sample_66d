@@ -21,6 +21,20 @@
         %br
         %span （税込）
         %span 送料込み
+
+      .details__contents__upper__ItemAction
+        - if user_signed_in?
+          - if @user == current_user
+            = link_to '編集', edit_item_path(@item), class: "details__contents__upper__ItemAction__link"
+            = link_to '削除', item_path(@item), method: :delete, class: "details__contents__upper__ItemAction__link"
+          - elsif @user != current_user
+            = link_to '#', class: "details__contents__upper__ItemAction__link"
+          - else
+            %p これが表示されることはないはず
+        - else
+          = link_to '購入画面へ進む', '#', class: "details__contents__upper__ItemAction__link"
+        -# ログインユーザーのものかで表示切り替え。マークアップ時はどの程度ページを差し替えるかによるけどパーシャルファイルを変えてレンダーした方がいいかもしれませんよ。
+
       .details__contents__upper__ItemExplanation
         = @item.description
 
@@ -111,20 +125,3 @@
 = render "experiment/last-view"
 = render "experiment/footer"
 = render "experiment/exhibitionIcon"
-
-
--# ログインユーザーのものかで表示切り替え。マークアップ時はどの程度ページを差し替えるかによるけどパーシャルファイルを変えてレンダーした方がいいかもしれませんよ。
-- if user_signed_in?
-  - if @user == current_user
-    %p 編集リンクが表示される
-    = link_to '商品編集ページへ', edit_item_path(@item)
-    %p 削除リンクが表示される
-    = link_to '削除', item_path(@item), method: :delete
-  - elsif @user != current_user
-    %p 購入リンクが表示される
-    = link_to '商品購入へ(購入機能はまだ作ってないのでpathは仮置き)', '#'
-  - else
-    %p これが表示されることはないはず
-- else
-  %p 購入リンクが表示される
-  = link_to '商品購入へ(購入機能はまだ作ってないのでpathは仮置き)', '#'
