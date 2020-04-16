@@ -1,6 +1,6 @@
 サンプル
 %br
-= link_to "マイページへ", user_path(@user), class: ""
+= link_to "マイページへ", user_path(@user), data: { "turbolinks"=> false }, class: ""
 %br
 = link_to "商品出品ページへ", new_item_path, class: ""
 %br
