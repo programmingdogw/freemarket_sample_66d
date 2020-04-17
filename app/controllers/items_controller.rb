@@ -56,6 +56,9 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     @deliverytime = Deliverytime.find(@item.deliverytime_id)
     @child = Category.find(@item.childcategory)
     @grandchild = Category.find(@item.category_id)
+    @images = @item.images
+    @firstimage = @item.images.first
+    @leftimages = @images[1..-1]
   end
 
 
