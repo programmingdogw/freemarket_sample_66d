@@ -10,10 +10,15 @@
       .details__contents__upper__ItemImageBox
         .details__contents__upper__ItemImageBox__main
           .details__contents__upper__ItemImageBox__main__image
-            出品ページで保存した画像の最初の画像を表示させたい
+            = image_tag @firstimage.image.url
         .details__contents__upper__ItemImageBox__sub
-          - @item.images.each do |images|
-            = image_tag images.image.url, class: "details__contents__upper__ItemImageBox__sub__image"
+          -# 最初の画像も含めたいならこっち
+          -# - @item.images.each do |images|
+          -#   = image_tag images.image.url, class: "details__contents__upper__ItemImageBox__sub__image"
+          -# 最初の一枚を下の一覧に含めないならこっち
+          -if @leftimages != nil
+            - @leftimages.each do |images|
+              = image_tag images.image.url, class: "details__contents__upper__ItemImageBox__sub__image"
 
       .details__contents__upper__ItemPrice
         %h2
