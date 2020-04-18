@@ -2,8 +2,9 @@
 
   .header__contents
     .header__contents__top
-      .header__contents__top__logo
-        = image_tag "logo/logo.png", alt: "FURIMA の ロゴ", class: "furima-logo"
+      = link_to root_path, class: "" do
+        .header__contents__top__logo
+          = image_tag "logo/logo.png", alt: "FURIMA の ロゴ", class: "furima-logo"
       .header__contents__top__search-form
         %input{type: "text", placeholder: "キーワードから探す", class: "text-form"}
         %button{type: "submit", class: "search-btn"}
@@ -20,19 +21,10 @@
         - if user_signed_in?
           = link_to destroy_user_session_path, class: "header__contents__bottom__right--tag" do
             ログアウト
-            
           = link_to current_user, class: "header__contents__bottom__right--tag" do
             マイページへ
-            
-
-          = link_to sample_path, class: "header__contents__bottom__right--tag" do
-            サンプルページへ
-            -# ↑作業用のページ。
         - else
           = link_to new_user_session_path, class: "header__contents__bottom__right--tag" do
             ログイン
           = link_to new_user_registration_path, class: "header__contents__bottom__right--tag" do
             新規会員登録
-
-    
-    
