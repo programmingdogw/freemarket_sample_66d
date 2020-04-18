@@ -21,9 +21,10 @@
 
       &__ItemImageBox {
         &__main {
+          text-align: center;
           &__image {
-            height: 350px;
-            width: 100%;
+            height: 400px;
+            width: 80%;
           }
         }
         &__sub {
