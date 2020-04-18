@@ -9,16 +9,10 @@
 
       .details__contents__upper__ItemImageBox
         .details__contents__upper__ItemImageBox__main
-          .details__contents__upper__ItemImageBox__main__image
-            = image_tag @firstimage.image.url
+          = image_tag @firstimage.image.url, class: "details__contents__upper__ItemImageBox__main__image"
         .details__contents__upper__ItemImageBox__sub
-          -# 最初の画像も含めたいならこっち
-          -# - @item.images.each do |images|
-          -#   = image_tag images.image.url, class: "details__contents__upper__ItemImageBox__sub__image"
-          -# 最初の一枚を下の一覧に含めないならこっち
-          -if @leftimages != nil
-            - @leftimages.each do |images|
-              = image_tag images.image.url, class: "details__contents__upper__ItemImageBox__sub__image"
+          - @item.images.each do |images|
+            = image_tag images.image.url, class: "details__contents__upper__ItemImageBox__sub__image"
 
       .details__contents__upper__ItemPrice
         %h2
@@ -38,7 +32,6 @@
             %p これが表示されることはないはず
         - else
           = link_to '購入画面へ進む', '#', class: "details__contents__upper__ItemAction__link"
-        -# ログインユーザーのものかで表示切り替え。マークアップ時はどの程度ページを差し替えるかによるけどパーシャルファイルを変えてレンダーした方がいいかもしれませんよ。
 
       .details__contents__upper__ItemExplanation
         = @item.description
