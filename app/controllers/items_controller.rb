@@ -36,7 +36,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       redirect_to new_item_path, flash: {itemnotice:'入力されていないか無効な項目があります'}
@@ -56,6 +56,9 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
     @deliverytime = Deliverytime.find(@item.deliverytime_id)
     @child = Category.find(@item.childcategory)
     @grandchild = Category.find(@item.category_id)
+    @images = @item.images
+    @firstimage = @item.images.first
+    @leftimages = @images[1..-1]
   end
 
 
@@ -92,11 +95,17 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
 
   def update
-    if @item.update(item_params)
-      redirect_to root_path
+    user = User.find(@item.user_id)
+    if user == current_user
+      if @item.update(item_params)
+        redirect_to root_path
+      else
+        redirect_to edit_item_path, flash: {editnotice:'更新失敗です。入力されていないか無効な値があります。'}
+      end
     else
-      redirect_to edit_item_path
+      redirect_to  unexpectederrors_path
     end
+
   end
 
 
@@ -112,7 +121,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
         redirect_to item_path(@item)
       end
     else
-      redirect_to root_path
+      redirect_to  unexpectederrors_path
     end
   end
 
