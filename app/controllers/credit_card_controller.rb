@@ -48,8 +48,8 @@ def show #Cardのデータpayjpに送り情報を取り出す
     Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     @card_information = customer.cards.retrieve(@card.card_id)
-    else
-      redirect_to action: "index"
+  else
+    redirect_to action: "index"
   end
 end
 
