@@ -1,0 +1,29 @@
+= stylesheet_link_tag 'users'
+= stylesheet_link_tag 'credit_card-modules/index'
+
+.content
+  = render partial:"experiment/header"    
+  .container
+    = render partial:'users/mypage_side'
+    .main__content
+      %section.chapter__container
+        %h2.chapter__head 支払い方法
+        .payment
+          .payment__list
+            .payment__list__content
+              %h3.sub__head クレジットカード一覧
+          .add__card
+            .payment__list__content
+              = link_to  credit_card_new_path, class: "add__card__btn", data: {"turbolinks" => false} do
+                %i
+                = icon('fas', 'credit-card', class: "card__icon")
+                クレジットカードを追加する
+          .not__regist
+            
+
+  = render partial:'experiment/footer'
+  = render partial:"experiment/exhibitionIcon"
+
+
+
+

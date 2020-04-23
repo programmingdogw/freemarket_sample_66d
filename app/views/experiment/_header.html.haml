@@ -21,7 +21,7 @@
         - if user_signed_in?
           = link_to destroy_user_session_path, class: "header__contents__bottom__right--tag" do
             ログアウト
-          = link_to current_user, class: "header__contents__bottom__right--tag" do
+          = link_to current_user, data: { "turbolinks"=> false }, class: "header__contents__bottom__right--tag" do
             マイページへ
         - else
           = link_to new_user_session_path, class: "header__contents__bottom__right--tag" do

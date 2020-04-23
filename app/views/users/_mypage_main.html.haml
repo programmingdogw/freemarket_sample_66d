@@ -1,0 +1,45 @@
+
+= stylesheet_link_tag 'users'
+
+.container__mypage
+  .container__mypage__user
+    = link_to "#" do
+      %figure
+      %h2.mypage__user__name
+        =@user.nickname
+      .mypage__user__namber
+        %div
+          評価
+          %span.bold 0
+        %div
+          出品数
+          %span.bold 0
+
+  .container__mypage__tab__container
+    %ul.mypage-tabs
+      %li
+        = link_to "#", class:"mypage-tab-btn active", id:"notification" do
+          お知らせ
+              
+      %li
+        = link_to "#", class:"mypage-tab-btn", id:"todo" do
+          やることリスト
+    %ul.tab-content
+      %li.mypage-event-list.show お知らせがありません
+      %li.mypage-event-list やる事リストはありません
+
+
+  .container__mypage__tab__container
+    %h2.mypage-tab-head 購入した商品
+    %ul.mypage-tabs
+      %li
+        = link_to "#", class:"mypage-itemtab-btn action", id:"transaction-now" do
+          取引中 
+      %li
+        = link_to "#", class:"mypage-itemtab-btn", id:"transaction-old" do
+          過去の取引
+    %ul.tab-content
+      %li.mypage-item-list.look
+        取引中の商品がありません
+      %li.mypage-item-list
+        過去に取引した商品がありません
