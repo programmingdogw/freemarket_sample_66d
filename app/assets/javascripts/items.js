@@ -1,4 +1,8 @@
 $(document).on('turbolinks:load', ()=> {
+
+  // 編集ページ用のフォームクリア
+  $('.js-file_group_wrapper').remove()
+
   // 画像用のinputを生成する関数
   const buildFileField = function(index){
     
@@ -28,6 +32,11 @@ $(document).on('turbolinks:load', ()=> {
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
+  // 編集ページでクリアしたフォームを再生成
+  if ($('.js-file_group').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+
+
+
   // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
@@ -46,9 +55,10 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      if($('img').length <= 11){
+      // プレビューは枚数制限外した方がわかり易そうだったからとりあえずコメントアウトしてる
+      // if($('img').length <= 11){
         $('#previews').append(buildImg(targetIndex, blobUrl));
-        }
+      // }
       // fileIndexの先頭の数字を使ってinputを作る
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
@@ -56,7 +66,7 @@ $(document).on('turbolinks:load', ()=> {
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
     
-    console.log($('strong').length)
+
     $('strong').show()
     $('strong:last').hide()
 
@@ -95,11 +105,11 @@ $(document).on('turbolinks:load', ()=> {
 
   //画像がない時はボタンが無効に。画像がある時は有効に.
   $('#itembtn').on('mouseenter', function() {
-    if ($('.js-file').length == 1) {
+    if ($('img').length == 2) {
       $("#itembtn").attr("disabled", true);
     }
     // 11枚以上の時も同様に押せないようにした
-    if ($('.js-file').length >= 11) {
+    if ($('img').length >= 13) {
       $("#itembtn").attr("disabled", true);
     }
   });
@@ -111,6 +121,23 @@ $(document).on('turbolinks:load', ()=> {
   $('#image-box').on('click', '.js-remove', function(e) {
     $("#itembtn").attr('disabled', false);
   });
+
+
+  
+  // 編集ページ用のボタン処理作成中(下のロジックだと時間差発生することがあったので改修)
+  if ($('.preserved-remove').length == 1) {
+    $(".preserved-remove").hide();
+  }
+
+  // 編集ページ用のボタン処理作成中（基本的に上が発火するが保険で一応残してる）
+  $('img').on('mouseenter', function() {
+   
+    if ($('.preserved-remove').length == 1) {
+      $(".preserved-remove").hide();
+    }
+  });
+
+  
   
 
   // こっから先はカテゴリーのフォームに関する記述

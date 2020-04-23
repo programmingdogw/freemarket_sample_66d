@@ -35,7 +35,9 @@ class ExperimentController < ApplicationController
     @item = Item.new
   end
 
-  def details
+  def upexpectederrors
+    # 予期せぬ動作が起きた場合に飛ぶページ用
+    # エラーハンドリングの遷移先として置いてる
   end
 
 end

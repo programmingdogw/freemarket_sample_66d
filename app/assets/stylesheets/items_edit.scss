@@ -37,6 +37,22 @@
         color: red;
       }
       
+      // 保存済み画像一覧部分
+      .preservedimages{
+        background-color:  rgb(220, 240, 253);
+        width: 540px;
+        margin: auto;
+        .preserved-image{
+          margin-right: 20px;
+        }
+        .preserved-remove{
+          background-color:black;
+          color: white;
+          opacity: 0.5;
+          margin-left: -90px;
+
+        }
+      }
 
 
       // フォーム部分
@@ -53,6 +69,7 @@
           }
           .js-file_group{
             width: 46%;
+            min-width: 540px;
             height:25px;
             border-radius: 2%;
             border: solid 1px lightgray;

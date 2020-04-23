@@ -10,36 +10,30 @@
 
   %main.pagecontainer__main
     .flashbox
-      = flash[:itemnotice]  
-    %h1.mainh1 商品編集ページ 
+      = flash[:editnotice]  
+    %h1.mainh1 保存済み画像(最低１枚は残して置いてください)
     = form_for(@item, url: item_path) do |f|
+      .preservedimages
+        - @item.images.each do |images|
+          = image_tag images.image.url, width: "100", height: '100', class:'preserved-image'
+          = link_to '画像削除', item_images_destroy_path(item_id: @item.id, id: images.id), class: "preserved-remove"
+
+
 
       .field
-        = f.label :出品画像（１０枚まで。削除ボタンで即削除）, class:"field__formlabel"
+        = f.label :出品画像（既存と併せて１０枚まで）, class:"field__formlabel"
         %span.field__formspan 必須
         %br/
         #image-box
           #previews
-          - @item.images.each do |images|
-            = image_tag images.image.url, width: "100", height: '100' 
-            = link_to '画像削除', item_images_destroy_path(item_id: @item.id, id: images.id)#method: :delete, class: "edit-remove"
 
-          -#   - if @item.persisted?
-          -#     - @item.images.each_with_index do |images, i|
-          -#       = image_tag images.image.url, data: { index: i }, width: "100", height: '100'
-          -# = f.fields_for :images do |image|
-          -#   .js-file_group{"data-index" => "#{image.index}"}
-          -#     %i.fas.fa-camera 画像
-          -#     = image.file_field :image, class:"js-file"
-          -#     %strong.js-remove 削除 
-          -#     - if @item.persisted?
-          -#       = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          .js-file_group_wrapper
+            = f.fields_for :images do |image|  
+              .js-file_group{"data-index" => "#{image.index}"}
+                %i.fas.fa-camera 画像
+                = image.file_field :image, class:"js-file"
+                %strong.js-remove 削除 
 
-          -# - if @item.persisted?
-          -#   .js-file_group{"data-index" => "#{@item.images.count}"}
-          -#     %i.fas.fa-camera 画像
-          -#     =file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class:'js-file'
-          -#     %strong.js-remove 削除
 
 
       .field
