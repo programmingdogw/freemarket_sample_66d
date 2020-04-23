@@ -7,8 +7,8 @@ def index
 end
 
 def new
-  card = CreditCard.where(user_id: current_user.id)
-  redirect_to action: "show" if card.exists?
+  card = CreditCard.where(user_id: current_user.id).first
+  redirect_to action: "show" if card.present?
 end
 
 def pay #payjpとCardのデータベース作成を実施。
@@ -33,12 +33,11 @@ def pay #payjpとCardのデータベース作成を実施。
 end
 
 def delete #PayjpとCardデータベースを削除
-  card = CreditCard.where(user_id: current_user.id).first
   if @card.present?
     Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
-    card.delete
+    @card.delete
   end
     redirect_to action: "index"
 end
