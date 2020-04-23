@@ -1,167 +1,95 @@
 
-
-P{
-  color:blue;
-}
-
 a{
   text-decoration: none;
   display: block;
 }
-
 li{
   margin: auto;
 }
+h3 {
+  line-height: 1.4;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 
+//メインコンテンツ
 .content{
   background-color:rgb(243, 240, 240);
   padding:0,0,250px;
   margin: 0%;
-}
-.container{
-  margin: 40px auto 0;
-  padding: 0 0 40px;
-  width: 1020px;
-  display: flex;
-  justify-content: center;
-    &__side{
-      float: left;
-      width: 280px;
-      margin: 0 40px 0 0;
-    }
-    &__mypage{
-      width: 700px;
-        &__user{
-          height: 200px;
-          width: 700px;
-          text-align: center;
-          background-color: #eee;
-          color: currentColor;
-          float: right;
-        }
-        &__tab-container{
-          padding: 0;
-          margin: 0 auto;
-          width: 700px;
-          background: #dce0e0;
-
-          .mypage-tab-head{
-            padding: 0,16px;
-            margin-top: 40px;
-            background: #fafafa;
+  .container{
+    margin: 40px auto 0;
+    padding: 0 0 40px;
+    width: 1020px;
+    display: flex;
+    justify-content: center;
+      &__side{
+        float: left;
+        width: 280px;
+        margin: 0 40px 0 0;
+        .mypage-nav{
+          &__list{
+            &__item{
+              position: relative;
+              display: block;
+              padding: 16px;
+              background: #fff;
+              font-size: 14px;
+              color: #333;
+              border-style: solid;
+              border-width: thin;
+              border-color: #f5f5f5;
+              line-height: 1;
+              .fas{
+                float: right;
+              }
+            }
+          }
+          &__head{
+            margin: 40px 4% 0;
             font-size: 16px;
-            line-height: 72px;
           }
-
-          .mypage-tabs {
-            list-style: none;
+        }
+      }
+      &__mypage{
+        width: 700px;
+          &__user{
+            height: 200px;
+            width: 700px;
+            text-align: center;
+            background-color: #eee;
+            color: currentColor;
+            float: right;
+            &__namber{
+              display: inline-block;
+              font-size: 14px;
+            }
+          }
+          &__tab__container{
             padding: 0;
-            margin: 0;
-            font-size: 0;
-            
-            ul.mypage-tabs li {
-              display: inline-block;
-            }
-            
-            ul.mypage-tabs li .mypage-tab-btn {
-              display: inline-block;
-              font-size: 14px;
-              width: 336px;
-              height: 60px;
-              line-height: 20px;
-              text-align: center;
-              text-decoration: none;
-              padding: 7px;
-              color: #333;
-            }
-            
-            ul.mypage-tabs li .mypage-itemtab-btn{
-              display: inline-block;
-              font-size: 14px;
-              width: 336px;
-              height: 60px;
-              line-height: 20px;
-              text-align: center;
-              text-decoration: none;
-              padding: 7px;
-              color: #333;
-            }
-
-            ul.mypage-tabs li .active {
+            margin: 0 auto;
+            width: 700px;
+            background: #dce0e0;
+            .mypage-tab-head{
+              padding: 0 18px;
+              margin-top: 40px;
               background: #fafafa;
-              color: #333;
+              font-size: 16px;
+              line-height: 72px;
             }
-
-            ul.mypage-tabs li :not(.active):hover {
-              opacity: 0.5;
-              transition: .8s;
-            }
-            
-            ul.mypage-tabs li .action {
-              background: #fafafa;
-              color: #333;
-            }
-
-            ul.mypage-tabs li :not(.action):hover {
-              opacity: 0.5;
-              transition: .8s;
-            }
-            
-          }
-
-          ul.tab-content li {
-            list-style: none;
-            font-size: 14px;
-            padding: 7px 10px;
-            line-height: 1.4;
-            background: #fafafa;
-            color: #333;
-            min-height: 150px;
-            display: none;
-
-            ul.tab-content li.show {
-              display: block;
-            }
-            ul.tab-content li.look {
-              display: block;
+            .mypage-tabs {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              font-size: 0; 
             }
           }
         }
-        
-}
-.nav{
-  display: block;
-}
-
-// .container-side{
-//   float: left;
-//   width: 280px;
-//   margin: 0 40px 0 0;
-// }
-
-.mypage-nav-list__item{
-  position: relative;
-  display: block;
-  // min-height: 48px;
-  padding: 16px;
-  background: #fff;
-  font-size: 14px;
-  color: #333;
-  border-style: solid;
-  border-width: thin;
-  border-color: #f5f5f5;
-  line-height: 1;
-  .fas{
-    float: right;
-  }
-}
-
-.mypage-nav-head{
-  margin: 40px 4% 0;
-  font-size: 16px;
-}
-}
-
+      }
+    }
+  
+    //切替用タブの装飾
 ul.mypage-tabs li {
   display: inline-block;
 }
@@ -193,6 +121,7 @@ ul.mypage-tabs li .mypage-itemtab-btn{
 ul.mypage-tabs li .active {
   background: #fafafa;
   color: #333;
+  border-top: 2px solid #3ccacc;
 }
 ul.mypage-tabs li :not(.active):hover {
   opacity: 0.5;
@@ -215,6 +144,7 @@ ul.tab-content li.show {
 ul.mypage-tabs li .action {
   background: #fafafa;
   color: #333;
+  border-top: 2px solid #3ccacc;
 }
 
 ul.mypage-tabs li :not(.action):hover {
