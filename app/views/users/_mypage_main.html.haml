@@ -1,0 +1,49 @@
+
+= stylesheet_link_tag 'users'
+
+.container__mypage
+  .container__mypage__user
+    %a{:href => ""}
+      %figure
+      %h2.mypage__user__name
+        =@user.nickname
+      .mypage__user__namber
+        %div
+          評価
+          %span.bold 0
+        %div
+          出品数
+          %span.bold 0
+
+  .container__mypage__tab-container
+    %ul.mypage-tabs
+      %li
+        
+        %a#notification.mypage-tab-btn.active{href: "#"} 
+          お知らせ
+              
+      %li
+        
+        %a#todo.mypage-tab-btn{href: "#"}
+          やることリスト
+    %ul.tab-content
+      %li.mypage-event-list.show お知らせがありません
+      %li.mypage-event-list やる事リストはありません
+
+
+  .container__mypage__tab-container
+    %h2.mypage-tab-head 購入した商品
+    %ul.mypage-tabs
+      %li
+        
+        %a#transaction-now.mypage-itemtab-btn.action{href: "#"}
+          取引中 
+      %li
+        
+        %a#transaction-old.mypage-itemtab-btn{href: "#"}
+          過去の取引
+    %ul.tab-content
+      %li.mypage-item-list.look
+        取引中の商品がありません
+      %li.mypage-item-list
+        過去に取引した商品がありません
