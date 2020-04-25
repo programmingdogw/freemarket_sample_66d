@@ -36,7 +36,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    if @item.save
       redirect_to root_path
     else
       redirect_to new_item_path, flash: {itemnotice:'入力されていないか無効な項目があります'}
