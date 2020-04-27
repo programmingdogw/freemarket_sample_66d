@@ -1,7 +1,7 @@
 .second-view {
   @include center;
   height: 400px;
-  background-image: url(pict/bg-topMiddleDl-pict.jpg);
+  background-image: image-url('pict/bg-topMiddleDl-pict.jpg');
   background-size: cover;
 
   &__contents {

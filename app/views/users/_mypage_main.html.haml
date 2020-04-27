@@ -18,11 +18,11 @@
   .container__mypage__tab__container
     %ul.mypage-tabs
       %li
-        = link_to "#", class:"mypage-tab-btn active", id:"notification" do
+        .mypage-tab-btn.active#notification
           お知らせ
               
       %li
-        = link_to "#", class:"mypage-tab-btn", id:"todo" do
+        .mypage-tab-btn#todo
           やることリスト
     %ul.tab-content
       %li.mypage-event-list.show お知らせがありません
@@ -33,10 +33,10 @@
     %h2.mypage-tab-head 購入した商品
     %ul.mypage-tabs
       %li
-        = link_to "#", class:"mypage-itemtab-btn action", id:"transaction-now" do
+        .mypage-itemtab-btn.action#transaction-now
           取引中 
       %li
-        = link_to "#", class:"mypage-itemtab-btn", id:"transaction-old" do
+        .mypage-itemtab-btn#transaction-old
           過去の取引
     %ul.tab-content
       %li.mypage-item-list.look
