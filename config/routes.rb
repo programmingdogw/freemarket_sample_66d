@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'purchases/index'
+  get 'purchases/done'
   get 'credit_card/new'
   get 'credit_card/show'
   devise_for :users, controllers: {
