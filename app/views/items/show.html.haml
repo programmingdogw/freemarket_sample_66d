@@ -37,11 +37,11 @@
             = link_to '編集', edit_item_path(@item), class: "details__contents__upper__ItemAction__link"
             = link_to '削除', item_path(@item), method: :delete, class: "details__contents__upper__ItemAction__link"
           - elsif @user != current_user
-            = link_to '#', class: "details__contents__upper__ItemAction__link"
+            = link_to '購入画面へ進む',purchases_index_path(@item_id), class: "details__contents__upper__ItemAction__link"
           - else
             %p これが表示されることはないはず
         - else
-          = link_to '購入画面へ進む', '#', class: "details__contents__upper__ItemAction__link"
+          = link_to '新規登録する', new_user_registration_path, class: "details__contents__upper__ItemAction__link"
 
       .details__contents__upper__ItemExplanation
         = @item.description

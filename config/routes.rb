@@ -32,6 +32,13 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }      
     end
 
+    resources :purchases, only: [:index] do
+      collection do
+        post 'buy', to: 'purchase#buy'
+        get 'done', to: 'purchase#done'
+      end
+    end
+
     get 'images/destroy'
     
   end
@@ -53,14 +60,6 @@ Rails.application.routes.draw do
       post 'show', to: 'credit_card#show'
       post 'pay', to: 'credit_card#pay'
       post 'delete', to: 'credit_card#delete'
-    end
-  end
-
-  resources :purchase, only: [:index] do
-    collection do
-      get 'index', to: 'purchase#index'
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
     end
   end
 
