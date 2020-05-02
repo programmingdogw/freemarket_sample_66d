@@ -1,6 +1,15 @@
 
 = render "experiment/header"
 
+= form_for(@item, url: item_path) do |f|
+  .field
+    = f.hidden_field :auction, :value => false
+    = f.hidden_field :dealing, :value => false
+    = f.hidden_field :sold, :value => true
+  
+  = f.submit "これ押したらフラグ立つんで入れといてください", id:""
+
+
 .details
   .details__contents
     .details__contents__upper
