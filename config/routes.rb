@@ -56,6 +56,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
+
   get 'sample', to: 'experiment#sample'
   get 'unexpectederrors', to: 'experiment#unexpectederrors'
 
