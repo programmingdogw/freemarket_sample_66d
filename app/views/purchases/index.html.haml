@@ -2,12 +2,12 @@
 -# %p Find me in app/views/purchases/index.html.haml
 
 %h2.buy-content__title
-    購入内容の確認
+  購入内容の確認
   .buy-content__item
     .buy-content__item__inner
       .buy-item-main
         .buy-item-image
-          = image_tag "#{@item.images[0].url}", size: '64x64', class: 'buydetails-contet__image'
+          -# = image_tag "#{@item.images[0].url}", size: '64x64', class: 'buydetails-contet__image'
         .buy-item-detail
           .buy-item-name
             = @item.name
@@ -30,7 +30,7 @@
       - if @card_information.blank?
         %br /
       - else
-        = "**** **** **** " + "#{card_information.last4}"
+        = "**** **** **** " + "#{@card_information.last4}"
         %br
         - exp_month = @card_information.exp_month.to_s
         - exp_year = @card_information.exp_year.to_s.slice(2,3)

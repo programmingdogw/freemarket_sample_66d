@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
 
   require "payjp"
-  before_action :set_card
+  before_action :set_card, :set_item
   before_action :authenticate_user!
 
   # 購入確認画面
@@ -16,7 +16,6 @@ class PurchasesController < ApplicationController
       #カード情報表示のためインスタンス変数に代入
       @card_information = customer.cards.retrieve(@card.card_id)
 
-      @item = Item.find(params[:id])
       @user = User.find(@item.user_id)
       @size = Size.find(@item.size_id)
       @condition = Condition.find(@item.condition_id)
@@ -31,7 +30,7 @@ class PurchasesController < ApplicationController
   end
 
   # 購入
-  def buy
+  def pay
     Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
     Payjp::Charge.create(
       :amount => @item.price, #支払金額を引っ張ってくる
@@ -54,7 +53,7 @@ class PurchasesController < ApplicationController
     params.require(:item).permit(:user_id, :address_id, :category_id, :parentcategory, :childcategory, :name, :price, :condition_id, :description, :size_id, :deliverycost_id, :deliveryway_id, :delivery_from, :deliverytime_id, :brand, :auction, :dealing, :sold, images_attributes: [:image])
   end
 
-  # def set_item
-  #   @item = Item.find(params[:item_id])
-  # end
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 end
