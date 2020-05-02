@@ -96,6 +96,10 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def update
     user = User.find(@item.user_id)
+    if user!= current_user
+      
+    end
+
     if user == current_user
       if @item.update(item_params)
         redirect_to root_path
@@ -103,8 +107,11 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
         redirect_to edit_item_path, flash: {editnotice:'更新失敗です。入力されていないか無効な値があります。'}
       end
     else
-      redirect_to  unexpectederrors_path
+      @item.update(purchase_params)
+      redirect_to root_path
     end
+
+    
 
   end
 
@@ -127,13 +134,16 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   
 
-
   
 
   
   private
   def item_params
     params.require(:item).permit(:user_id, :address_id, :category_id, :parentcategory, :childcategory, :name, :price, :condition_id, :description, :size_id, :deliverycost_id, :deliveryway_id, :delivery_from, :deliverytime_id, :brand, :auction, :dealing, :sold, images_attributes: [:image])
+  end
+
+  def purchase_params
+    params.require(:item).permit(:auction, :dealing, :sold)
   end
 
   def set_item
