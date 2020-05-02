@@ -1,6 +1,7 @@
 
 = render "experiment/header"
 
+-# 大丈夫だと思いますけどform_forから入れといてくださいね
 = form_for(@item, url: item_path) do |f|
   .field
     = f.hidden_field :auction, :value => false
