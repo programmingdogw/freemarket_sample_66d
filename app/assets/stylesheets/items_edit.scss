@@ -84,12 +84,43 @@
           position: absolute;
           left: 28%;
         }
+        &__deliveryfrom-p{
+          width: 46%;
+          margin: auto;
+          text-align: left;
+        }
+        &__formlabel-deliveryfrom{
+          .decoratedselect-from{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 46%;
+            height:43px;
+            margin-top: 5px;
+            border-radius: 4%;
+            background-color: white;
+            border: solid 2px lightgray;
+            background-image: url(./images/icon_arrow.svg);
+            background-repeat: no-repeat;
+            background-size: 12px 10px;
+            background-position: right 10px center;          
+          }
+        }
         &__formspan{
-          background-color:lightblue;
+          background-color:lightskyblue;
           color: white;
           position: absolute;
           width: 40px;
           right: 28%;
+          border-radius: 10%;
+        }
+        &__formspan-deliveryfrom{
+          background-color:lightskyblue;
+          color: white;
+          position: absolute;
+          width: 40px;
+          right: 28%;
+          top:30px;
           border-radius: 10%;
         }
         &__forminput{
@@ -138,7 +169,7 @@
         }
         .listing-default--require{
           color:red;
-          background-color:lightblue;
+          background-color:lightskyblue;
           color: white;
           position: absolute;
           width: 40px;
