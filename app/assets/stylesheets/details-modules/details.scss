@@ -59,17 +59,18 @@
         width: 100%;
 
         &__link {
+          @include show-btn;
           display: block;
-          height: 40px;
-          line-height: 40px;
-          margin-bottom: 10px;
-          font-size: 24px;
           text-decoration: none;
-          background-color: $skyblue;
-          color: $white;
-          border-radius: 100px;
         }
         &__link:hover {
+          opacity: 0.5;
+        }
+        &__link--buy {
+          @include show-btn;
+          width: 100%;
+        }
+        &__link--buy:hover {
           opacity: 0.5;
         }
       }

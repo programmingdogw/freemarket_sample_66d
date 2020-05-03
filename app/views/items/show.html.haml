@@ -1,16 +1,6 @@
 
 = render "experiment/header"
 
--# 大丈夫だと思いますけどform_forから入れといてくださいね
-= form_for(@item, url: item_path) do |f|
-  .field
-    = f.hidden_field :auction, :value => false
-    = f.hidden_field :dealing, :value => false
-    = f.hidden_field :sold, :value => true
-  
-  = f.submit "これ押したらフラグ立つんで入れといてください", id:""
-
-
 .details
   .details__contents
     .details__contents__upper
@@ -41,7 +31,13 @@
           - else
             %p これが表示されることはないはず
         - else
-          = link_to '購入画面へ進む', '#', class: "details__contents__upper__ItemAction__link"
+          = form_for(@item, url: item_path) do |f|
+            .field
+              = f.hidden_field :auction, :value => false
+              = f.hidden_field :dealing, :value => false
+              = f.hidden_field :sold, :value => true
+            = f.submit "購入", class: "details__contents__upper__ItemAction__link--buy"
+
 
       .details__contents__upper__ItemExplanation
         = @item.description
