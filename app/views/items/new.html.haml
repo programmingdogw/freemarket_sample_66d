@@ -61,7 +61,8 @@
           %p.category-p カテゴリー
           = f.label :parentcategory, class: 'listing-default__label' do           
             = f.select :parentcategory, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
-          %span.listing-default--require 必須    
+          %span.listing-default--require 必須  
+          %i.fas.fa-chevron-down.decoratedchevron  
   
 
 

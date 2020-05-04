@@ -156,8 +156,10 @@ $(document).on('turbolinks:load', ()=> {
                               <option value="---" data-category="---">---</option>
                               ${insertHTML}
                             <select>
-                          </label>                                                 
-                      </div>`;
+                          </label>
+                          <i class="fas fa-chevron-down decoratedchevron"></i>                                                 
+                      </div>
+                      `;
     $('.listing-product-detail__category').append(childSelectHtml);
   }
   // 孫カテゴリーの表示作成 
@@ -169,8 +171,10 @@ $(document).on('turbolinks:load', ()=> {
                                     <option value="---" data-category="---">---</option>
                                     ${insertHTML}
                                   </select>
-                                </label>                                                           
-                            </div>`;
+                                </label>
+                                <i class="fas fa-chevron-down decoratedchevron"></i>                                                           
+                            </div>
+                            `;
     $('.listing-product-detail__category').append(grandchildSelectHtml);
   }
   // 親カテゴリー選択後のイベント
