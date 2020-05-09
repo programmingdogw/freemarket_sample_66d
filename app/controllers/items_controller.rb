@@ -96,9 +96,7 @@ before_action :set_item, except: [:index, :new, :create, :get_category_children,
 
   def update
     user = User.find(@item.user_id)
-    if user!= current_user
-      
-    end
+    
 
     if user == current_user
       if @item.update(item_params)

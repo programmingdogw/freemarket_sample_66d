@@ -84,12 +84,43 @@
           position: absolute;
           left: 28%;
         }
+        &__deliveryfrom-p{
+          width: 44%;
+          margin: auto;
+          text-align: left;
+        }
+        &__formlabel-deliveryfrom{
+          .decoratedselect-from{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 46%;
+            height:43px;
+            margin-top: 5px;
+            border-radius: 4%;
+            background-color: white;
+            border: solid 2px lightgray;
+            background-image: url(./images/icon_arrow.svg);
+            background-repeat: no-repeat;
+            background-size: 12px 10px;
+            background-position: right 10px center;          
+          }
+        }
         &__formspan{
-          background-color:lightblue;
+          background-color:lightskyblue;
           color: white;
           position: absolute;
           width: 40px;
           right: 28%;
+          border-radius: 10%;
+        }
+        &__formspan-deliveryfrom{
+          background-color:lightskyblue;
+          color: white;
+          position: absolute;
+          width: 40px;
+          right: 28%;
+          top:30px;
           border-radius: 10%;
         }
         &__forminput{
@@ -98,6 +129,10 @@
           border-radius: 4%;
           border: solid 2px lightgray;
           margin-top:5px ;
+        }
+        .notselect{
+          margin-left:11px;
+          width: 46%;
         }
         &__textarea{
           width: 46%;
@@ -127,23 +162,62 @@
       }
 
       // カテゴリ部分
-      .listing-form-box{
+      .field{
         width: 100%;
         padding-top:30px ;
-        position: relative;
-        min-width: 768px;
-        .listing-default__label{
-          position: absolute;
-          left: 28%;
-        }
-        .listing-default--require{
-          color:red;
-          background-color:lightblue;
-          color: white;
-          position: absolute;
-          width: 40px;
-          right: 28%;
-          border-radius: 10%;
+        .listing-product-detail__category{
+          .category-p{
+            width: 44%;
+            margin: auto;
+            text-align: left;
+          }
+          .listing-default__label{
+            .listing-select-wrapper__box--select{
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              width: 46%;
+              height:43px;
+              margin-top: 5px;
+              border-radius: 4%;
+              background-color: white;
+              border: solid 2px lightgray;
+              background-image: url(./images/icon_arrow.svg);
+              background-repeat: no-repeat;
+              background-size: 12px 10px;
+              background-position: right 10px center;
+            }
+          }
+
+          .listing-default--require{
+            background-color:lightskyblue;
+            color: white;
+            position: absolute;
+            width: 40px;
+            right: 28%;
+            top:30px;
+            border-radius: 10%;
+          }
+
+          .listing-select-wrapper__added{
+            .listing-select-wrapper__box--select{
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              width: 46%;
+              height:43px;
+              margin-top: 5px;
+              border-radius: 4%;
+              background-color: white;
+              border: solid 2px lightgray;
+              background-image: url(./images/icon_arrow.svg);
+              background-repeat: no-repeat;
+              background-size: 12px 10px;
+              background-position: right 10px center;
+            }
+          }
+
+          
         }
       }
       
