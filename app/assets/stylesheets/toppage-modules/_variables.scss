@@ -76,3 +76,13 @@ $heavy-gray: #dedede;
   vertical-align: middle;
   padding: 15px 15px;
 }
+
+@mixin show-btn {
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  background-color: $skyblue;
+  color: $white;
+  border-radius: 100px;
+}
