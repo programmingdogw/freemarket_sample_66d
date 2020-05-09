@@ -17,5 +17,14 @@ FactoryBot.define do
     sold              {"false"}
     parentcategory     {"レディース"}
     childcategory              {"21"}
+    after(:build) do |item|
+      # 親、子、孫を作成して、孫をitemのcategory_idに紐付ける
+      parent_category = create(:category)
+      child_category = parent_category.children.create(name: "hello")      
+      grand_child_category = child_category.children.create(name: "world")
+      item.category_id = grand_child_category.id
+
+      item.images << build(:image)
+    end
   end
 end

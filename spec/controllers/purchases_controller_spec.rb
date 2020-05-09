@@ -2,18 +2,17 @@ require 'rails_helper'
 
 RSpec.describe PurchasesController, type: :controller do
 
+  let(:user) { create(:user) }
+  let(:card) { create(:credit_card, user_id: user.id) }
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+    before do
+      login user
+    end
+    it "indexアクションのページに遷移するか" do
+      allow(Payjp::Customer).to receive(:create).and_return(PayjpMock.prepare_customer_information)
+      item = create(:item, user_id: user.id)
+      get :index, params: { item_id: item.id, card: card}
+      expect(response).to render_template :index
     end
   end
-
-  describe "GET #done" do
-    it "returns http success" do
-      get :done
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
