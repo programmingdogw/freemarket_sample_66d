@@ -33,9 +33,9 @@ class PurchasesController < ApplicationController
   def pay
     Payjp.api_key = Rails.application.credentials.payjp[:payjp_private_key]
     Payjp::Charge.create(
-      :amount => @item.price, #支払金額を引っ張ってくる
-      :customer => @card.customer_id,  #顧客ID
-      :currency => 'jpy',              #円
+      amount: @item.price, #支払金額を引っ張ってくる
+      customer: @card.customer_id,  #顧客ID
+      currency: 'jpy',              #円
     )
     redirect_to done_item_purchases_path #完了画面に移動
   end
@@ -46,7 +46,7 @@ class PurchasesController < ApplicationController
 
   private
   def set_card
-    @card = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
+    @card = CreditCard.find_by(user_id: current_user.id) if CreditCard.where(user_id: current_user.id).present?
   end
 
   def item_params
