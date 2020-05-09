@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
  
 
-
-
   get 'credit_card/new'
   get 'credit_card/show'
   devise_for :users, controllers: {
@@ -28,6 +26,13 @@ Rails.application.routes.draw do
     member do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }      
+    end
+
+    resources :purchases, only: [:index] do
+      collection do
+        post 'pay', to: 'purchases#pay'
+        get 'done', to: 'purchases#done'
+      end
     end
 
     get 'images/destroy'
