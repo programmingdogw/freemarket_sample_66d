@@ -37,11 +37,23 @@ class PurchasesController < ApplicationController
       customer: @card.customer_id,  #顧客ID
       currency: 'jpy',              #円
     )
+    @item_sold= Item.find(params[:item_id])
+    @item_sold.update( sold: current_user.id)
     redirect_to done_item_purchases_path #完了画面に移動
   end
 
   # 支払い完了ページ
   def done
+    @user = User.find(@item.user_id)
+    @size = Size.find(@item.size_id)
+    @condition = Condition.find(@item.condition_id)
+    @deliverycost = Deliverycost.find(@item.deliverycost_id)
+    @deliverytime = Deliverytime.find(@item.deliverytime_id)
+    @child = Category.find(@item.childcategory)
+    @grandchild = Category.find(@item.category_id)
+    @images = @item.images
+    @firstimage = @item.images.first
+    @leftimages = @images[1..-1]
   end
 
   private
