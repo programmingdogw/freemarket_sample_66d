@@ -27,12 +27,7 @@
             = link_to '編集', edit_item_path(@item), class: "details__contents__upper__ItemAction__link"
             = link_to '削除', item_path(@item), method: :delete, class: "details__contents__upper__ItemAction__link"          
           - else
-            = form_for(@item, url: item_purchases_path) do |f|
-              .field
-                = f.hidden_field :auction, value: false
-                = f.hidden_field :dealing, value: false
-                = f.hidden_field :sold, value: true
-              = f.submit "購入", class: "details__contents__upper__ItemAction__link--buy"
+            = link_to '購入画面へ進む', item_purchases_path(@item), class: "details__contents__upper__ItemAction__link"
         - elsif @user != current_user
           = link_to '購入するためにはログインしてください', new_user_session_path, class: "details__contents__upper__ItemAction__link"
         - else

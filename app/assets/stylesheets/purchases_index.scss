@@ -1,0 +1,55 @@
+
+.buy-content{
+  padding: 0,0,250px;
+  background-color: rgb(243, 240, 240);
+
+  //ヘッダー
+  &__header{
+    text-align: center;
+      .logolink{
+        width:30%;
+        margin-left: 20%;
+        &__image{
+          width: 30%;
+          margin: auto;
+          padding-right:150px ;
+        }
+      }
+    }
+
+
+  //メインコンテンツ
+  &__title{
+    background-color: white;
+    margin:40px auto 40px;
+    text-align: center;
+    width: 700px;
+    padding-bottom:50px ;
+  }
+
+  .buy-btn{
+    margin-top: 30px;
+    background-color: skyblue;
+    color: white;
+    width:130px;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+   // フッター
+   .pagecontainer__footer{
+    text-align: center;
+    .footerbox{
+      padding-top: 20px;
+      margin:20px;
+      &__abouts{
+        margin-left: 10px;
+        font-size: 12px;
+      }
+    }
+    .footerlogo{
+      width:250px;
+      height: 100px;
+    }
+  }
+}
